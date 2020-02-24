@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+
+    <title>BALMON</title>
+  </head>
+  <body onload="session()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
+      <a class="navbar-brand text-white"  href="#">BALMON | Barito Losses Monitoring</a>
+      
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="icon ml-2 text-white">
+          <button class="btn btn-info my-2 my-sm-0 text-center" type="button" onclick="logout()">
+              <i class="fas fa-power-off"></i>
+          </button>          
+        </div>
+        <!--div class="icon ml-4">
+          <h5>
+            <i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Pesan Masuk"></i> 
+            <i class="fas fa-bell mr-3" data-toggle="tooltip" title="Notifikasi"></i>
+            <i class="fas fa-sign-out-alt mr-3" data-toggle="tooltip" title="Sign Out"></i>
+          </h5>
+        </div-->
+      </div>
+    </nav>
+    
+    <div class="row no-gutters mt-5" style="height:auto;">
+      <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
+        <ul class="nav flex-column ml-3 mb-5" style="height:565px;">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="dashboard.html"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="gangguan_main.html"><i class="fas fa-cogs mr-2"></i>Gangguan</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>Paretto Chart</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="lho5.html"><i class="fas fa-file-pdf mr-2"></i>LHO5</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="pembangkit.html"><i class="fas fa-file-medical-alt mr-2"></i>Indeks Pembangkit</a><hr class="bg-secondary">
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-10 p-5 pt-2">
+        <h5><i class="fas fa-cogs mr-2"></i>Gangguan Mesin 2</h5><hr>
+        <form id="gangguan2">
+          <div class="form-group row">
+            <label for="part" class="col-sm-3 col-form-label"><i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Komponen yang rusak</label>
+            <div class="col-sm-9">
+              <textarea type="text" class="form-control" id="0_2" name="part" placeholder="Komponen" rows="1"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Waktu Gangguan</label>
+            <div class="row ml-5">
+              <label>Tanggal</label>
+              <div class="col">
+                <input type="date" class="form-control" id="1_2" name="waktuGangguan" placeholder="waktu gangguan">
+              </div>
+              <label>Jam</label>
+              <div class="col">
+                <input type="time" class="form-control" id="jam1_2"name="jam1" placeholder="jam">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Waktu Selesai Har</label>
+            <div class="row ml-5">
+              <label>Tanggal</label>
+              <div class="col">
+                <input type="date" class="form-control" id="tanggal2_2"name="waktuHar" placeholder="waktu selesai har">
+              </div>
+              <label>Jam</label>
+              <div class="col">
+                <input type="time" class="form-control" id="jam2_2" name="jam2" placeholder="jam">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">
+              <i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Gejala Yang Timbul
+            </label>
+            <div class="col-sm-9">
+              <textarea type="text" class="form-control" id="2_2" name="gejala" placeholder="Gejala" rows="3"></textarea>
+            </div>
+          </div>
+        </form>
+        <form id="lho5">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">
+              <i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Urutan Kejadian
+            </label>
+            <div class="col-sm-9">
+              <textarea type="text" class="form-control" id="3_2" placeholder="Kronologi" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">
+              <i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Pemeriksaan Gangguan
+            </label>
+            <div class="col-sm-9">
+              <textarea type="text" class="form-control" id="4_2" placeholder="Pemeriksaan" rows="1"></textarea>
+            </div>
+          </div>
+          <div class="form-group row mb-4">
+            <label class="col-sm-3 col-form-label">
+              <i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Analisa Gangguan
+            </label>
+            <div class="col-sm-9">
+              <textarea type="text" class="form-control" id="5_2" placeholder="Analisa" rows="1"></textarea>
+            </div>
+          </div>
+          <label><i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Akibat Terhadap Pembangkit</label>
+          <div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 10px;"></i>Daya Terpasang</label>
+              <div class="col-sm-9">
+                <textarea type="text" class="form-control" id="6_2" placeholder="Daya Terpasang" rows="1"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 10px;"></i>Daya Mampu</label>
+              <div class="col-sm-9">
+                <textarea type="text" class="form-control" id="7_2" placeholder="Daya Mampu" rows="1"></textarea>
+              </div>
+            </div>
+            <div class="form-group row mb-4">
+              <label class="col-sm-3 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 10px;"></i>Beban Puncak</label>
+              <div class="col-sm-9">
+                <textarea type="text" class="form-control" id="8_2" placeholder="Beban Puncak" rows="1"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mb-4">
+            <label class="col-sm-3 col-form-label">
+              <i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Tindakan Penanggulangan
+            </label>
+            <div class="col-sm-9">
+              <textarea type="text" class="form-control" id="9_2" placeholder="Tindakan" rows="1"></textarea>
+            </div>
+          </div>
+          <label><i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Rencana Perbaikan</label>
+          <div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 10px;"></i>Pelaksanaan</label>
+              <div class="col-sm-9">
+                <textarea type="text" class="form-control" id="10_2" placeholder="Pelaksanaan" rows="1"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 10px;"></i>Jenis Pekerjaan</label>
+              <div class="col-sm-9">
+                <textarea type="text" class="form-control" id="11_2" placeholder="Jenis Pekerjaan" rows="1"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 10px;"></i>Material</label>
+              <div class="col-sm-9">
+                <textarea type="text" class="form-control" id="12_2" placeholder="Material" rows="1"></textarea>
+              </div>
+            </div>
+            <div class="form-group row mb-4">
+              <label class="col-sm-3 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 10px;"></i>Perkiraan Biaya</label>
+              <div class="col-sm-9">
+                <textarea type="text" class="form-control" id="13_2" placeholder="Perkiraan Biaya" rows="1"></textarea>
+              </div>
+            </div>
+          </div>
+          <div  class="form-group row">
+            <label class="col-sm-3 col-form-label">
+              <i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Penjelasan Lain-lain
+            </label>
+            <div class="col-sm-9">
+              <textarea type="text" class="form-control" id="14_2" placeholder="lain-lain" rows="1"></textarea>
+            </div>
+          </div>
+        </form>
+        <button onclick="ex2()" type="submit" class="btn btn-primary mt-3">Submit</button>
+        
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
+    <script type="text/javascript">
+      function ex2(){
+        formSubmit2();
+        simpan2();
+        window.open("page_2.html");
+      }
+    </script>
+  </body>
+</html>
