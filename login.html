@@ -74,7 +74,10 @@
         localStorage.setItem("logins", JSON.stringify(loginstore));
         localStorage.setItem("cp", JSON.stringify(cp));
         if(loginstore[0]=="pltd" && loginstore[1]=="pltd"){
-          window.location.href="/Unit/dashboard.html";
+          window.location.href="/unit/dashboard.html";
+        }
+        if(loginstore[0]=="ophar" && loginstore[1]=="ophar"){
+          window.location.href="/updk/dashboard.html";
         }
         else{
           document.getElementById("salah").innerHTML= "Username atau Password salah";

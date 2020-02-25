@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+
+    <title>Login BALMON</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
+      <a class="navbar-brand text-white"  href="#">BALMON | Barito Losses Monitoring</a>
+      
+        <!--div class="icon ml-4">
+          <h5>
+            <i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Pesan Masuk"></i> 
+            <i class="fas fa-bell mr-3" data-toggle="tooltip" title="Notifikasi"></i>
+            <i class="fas fa-sign-out-alt mr-3" data-toggle="tooltip" title="Sign Out"></i>
+          </h5>
+        </div-->
+      </div>
+    </nav>
+    <div class="row mt-5 "></div>
+    <div class="row mt-5 ">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="shadow">
+          <div class="card border-light bg-white">
+            <div class="mt-4 text-center">
+              <h3><i class="fas fa-power-off mr-3"></i>BALMON</h3>
+            </div>
+            <div class="card-body ml-4 mr-4 mb-5">
+              <form>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" id="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="Password">
+                  <small id="salah" class="form-text text-muted"></small>
+                </div>
+                <div class="text-center mt-5">
+                  <button type="button" class="btn btn-info" style="width: 50%;" onclick="login();">Login</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+      
+    </div>
+    <div class="row mt-5 "></div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
+    <script type="text/javascript">
+      var loginstore=[];
+      function login(){
+        loginstore[0] = document.getElementById("username").value;
+        loginstore[1] = document.getElementById("password").value;
+        cp= new Date().getTime();
+        localStorage.setItem("logins", JSON.stringify(loginstore));
+        localStorage.setItem("cp", JSON.stringify(cp));
+        if(loginstore[0]=="pltd" && loginstore[1]=="pltd"){
+          window.location.href="dashboard.html";
+        }
+        else{
+          document.getElementById("salah").innerHTML= "Username atau Password salah";
+        }
+      }
+      
+    </script>
+  </body>
+</html>
