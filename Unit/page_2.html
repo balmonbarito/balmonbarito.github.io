@@ -64,7 +64,7 @@
             
         <div class="row mt-5">
           <div id="content" class="bg-white ml-5" style="height:29.7cm; width:21cm;">
-            <div class="bg-white mt-5 ml-5 mr-5 mb-5">
+            <div class="bg-white mt-4 ml-5 mr-5 mb-5">
               <table class="table table-bordered mb-0" style="font-size:12px;">
                 <tbody>
                   <tr style="line-height: 0.8;">
@@ -90,7 +90,7 @@
                           <td>
                             <p>LAPORAN PENDAHULUAN/LENGKAP</p>
                             <p>KERUSAKAN PLTD</p>
-                            <p class="mb-0">NOMOR:LH05/ULPLTD.TRS/VIII/2019</p>
+                            <p class="mb-0" id='nomer'></p>
                           </td>
                         </tr>   
                       </table>
@@ -120,12 +120,12 @@
                               <p class="mb-0">JAM SEJAK MAYOR OVERHOUL (JSMO)</p>
                             </td>
                             <td>
-                              <p>: VI (Enam)</p>
-                              <p>: SWD 16TM 410R</p>
-                              <p>: 3666</p>
-                              <p>: 8800 KW</p>
-                              <p>: 108872,91</p>
-                              <p class="mb-0">: 12885.01</p>
+                              <p>: II (Dua)</p>
+                              <p>: Sulzer 12 ZV 40/48</p>
+                              <p>: 740023</p>
+                              <p>: 6.400 KW</p>
+                              <p>: 114.525</p>
+                              <p class="mb-0">: 2990</p>
                             </td>
                           </tr>
                         </table>
@@ -177,7 +177,7 @@
                           <td>:</td>
                           <td id="5_2"></td>
                         </tr>
-                        <tr style="line-height: 2px;">
+                        <tr style="line-height: 0px;">
                           <td>8.</td>
                           <td>Akibat Terhadap Sistem Pembangkit</td>
                           <td></td>
@@ -187,13 +187,13 @@
                           <td></td>
                           <td><p class="ml-3 mb-0">- Daya Terpasang</p></td>
                           <td>:</td>
-                          <td id="6_2"></td>
+                          <td id="6_2">6.400</td>
                         </tr>
                         <tr style="line-height: 0px;">
                           <td></td>
                           <td><p class="ml-3 mb-0">- Daya Mampu</p></td>
                           <td>:</td>
-                          <td id="7_2"></td>
+                          <td id="7_2">3.500</td>
                         </tr>
                         <tr style="line-height: 0px;">
                           <td></td>
@@ -207,7 +207,7 @@
                           <td>:</td>
                           <td id="9_2"></td>
                         </tr>
-                        <tr style="line-height: 2px;">
+                        <tr style="line-height: 0px;">
                           <td>10.</td>
                           <td>Rencana Perbaikan</td>
                           <td></td>
@@ -267,7 +267,7 @@
                             <p>PLTD/G Trisakti</p>
                           </td>
                           <td>
-                            <p>Banjarmasin, 2 September 2019</p>
+                            <p id='tgl'></p>
                             <p>Supervisor Operasi dan Pemeliharaan</p>
                             <p>ULPLTD Trisakti</p>
                           </td>
@@ -325,7 +325,12 @@
       function page(){
         session();
         output_2();
+        date();
+        
       }
+      var no = 'NOMOR:  '+'LH05/ULPLTD.TRS/VIII/2020';
+      var nomer = document.getElementById("nomer");
+      nomer.innerHTML = no;
     </script>
   </body>
 </html>

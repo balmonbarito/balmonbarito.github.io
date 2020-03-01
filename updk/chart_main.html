@@ -12,7 +12,7 @@
 
     <title>BALMON</title>
   </head>
-  <body onload="session()">
+  <body onload="oeepage()">
     <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
       <a class="navbar-brand text-white"  href="#">BALMON | Barito Losses Monitoring</a>
       
@@ -56,8 +56,8 @@
               <div class="shadow bg-white rounded">
                 <div class="card border-light bg-white">
                   <div class="card-body">
-                    <h4>OEE Pembangkit</h4>
-                    <p class="card-text mb-4">Net  •  Production</p>
+                    <h4>OEE PLTA Ir. PM. Noor</h4>
+                    <p class="card-text mb-4">Net  •  Production s/d Desember 2019</p>
                     <div style="width: 10%">
                         <table class="table table-borderless" style="line-height: 0px;">
                           <tr>
@@ -74,7 +74,35 @@
           </div>
           <div class="col-md-3 bg-info mt-3">
             <div class="d-flex justify-content-between text-white mt-3 mb-3">
-              <p class="align-self-end" style="font-size: 35px;">OEE Bulanan</p>
+              <p class="align-self-end" style="font-size: 30px;">OEE Unit Mesin</p>
+            </div>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <a class="btn btn-info" href="chart_2.html" role="button">Unit 1</a>
+              <a class="btn btn-info" href="chart_3.html" role="button">Unit 2</a>
+              <p id="2"></p>
+            </div>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <a class="btn btn-info" href="chart_5.html" role="button">Unit 3</a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row mt-3 ml-3">
+              <div class="shadow bg-white rounded">
+                <div class="card border-light bg-white">
+                  <div class="card-body">
+                    <h4>OEE PLTA Ir. PM. Noor</h4>
+                    <p class="card-text mb-4">Performance  •  Availability •  OEE</p>
+                    <canvas id="perChart" width="700" height="400"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 bg-info mt-3">
+            <div class="d-flex justify-content-between text-white mt-3 mb-3">
+              <p class="align-self-end" style="font-size: 30px;">OEE Bulanan</p>
             </div>
             <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
               <a class="btn btn-info" href="chart_2.html" role="button">Januari</a>
@@ -114,56 +142,57 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script type="text/javascript" src="admin.js"></script>
     <script>
+    function oeepage(){
+      session();
+      oeechart();
+      performance();
+    }
+    </script>
+    <script type="text/javascript">
+    function oeechart(){
       var oee =[];
       var dataoee1 =[];
       var dataoee2 =[];
       var dataoee3 =[];
-      $.getJSON("https://spreadsheets.google.com/feeds/cells/1N2_KGAfv-_jim2bWfrxMF3DEOq31pz_8zrFFx2zbiO8/1/public/basic?alt=json" ,function (data){
+      $.getJSON("https://spreadsheets.google.com/feeds/cells/1Ao7nrG1sFhKutRnegt7JuZdUezsbn6J7wibpCN2pIZ8/3/public/basic?alt=json" ,function (data){
         var gan = data.feed.entry;
         for (var i = 0; i<gan.length; i++) {
               oee.push(gan[i].content.$t); 
         }
-        for(var j = 6; j<oee.length; j++){
-          if(j%3==1){
-              dataoee1.push(oee[j]);
-          }
+        for(var j = 0; j<10; j++){
+            dataoee1.push(oee[j]);
         }
-        for(var j = 6; j<oee.length; j++){
-          if(j%3==0){
-              dataoee2.push(oee[j]);
-          }
+        for(var j = 10; j<20; j++){
+            dataoee2.push(oee[j]);
         }
-        for(var j = 6; j<oee.length; j++){
-          if(j%3==2){
-              dataoee3.push(oee[j]);
-          }
+        for(var j = 20; j<30; j++){
+            dataoee3.push(oee[j]);
         }
         var hasil = document.getElementById("output");
-        hasil.innerHTML = dataoee1[10];
+        hasil.innerHTML = dataoee2[9];
         var ctx = document.getElementById('jamChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: dataoee2,
+                labels: dataoee1,
                 datasets: [{
                     label: 'data3',
-                    data: dataoee3,
+                    data: dataoee2,
                     backgroundColor: [
+                        'rgba(54, 162, 235)',
                         'rgba(255, 255, 255, 0)',
                         'rgba(255, 255, 255, 0)',
                         'rgba(255, 255, 255, 0)',
                         'rgba(255, 255, 255, 0)',
+                        'rgba(54, 162, 235)',
                         'rgba(255, 255, 255, 0)',
+                        'rgba(54, 162, 235)',
                         'rgba(255, 255, 255, 0)',
-                        'rgba(255, 255, 255, 0)',
-                        'rgba(255, 255, 255, 0)',
-                        'rgba(255, 255, 255, 0)',
-                        'rgba(255, 255, 255, 0)',
-                        'rgba(255, 255, 255, 0)'
+                        'rgba(54, 162, 235)',
                     ]
                 },{
-                  label: 'data1',
-                    data: dataoee1,
+                    label: 'data1',
+                    data: dataoee3,
                     backgroundColor: [
                         'rgba(54, 162, 235)',
                         'rgba(255, 99, 132)',
@@ -171,11 +200,11 @@
                         'rgba(255, 99, 132)',
                         'rgba(255, 99, 132)',
                         'rgba(255, 99, 132)',
-                        'rgba(54, 162, 235)',
                         'rgba(255, 99, 132)',
-                        'rgba(54, 162, 235)',
                         'rgba(255, 99, 132)',
-                        'rgba(54, 162, 235)'
+                        'rgba(255, 99, 132)',
+                        'rgba(255, 99, 132)',
+                        'rgba(255, 99, 132)',
                     ]
                 }]
             },
@@ -201,6 +230,87 @@
             }
         });
       })
+    }
+    function performance(){
+      var oee =[];
+      var perf=[];
+      var avail =[];
+      var doee =[];
+      $.getJSON("https://spreadsheets.google.com/feeds/cells/1Ao7nrG1sFhKutRnegt7JuZdUezsbn6J7wibpCN2pIZ8/2/public/basic?alt=json" ,function (data){
+        var gan = data.feed.entry;
+        for (var i = 3; i<gan.length; i++) {
+              oee.push(gan[i].content.$t); 
+        }
+        for(var j = 0; j<oee.length; j++){
+          if(j%3==0){
+              perf.push(oee[j]);
+          }
+        }
+        for(var j = 0; j<oee.length; j++){
+          if(j%3==1){
+              avail.push(oee[j]);
+          }
+        }
+        for(var j = 0; j<oee.length; j++){
+          if(j%3==2){
+              doee.push(oee[j]);
+          }
+        }
+        //var hasil = document.getElementById("output2");
+        //hasil.innerHTML = dataoee1[10];
+        var ctx = document.getElementById('perChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Januari','Februari','Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+                datasets: [{
+                    label: 'Performance',
+                    data: perf,
+                    backgroundColor:
+                        'rgba(255, 255, 255, 0)',
+                    borderColor:
+                        'rgba(54, 162, 235, 1)',
+                        
+                    borderWidth: 2
+                },{
+                    label: 'Availability',
+                    data: avail,
+                    backgroundColor:
+                        'rgba(255, 255, 255, 0)',
+                    borderColor:
+                        'rgba(255, 99, 132)',
+                        
+                    borderWidth: 2
+                },{
+                    label: 'OEE',
+                    data: doee,
+                    backgroundColor:
+                        'rgba(255, 255, 255, 0)',
+                    borderColor:
+                        'rgba(255, 206, 86, 1)',
+                        
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        scaleLabel: {
+                          display: true,
+                          labelString: '%'
+                        }
+                    }]
+                }
+            }
+        });
+      })
+    }
     </script>
   </body>
 </html>

@@ -5,7 +5,7 @@ $(function () {
 //login function
 function session(){
   var logindata = JSON.parse(localStorage.getItem("cp"));
-  var hours = 0.05*60*60*1000;
+  var hours = 0.5*60*60*1000;
   var cpnow = new Date().getTime();
   var delta = cpnow-logindata;
   if(logindata == null){
@@ -24,6 +24,19 @@ function logout(){
   localStorage.removeItem('cp');
   window.location.replace("login.html");
 }
+
+//date generator
+function date(){
+  var bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September','Oktober','November', 'Desember'];
+  var tanggal = new Date().getDate();
+  var _bulan = new Date().getMonth();
+  var _tahun = new Date().getYear();
+  var tahun = _tahun +1900;
+  var bulan = bulan[_bulan];
+  var lengkap = 'Banjarmasin, '+ tanggal + ' ' + bulan + ' ' + tahun;
+  var tgl = document.getElementById("tgl");
+    tgl.innerHTML = lengkap;
+  }
 
 //get data from google sheets
 function formSubmit2(){
