@@ -45,7 +45,7 @@
             <a class="nav-link text-white" href="gangguan_main.html"><i class="fas fa-cogs mr-2"></i>Gangguan</a><hr class="bg-secondary">
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>Paretto Chart</a><hr class="bg-secondary">
+            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>Pareto Chart</a><hr class="bg-secondary">
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="lho5.html"><i class="fas fa-file-pdf mr-2"></i>LHO5</a><hr class="bg-secondary">
@@ -61,43 +61,66 @@
           <iframe class="embed-responsive-item" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS5aKsQGP_N8r5b10coqnF5try3iRXhqT5tzK7gZSCEqfSpddiOVNwxP2NNLk6EjT5b5YD0qQ3cSzoq/pubchart?oid=1046041781&format=interactive" style="width:100%" class="fadeInUp"></iframe>
         </div-->
         
-        <div class="row shadow mt-3 bg-white">
-          <div class="ml-3 mt-3">
-            <h4>Kontribusi Gangguan</h4>
-            <p class="card-text mb-4">Jumlah • Gangguan</p>
-            <canvas id="bc_6" width="630" height="300"></canvas>
-          </div>
-          <div class="mt-5">
-            <canvas id="dc_6" width="400" height="255"></canvas>
-          </div> 
-        </div>
-        
-        <div class="row shadow mt-5 bg-white">         
-          <div class="ml-3 mt-3">
-            <h4>Kontribusi Jam Gangguan</h4>
-            <p class="card-text mb-4">Jumlah • Jam Gangguan</p>
-            <canvas id="tc_6" width="630" height="300"></canvas>
-          </div>
-          <div class="col ml-5 mt-5">
-            <div class="card bg-info mb-3" style="max-width: 18rem;">
-              <div class="card-header text-white">Total Jam Gangguan</div>
-              <div class="card-body bg-white">
-                <table class="table table-borderless">
-                  <tr>
-                    <td><p class="card-title">Jam Gangguan</p></td>
-                    <td><h5 id="output" class="text-right"></h5></td>
-                  </tr>
-                  <tr>
-                    <td><p class="card-text">MWH yang hilang</p></td>
-                    <td><h5 id="power" class="text-right"></h5></td>
-                  </tr>
-                </table>  
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row mt-3 ml-3">
+              <div class="shadow bg-white rounded">
+                <div class="card border-light bg-white">
+                  <div class="card-body">
+                    <h4>Kontribusi Gangguan</h4>
+                    <p class="card-text mb-4">Jumlah • Gangguan</p>
+                    <canvas id="bc_6" width="700" height="400"></canvas>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <!--div>
-            <canvas id="doughnut-chart" width="400" height="255"></canvas>
-          </div-->
+          <div class="col-md-3 bg-info mt-3">
+            <div class="text-white mt-3 mb-3">
+              <p class="align-self-end" style="font-size: 20px;">Detail Gangguan</p>
+              <p class="card-text mb-4">80% • Kontribusi Gangguan</p>
+            </div>
+            <div class="mt-3">
+              <canvas id="dc_6" width="500" height="500"></canvas>
+            </div>
+            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row mt-3 ml-3">
+              <div class="shadow bg-white rounded">
+                <div class="card border-light bg-white">
+                  <div class="card-body">
+                    <h4>Kontribusi Jam Gangguan</h4>
+                    <p class="card-text mb-4">Jumlah • Jam Gangguan</p>
+                    <canvas id="tc_6" width="700" height="400"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 bg-info mt-3">
+            <div class="d-flex justify-content-between text-white mt-3 mb-3">
+              <p class="align-self-end" style="font-size: 20px;">Total Jam Gangguan</p>
+            </div>
+            <div>
+              <table class="table table-borderless text-white">
+                <tr>
+                  <td><p class="card-title">Jam Gangguan</p></td>
+                  <td><h5 id="output" class="text-right"></h5></td>
+                </tr>
+                <tr>
+                  <td><p class="card-text">MWH yang hilang</p></td>
+                  <td><h5 id="power" class="text-right"></h5></td>
+                </tr>
+              </table>
+            </div>
+            <div class="mt-5" style="text-align:center;">
+              <a class="btn btn-info mt-5" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkZGG8AIF19lzJmEANnzo8__IMivrXN301foO-cgc7tdnp7rfF9JMQ6yhvhwa_07IHEu3qdP0RdrEN/pub?gid=2089626624&single=true&output=csv" role="button">Download Data</a>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>

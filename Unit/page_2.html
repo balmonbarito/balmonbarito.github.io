@@ -139,37 +139,37 @@
                           <td style="width: 3%">1.</td>
                           <td style="width: 45%">Tanggal dan Jam Kejadian</td>
                           <td>:</td>
-                          <td id="1_2" style="width: 52%"></td>
+                          <td id="2_2" style="width: 52%"></td>
                         </tr>
                         <tr style="line-height: 2px;">
                           <td>2.</td>
                           <td>Kelompok SPD Yang Rusak</td>
                           <td>:</td>
-                          <td>Mesin 2</td>
+                          <td id="0_2"></td>
                         </tr>
                         <tr style="line-height: 2px;">
                           <td>3.</td>
                           <td>Kelompok Yang Rusak</td>
                           <td>:</td>
-                          <td id="0_2"></td>
+                          <td id="1_2"></td>
                         </tr>
                         <tr style="height: auto;">
                           <td>4.</td>
                           <td>Gejala Yang Timbul</td>
                           <td>:</td>
-                          <td id="2_2"></td>
+                          <td id="3_2"></td>
                         </tr>
                         <tr style="line-height: auto;">
                           <td>5</td>
                           <td>Urutan Kejadian / Kronologis Kejadian</td>
                           <td>:</td>
-                          <td id="3_2"></td>
+                          <td id="4_2"></td>
                         </tr>
                         <tr style="line-height: 2px;">
                           <td>6.</td>
                           <td>Pemeriksaan Gangguan</td>
                           <td>:</td>
-                          <td id="4_2"></td>
+                          <td id="6_2"></td>
                         </tr>
                         <tr style="line-height: 2px;">
                           <td>7.</td>
@@ -187,25 +187,25 @@
                           <td></td>
                           <td><p class="ml-3 mb-0">- Daya Terpasang</p></td>
                           <td>:</td>
-                          <td id="6_2">6.400</td>
+                          <td id="7_2">6.400</td>
                         </tr>
                         <tr style="line-height: 0px;">
                           <td></td>
                           <td><p class="ml-3 mb-0">- Daya Mampu</p></td>
                           <td>:</td>
-                          <td id="7_2">3.500</td>
+                          <td id="8_2">3.500</td>
                         </tr>
                         <tr style="line-height: 0px;">
                           <td></td>
                           <td><p class="ml-3 mb-0">- Beban Puncak</p></td>
                           <td>:</td>
-                          <td id="8_2"></td>
+                          <td id="9_2"></td>
                         </tr>
                         <tr style="line-height: 2px;">
                           <td>9.</td>
                           <td>Tindakan Penanggulangan</td>
                           <td>:</td>
-                          <td id="9_2"></td>
+                          <td id="10_2"></td>
                         </tr>
                         <tr style="line-height: 0px;">
                           <td>10.</td>
@@ -217,12 +217,12 @@
                           <td></td>
                           <td><p class="ml-3 mb-0">- Pelaksanaan</p></td>
                           <td>:</td>
-                          <td id="10_2"></td>
+                          <td id="11_2"></td>
                         </tr>
                         <tr style="line-height: 0px;"><td></td>
                           <td><p class="ml-3 mb-0">- Jenis Pekerjaan</p></td>
                           <td>:</td>
-                          <td id="11_2"></td>
+                          <td id="12_2"></td>
                         </tr>
                         <tr style="line-height: 0px;">
                           <td></td>
@@ -240,19 +240,19 @@
                           <td></td>
                           <td><p class="ml-3 mb-0">- Material</p></td>
                           <td>:</td>
-                          <td id="12_2"></td>
+                          <td id="13_2"></td>
                         </tr>
                         <tr style="line-height: 0px;">
                           <td></td>
                           <td><p class="ml-3 mb-0">- Perkiraan Biaya</p></td>
                           <td>:</td>
-                          <td id="13_2"></td>
+                          <td id="14_2"></td>
                         </tr>
                         <tr style="line-height: 2px;">
                           <td>11.</td>
                           <td>Penjelasan Lain-lain</td>
                           <td>:</td>
-                          <td id="14_2"></td>
+                          <td id="15_2"></td>
                         </tr>
                       </table>
                     </td>
@@ -300,17 +300,30 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
     <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
     <script type="text/javascript" src="admin.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
     <script>
+      var output=[];
+      output = JSON.parse(localStorage.getItem("datainput2"));
+      var bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September','Oktober','November', 'Desember'];
+      var tanggal = new Date().getDate();
+      var _bulan = new Date().getMonth();
+      var _tahun = new Date().getYear();
+      var tahun = _tahun +1900;
+      var bulan = bulan[_bulan];
+      var lengkap = tanggal + '_' + bulan + '_' + tahun;
       function generatePDF() {
         var element = document.getElementById("content");
-        html2canvas(element, {scale :4}).then(function(canvas) {
-          canvas.toBlob(function(blob) {
-               window.saveAs(blob, "yourwebsite_screenshot.png");
-             });
+        html2canvas(element, {scale : 1.6}).then(function(canvas) {
+          var imgData = canvas.toDataURL('image/jpg');
+          console.log('Report Image URL: '+imgData);
+          var doc = new jsPDF('p', 'mm', 'a4'); //210mm wide and 297mm high
+                
+          doc.addImage(imgData, 'jpg', 0, 0, 211, 298);
+          var docname = output[0]+ "_"+lengkap+".pdf";
+          doc.save(docname);
+          
           });
       }
     </script>

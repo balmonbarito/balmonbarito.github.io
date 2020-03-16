@@ -129,14 +129,19 @@ $.getJSON("https://spreadsheets.google.com/feeds/cells/1VIjn_SHSVQHRJW-pce3_X1Zf
               datasets: [
                 {
                   label: "Population (millions)",
-                  backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
+                  backgroundColor: ["#D7269C", "#109DC0","#F5A345","#e8c3b9"],
                   data: persen
                 }
               ]
             },
             options: {
+              legend: {
+                labels: {
+                    fontColor: "white",
+                }
+              },
               title: {
-                display: true,
+                display: false,
                 text: '80% Kontribusi Gangguan'
               }
             }

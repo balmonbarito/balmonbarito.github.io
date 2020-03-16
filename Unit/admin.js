@@ -125,6 +125,7 @@ function simpan2(){
  	input2[12] = document.getElementById("12_2").value;
  	input2[13] = document.getElementById("13_2").value;
  	input2[14] = document.getElementById("14_2").value;
+  input2[15] = document.getElementById("15_2").value;
  	
  	localStorage.setItem("datainput2", JSON.stringify(input2));
 }
@@ -147,6 +148,7 @@ function output_2(){
       document.getElementById("12_2").innerHTML = output2[12];
       document.getElementById("13_2").innerHTML = output2[13];
       document.getElementById("14_2").innerHTML = output2[14];
+      document.getElementById("15_2").innerHTML = output2[15];
 }
 var input3=[];
 function simpan3(){
