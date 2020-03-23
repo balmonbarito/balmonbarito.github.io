@@ -126,7 +126,16 @@ function simpan2(){
  	input2[13] = document.getElementById("13_2").value;
  	input2[14] = document.getElementById("14_2").value;
   input2[15] = document.getElementById("15_2").value;
- 	
+ 	input2[16] = document.getElementById("16_2").value;
+  input2[17] = document.getElementById("17_2").value;
+  input2[18] = document.getElementById("18_2").value;
+  input2[19] = document.getElementById("19_2").value;
+  input2[20] = document.getElementById("20_2").value;
+  input2[21] = document.getElementById("21_2").value;
+  input2[22] = document.getElementById("22_2").value;
+  input2[23] = document.getElementById("23_2").value;
+  
+
  	localStorage.setItem("datainput2", JSON.stringify(input2));
 }
 var output2 = [];
@@ -136,9 +145,9 @@ function output_2(){
       document.getElementById("0_2").innerHTML = output2[0];
       document.getElementById("1_2").innerHTML = output2[1];
       document.getElementById("2_2").innerHTML = output2[2];
-      document.getElementById("3_2").innerHTML = output2[3];
-      document.getElementById("4_2").innerHTML = output2[4];
-      document.getElementById("5_2").innerHTML = output2[5];
+      //document.getElementById("3_2").innerHTML = output2[3];
+      //document.getElementById("4_2").innerHTML = output2[4];
+      //document.getElementById("5_2").innerHTML = output2[5];
       document.getElementById("6_2").innerHTML = output2[6];
       document.getElementById("7_2").innerHTML = output2[7];
       document.getElementById("8_2").innerHTML = output2[8];
@@ -149,6 +158,14 @@ function output_2(){
       document.getElementById("13_2").innerHTML = output2[13];
       document.getElementById("14_2").innerHTML = output2[14];
       document.getElementById("15_2").innerHTML = output2[15];
+      document.getElementById("16_2").innerHTML = output2[16];
+      document.getElementById("17_2").innerHTML = output2[17];
+      document.getElementById("18_2").innerHTML = output2[18];
+      document.getElementById("19_2").innerHTML = output2[19];
+      document.getElementById("20_2").innerHTML = output2[20];
+      document.getElementById("21_2").innerHTML = output2[21];
+      document.getElementById("22_2").innerHTML = output2[22];
+      document.getElementById("23_2").innerHTML = output2[23];
 }
 var input3=[];
 function simpan3(){

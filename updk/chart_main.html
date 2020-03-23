@@ -57,7 +57,7 @@
                 <div class="card border-light bg-white">
                   <div class="card-body">
                     <h4>OEE PLTA Ir. PM. Noor</h4>
-                    <p class="card-text mb-4">Net  •  Production s/d Desember 2019</p>
+                    <p class="card-text mb-4">Net  •  Production s/d Februari 2020</p>
                     <div style="width: 10%">
                         <table class="table table-borderless" style="line-height: 0px;">
                           <tr>
@@ -77,12 +77,11 @@
               <p class="align-self-end" style="font-size: 30px;">OEE Unit Mesin</p>
             </div>
             <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
-              <a class="btn btn-info" href="chart_2.html" role="button">Unit 1</a>
-              <a class="btn btn-info" href="chart_3.html" role="button">Unit 2</a>
-              <p id="2"></p>
+              <button class="btn btn-info" type="button" onclick="button1()">Unit 1</button>
+              <button class="btn btn-info" type="button" onclick="button2()">Unit 2</button>
             </div>
             <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
-              <a class="btn btn-info" href="chart_5.html" role="button">Unit 3</a>
+              <button class="btn btn-info" type="button" onclick="button3()">Unit 3</button>
             </div>
           </div>
         </div>
@@ -105,8 +104,8 @@
               <p class="align-self-end" style="font-size: 30px;">OEE Bulanan</p>
             </div>
             <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
-              <a class="btn btn-info" href="chart_2.html" role="button">Januari</a>
-              <a class="btn btn-info" href="chart_3.html" role="button">Februari</a>
+              <button class="btn btn-info" type="button" onclick="bulan1()">Januari</button>
+              <button class="btn btn-info" type="button" onclick="bulan2()">Februari</button>
               <p id="2"></p>
             </div>
             <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
@@ -149,23 +148,57 @@
     }
     </script>
     <script type="text/javascript">
+    function button1(){
+      localStorage.setItem("plta", "plta1");
+      window.open("oee.html", "_self");
+
+    }
+    function button2(){
+      localStorage.setItem("plta", "plta2");
+      window.open("oee.html", "_self");
+
+    }
+    function button3(){
+      localStorage.setItem("plta", "plta3");
+      window.open("oee.html", "_self");
+
+    }
+    </script>
+    <script type="text/javascript">
+    function bulan1(){
+      localStorage.setItem("bulan", "januari");
+      window.open("oee_bulan.html", "_self");
+
+    }
+    function bulan2(){
+      localStorage.setItem("bulan", "februari");
+      window.open("oee_bulan.html", "_self");
+
+    }
+    function bulan3(){
+      localStorage.setItem("bulan", "maret");
+      window.open("oee_bulan.html", "_self");
+
+    }
+    </script>
+    <script type="text/javascript">
     function oeechart(){
       var oee =[];
       var dataoee1 =[];
       var dataoee2 =[];
       var dataoee3 =[];
-      $.getJSON("https://spreadsheets.google.com/feeds/cells/1Ao7nrG1sFhKutRnegt7JuZdUezsbn6J7wibpCN2pIZ8/3/public/basic?alt=json" ,function (data){
+      $.getJSON("https://spreadsheets.google.com/feeds/cells/10XpDFs9ixdmF7pxqNkgDGvEZeowbSoIFkQZV3bPyboA/2/public/basic?alt=json" ,function (data){
         var gan = data.feed.entry;
         for (var i = 0; i<gan.length; i++) {
               oee.push(gan[i].content.$t); 
         }
-        for(var j = 0; j<10; j++){
+        for(var j = 0; j<11; j++){
             dataoee1.push(oee[j]);
         }
-        for(var j = 10; j<20; j++){
+        for(var j = 25; j<39; j++){
             dataoee2.push(oee[j]);
         }
-        for(var j = 20; j<30; j++){
+        for(var j = 39; j<50; j++){
             dataoee3.push(oee[j]);
         }
         var hasil = document.getElementById("output");
@@ -176,7 +209,7 @@
             data: {
                 labels: dataoee1,
                 datasets: [{
-                    label: 'data3',
+                    label: 'data2',
                     data: dataoee2,
                     backgroundColor: [
                         'rgba(54, 162, 235)',
@@ -186,12 +219,15 @@
                         'rgba(255, 255, 255, 0)',
                         'rgba(54, 162, 235)',
                         'rgba(255, 255, 255, 0)',
+                        'rgba(255, 255, 255, 0)',
+                        'rgba(255, 255, 255, 0)',
+                        'rgba(255, 255, 255, 0)',
                         'rgba(54, 162, 235)',
                         'rgba(255, 255, 255, 0)',
                         'rgba(54, 162, 235)',
                     ]
                 },{
-                    label: 'data1',
+                    label: 'data3',
                     data: dataoee3,
                     backgroundColor: [
                         'rgba(54, 162, 235)',
@@ -236,23 +272,23 @@
       var perf=[];
       var avail =[];
       var doee =[];
-      $.getJSON("https://spreadsheets.google.com/feeds/cells/1Ao7nrG1sFhKutRnegt7JuZdUezsbn6J7wibpCN2pIZ8/2/public/basic?alt=json" ,function (data){
+      $.getJSON("https://spreadsheets.google.com/feeds/cells/10XpDFs9ixdmF7pxqNkgDGvEZeowbSoIFkQZV3bPyboA/4/public/basic?alt=json" ,function (data){
         var gan = data.feed.entry;
-        for (var i = 3; i<gan.length; i++) {
+        for (var i = 0; i<gan.length; i++) {
               oee.push(gan[i].content.$t); 
         }
-        for(var j = 0; j<oee.length; j++){
-          if(j%3==0){
-              perf.push(oee[j]);
-          }
-        }
-        for(var j = 0; j<oee.length; j++){
-          if(j%3==1){
+        for(var j = 7; j<oee.length; j++){
+          if(j%7==4){
               avail.push(oee[j]);
           }
         }
-        for(var j = 0; j<oee.length; j++){
-          if(j%3==2){
+        for(var j = 7; j<oee.length; j++){
+          if(j%7==5){
+              perf.push(oee[j]);
+          }
+        }
+        for(var j = 7; j<oee.length; j++){
+          if(j%7==6){
               doee.push(oee[j]);
           }
         }
@@ -264,21 +300,21 @@
             data: {
                 labels: ['Januari','Februari','Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
                 datasets: [{
-                    label: 'Performance',
-                    data: perf,
-                    backgroundColor:
-                        'rgba(255, 255, 255, 0)',
-                    borderColor:
-                        'rgba(54, 162, 235, 1)',
-                        
-                    borderWidth: 2
-                },{
                     label: 'Availability',
                     data: avail,
                     backgroundColor:
                         'rgba(255, 255, 255, 0)',
                     borderColor:
                         'rgba(255, 99, 132)',
+                        
+                    borderWidth: 2
+                },{
+                    label: 'Performance',
+                    data: perf,
+                    backgroundColor:
+                        'rgba(255, 255, 255, 0)',
+                    borderColor:
+                        'rgba(54, 162, 235, 1)',
                         
                     borderWidth: 2
                 },{
