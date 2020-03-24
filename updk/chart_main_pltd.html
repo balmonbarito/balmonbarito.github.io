@@ -56,7 +56,7 @@
               <div class="shadow bg-white rounded">
                 <div class="card border-light bg-white">
                   <div class="card-body">
-                    <h4>OEE PLTA Ir. PM. Noor</h4>
+                    <h4>OEE ULPLTD/G Trisakti</h4>
                     <p class="card-text mb-4">Net  •  Production s/d Februari 2020</p>
                     <div style="width: 10%">
                         <table class="table table-borderless" style="line-height: 0px;">
@@ -76,13 +76,29 @@
             <div class="d-flex justify-content-between text-white mt-3 mb-3">
               <p class="align-self-end" style="font-size: 30px;">OEE Unit Mesin</p>
             </div>
-            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
-              <button class="btn btn-info" type="button" onclick="button1()">Unit 1</button>
-              <button class="btn btn-info" type="button" onclick="button2()">Unit 2</button>
+            <p class="text-white ml-3" style="font-size: 16px;">PLTD Trisakti</p>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example" >
+              <button class="btn btn-info" type="button" onclick="button1()" style="font-size: 14px;">Mesin #2</button>
+              <button class="btn btn-info" type="button" onclick="button2()" style="font-size: 14px;">Mesin #3</button>
             </div>
             <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
-              <button class="btn btn-info" type="button" onclick="button3()">Unit 3</button>
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">Mesin #5</button>
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">Mesin #6</button>
             </div>
+            <div class="btn-group mb-4 ml-3" role="group" aria-label="Basic example">
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">Mesin #9</button>
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">Mesin #10</button>
+            </div>
+            <p class="text-white ml-3" style="font-size: 16px;">PLTG Trisakti</p>
+            <div class="btn-group mb-4 ml-3" role="group" aria-label="Basic example">
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">PLTG Trisakti</button>
+            </div>
+            <p class="text-white ml-3" style="font-size: 16px;">PLTD Kapuas</p>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">Mesin #1</button>
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">Mesin #2</button>
+            </div>
+            
           </div>
         </div>
         <div class="row">
@@ -91,7 +107,7 @@
               <div class="shadow bg-white rounded">
                 <div class="card border-light bg-white">
                   <div class="card-body">
-                    <h4>OEE PLTA Ir. PM. Noor</h4>
+                    <h4>OEE ULPLTD/G Trisakti</h4>
                     <p class="card-text mb-4">Performance  •  Availability •  OEE</p>
                     <canvas id="perChart" width="700" height="400"></canvas>
                   </div>
@@ -216,6 +232,7 @@
                         'rgba(255, 255, 255, 0)',
                         'rgba(255, 255, 255, 0)',
                         'rgba(255, 255, 255, 0)',
+                        'rgba(255, 255, 255, 0)',
                         'rgba(54, 162, 235)',
                         'rgba(255, 255, 255, 0)',
                         'rgba(255, 255, 255, 0)',
@@ -230,6 +247,7 @@
                     data: dataoee3,
                     backgroundColor: [
                         'rgba(54, 162, 235)',
+                        'rgba(255, 99, 132)',
                         'rgba(255, 99, 132)',
                         'rgba(255, 99, 132)',
                         'rgba(255, 99, 132)',
