@@ -9,28 +9,28 @@ function oeeplta1(){
         for (var i = 0; i<gan.length; i++) {
               oee.push(gan[i].content.$t); 
         }
-        for(var j = 0; j<11; j++){
+        for(var j = 0; j<10; j++){
             dataoee1.push(oee[j]);
         }
-        for(var j = 25; j<39; j++){
+        for(var j = 24; j<38; j++){
             dataoee2.push(oee[j]);
         }
-        for(var j = 39; j<50; j++){
+        for(var j = 38; j<49; j++){
             dataoee3.push(oee[j]);
         }
         oeen = dataoee2.map(Number);
+        oeen[10] = (oeen[10]*100).toFixed(2);
         oeen[11] = (oeen[11]*100).toFixed(2);
         oeen[12] = (oeen[12]*100).toFixed(2);
-        oeen[13] = (oeen[13]*100).toFixed(2);
-        oeen[10] = (oeen[10]).toFixed(2);
+        oeen[9] = (oeen[9]).toFixed(2);
         var avail = document.getElementById("output1");
-        avail.innerHTML = oeen[11];
+        avail.innerHTML = oeen[10];
         var perf = document.getElementById("output2");
-        perf.innerHTML = oeen[12];
+        perf.innerHTML = oeen[11];
         var oeee = document.getElementById("output3");
-        oeee.innerHTML = oeen[13];
+        oeee.innerHTML = oeen[12];
         var net = document.getElementById("net");
-        net.innerHTML = oeen[10];
+        net.innerHTML = oeen[9];
         var ctx = document.getElementById('jamChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -104,28 +104,28 @@ function oeeplta2(){
         for (var i = 0; i<gan.length; i++) {
               oee.push(gan[i].content.$t); 
         }
-        for(var j = 0; j<11; j++){
+        for(var j = 0; j<10; j++){
             dataoee1.push(oee[j]);
         }
-        for(var j = 25; j<39; j++){
+        for(var j = 24; j<38; j++){
             dataoee2.push(oee[j]);
         }
-        for(var j = 39; j<50; j++){
+        for(var j = 38; j<49; j++){
             dataoee3.push(oee[j]);
         }
         oeen = dataoee2.map(Number);
+        oeen[10] = (oeen[10]*100).toFixed(2);
         oeen[11] = (oeen[11]*100).toFixed(2);
         oeen[12] = (oeen[12]*100).toFixed(2);
-        oeen[13] = (oeen[13]*100).toFixed(2);
-        oeen[10] = (oeen[10]).toFixed(2);
+        oeen[9] = (oeen[9]).toFixed(2);
         var avail = document.getElementById("output1");
-        avail.innerHTML = oeen[11];
+        avail.innerHTML = oeen[10];
         var perf = document.getElementById("output2");
-        perf.innerHTML = oeen[12];
+        perf.innerHTML = oeen[11];
         var oeee = document.getElementById("output3");
-        oeee.innerHTML = oeen[13];
+        oeee.innerHTML = oeen[12];
         var net = document.getElementById("net");
-        net.innerHTML = oeen[10];
+        net.innerHTML = oeen[9];
         var ctx = document.getElementById('jamChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -199,28 +199,28 @@ function oeeplta3(){
         for (var i = 0; i<gan.length; i++) {
               oee.push(gan[i].content.$t); 
         }
-        for(var j = 0; j<11; j++){
+        for(var j = 0; j<10; j++){
             dataoee1.push(oee[j]);
         }
-        for(var j = 25; j<39; j++){
+        for(var j = 24; j<38; j++){
             dataoee2.push(oee[j]);
         }
-        for(var j = 39; j<50; j++){
+        for(var j = 38; j<49; j++){
             dataoee3.push(oee[j]);
         }
         oeen = dataoee2.map(Number);
+        oeen[10] = (oeen[10]*100).toFixed(2);
         oeen[11] = (oeen[11]*100).toFixed(2);
         oeen[12] = (oeen[12]*100).toFixed(2);
-        oeen[13] = (oeen[13]*100).toFixed(2);
-        oeen[10] = (oeen[10]).toFixed(2);
+        oeen[9] = (oeen[9]).toFixed(2);
         var avail = document.getElementById("output1");
-        avail.innerHTML = oeen[11];
+        avail.innerHTML = oeen[10];
         var perf = document.getElementById("output2");
-        perf.innerHTML = oeen[12];
+        perf.innerHTML = oeen[11];
         var oeee = document.getElementById("output3");
-        oeee.innerHTML = oeen[13];
+        oeee.innerHTML = oeen[12];
         var net = document.getElementById("net");
-        net.innerHTML = oeen[10];
+        net.innerHTML = oeen[9];
         var ctx = document.getElementById('jamChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',

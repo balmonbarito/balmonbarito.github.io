@@ -10,13 +10,13 @@ function oeeplta1_2(){
         for (var i = 0; i<gan.length; i++) {
               oee.push(gan[i].content.$t); 
         }
-        for(var j = 0; j<11; j++){
+        for(var j = 0; j<10; j++){
             dataoee1.push(oee[j]);
         }
-        for(var j = 50; j<64; j++){
+        for(var j = 46; j<59; j++){
             dataoee2.push(oee[j]);
         }
-        for(var j = 64; j<75; j++){
+        for(var j = 59; j<69; j++){
             dataoee3.push(oee[j]);
         }
         oeen = dataoee2.map(Number);
@@ -105,13 +105,13 @@ function oeeplta2_2(){
         for (var i = 0; i<gan.length; i++) {
               oee.push(gan[i].content.$t); 
         }
-        for(var j = 0; j<11; j++){
+        for(var j = 0; j<10; j++){
             dataoee1.push(oee[j]);
         }
-        for(var j = 50; j<64; j++){
+        for(var j = 46; j<59; j++){
             dataoee2.push(oee[j]);
         }
-        for(var j = 64; j<75; j++){
+        for(var j = 59; j<69; j++){
             dataoee3.push(oee[j]);
         }
         oeen = dataoee2.map(Number);
@@ -200,13 +200,13 @@ function oeeplta3_2(){
         for (var i = 0; i<gan.length; i++) {
               oee.push(gan[i].content.$t); 
         }
-        for(var j = 0; j<11; j++){
+        for(var j = 0; j<10; j++){
             dataoee1.push(oee[j]);
         }
-        for(var j = 50; j<64; j++){
+        for(var j = 46; j<59; j++){
             dataoee2.push(oee[j]);
         }
-        for(var j = 64; j<75; j++){
+        for(var j = 59; j<69; j++){
             dataoee3.push(oee[j]);
         }
         oeen = dataoee2.map(Number);
