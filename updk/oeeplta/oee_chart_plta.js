@@ -12,10 +12,10 @@ function oeeplta1(){
         for(var j = 0; j<10; j++){
             dataoee1.push(oee[j]);
         }
-        for(var j = 24; j<38; j++){
+        for(var j = 23; j<36; j++){
             dataoee2.push(oee[j]);
         }
-        for(var j = 38; j<49; j++){
+        for(var j = 36; j<46; j++){
             dataoee3.push(oee[j]);
         }
         oeen = dataoee2.map(Number);
@@ -107,10 +107,10 @@ function oeeplta2(){
         for(var j = 0; j<10; j++){
             dataoee1.push(oee[j]);
         }
-        for(var j = 24; j<38; j++){
+        for(var j = 23; j<36; j++){
             dataoee2.push(oee[j]);
         }
-        for(var j = 38; j<49; j++){
+        for(var j = 36; j<46; j++){
             dataoee3.push(oee[j]);
         }
         oeen = dataoee2.map(Number);
@@ -202,10 +202,10 @@ function oeeplta3(){
         for(var j = 0; j<10; j++){
             dataoee1.push(oee[j]);
         }
-        for(var j = 24; j<38; j++){
+        for(var j = 23; j<36; j++){
             dataoee2.push(oee[j]);
         }
-        for(var j = 38; j<49; j++){
+        for(var j = 36; j<46; j++){
             dataoee3.push(oee[j]);
         }
         oeen = dataoee2.map(Number);
