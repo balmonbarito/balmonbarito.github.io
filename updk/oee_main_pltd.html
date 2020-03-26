@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+
+    <title>BALMON</title>
+  </head>
+  <body onload="oeepage()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
+      <a class="navbar-brand text-white"  href="#">BALMON | Barito Losses Monitoring</a>
+      
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="icon ml-2 text-white">
+          <button class="btn btn-info my-2 my-sm-0 text-center" type="button" onclick="logout()">
+              <i class="fas fa-power-off"></i>
+          </button>          
+        </div>
+      </div>
+    </nav>
+    
+    <div class="row no-gutters mt-5" style="height:auto;">
+      <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
+        <ul class="nav flex-column ml-3 mb-5" style="height:565px;">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="dashboard.html"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="gangguan_main.html"><i class="fas fa-cogs mr-2"></i>Rekap Gangguan</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>OEE Pembangkit</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="lho5.html"><i class="fas fa-file-pdf mr-2"></i>LHO5</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="pembangkit.html"><i class="fas fa-file-medical-alt mr-2"></i>Indeks Pembangkit</a><hr class="bg-secondary">
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-10 p-5 pt-2 bg-light">
+        <h5><i class="fas fa-chart-bar mr-2"></i>OEE Pembangkit</h5><hr>
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row mt-3 ml-3">
+              <div class="shadow bg-white rounded">
+                <div class="card border-light bg-white">
+                  <div class="card-body">
+                    <h4>OEE ULPLTD/G Trisakti</h4>
+                    <p class="card-text mb-4">Net  •  Production s/d Februari 2020</p>
+                    <div style="width: 10%">
+                        <table class="table table-borderless" style="line-height: 0px;">
+                          <tr>
+                            <td><p id="output" style="font-size: 30px;"></p></td>
+                            <td><p style="font-size: 30px;">MWh</p></td>
+                          </tr>
+                        </table>  
+                    </div>
+                    <canvas id="jamChart" width="700" height="400"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 bg-info mt-3">
+            <div class="d-flex justify-content-between text-white mt-3 mb-3">
+              <p class="align-self-end" style="font-size: 30px;">OEE Unit Mesin</p>
+            </div>
+            <p class="text-white ml-3" style="font-size: 16px;">PLTD Trisakti</p>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example" >
+              <button class="btn btn-info" type="button" onclick="button1()" style="font-size: 14px;">Mesin #2</button>
+              <button class="btn btn-info" type="button" onclick="button2()" style="font-size: 14px;">Mesin #3</button>
+            </div>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">Mesin #5</button>
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">Mesin #6</button>
+            </div>
+            <div class="btn-group mb-4 ml-3" role="group" aria-label="Basic example">
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">Mesin #9</button>
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">Mesin #10</button>
+            </div>
+            <p class="text-white ml-3" style="font-size: 16px;">PLTG Trisakti</p>
+            <div class="btn-group mb-4 ml-3" role="group" aria-label="Basic example">
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">PLTG Trisakti</button>
+            </div>
+            <p class="text-white ml-3" style="font-size: 16px;">PLTD Kapuas</p>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">Mesin #1</button>
+              <button class="btn btn-info" type="button" onclick="button3()" style="font-size: 14px;">Mesin #2</button>
+            </div>
+            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row mt-3 ml-3">
+              <div class="shadow bg-white rounded">
+                <div class="card border-light bg-white">
+                  <div class="card-body">
+                    <h4>OEE ULPLTD/G Trisakti</h4>
+                    <p class="card-text mb-4">Performance  •  Availability •  OEE</p>
+                    <canvas id="perChart" width="700" height="400"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 bg-info mt-3">
+            <div class="d-flex justify-content-between text-white mt-3 mb-3">
+              <p class="align-self-end" style="font-size: 30px;">OEE Bulanan</p>
+            </div>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <button class="btn btn-info" type="button" onclick="bulan1()">Januari</button>
+              <button class="btn btn-info" type="button" onclick="bulan2()">Februari</button>
+              <p id="2"></p>
+            </div>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <a class="btn btn-info" href="chart_5.html" role="button">Maret</a>
+              <a class="btn btn-info" href="chart_6.html" role="button">April</a>
+            </div>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <a class="btn btn-info" href="chart_9.html" role="button">Mei</a>
+              <a class="btn btn-info" href="chart_10.html" role="button">Juni</a>
+            </div> 
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <a class="btn btn-info" href="chart_9.html" role="button">Juli</a>
+              <a class="btn btn-info" href="chart_10.html" role="button">Agustus</a>
+            </div> 
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <a class="btn btn-info" href="chart_9.html" role="button">September</a>
+              <a class="btn btn-info" href="chart_10.html" role="button">Oktober</a>
+            </div> 
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <a class="btn btn-info" href="chart_9.html" role="button">November</a>
+              <a class="btn btn-info" href="chart_10.html" role="button">Desember</a>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
+    <script>
+    function oeepage(){
+      session();
+      oeechart();
+      performance();
+    }
+    </script>
+    <script type="text/javascript">
+    function button1(){
+      localStorage.setItem("plta", "plta1");
+      window.open("oee_plta.html", "_self");
+
+    }
+    function button2(){
+      localStorage.setItem("plta", "plta2");
+      window.open("oee_plta.html", "_self");
+
+    }
+    function button3(){
+      localStorage.setItem("plta", "plta3");
+      window.open("oee_plta.html", "_self");
+
+    }
+    </script>
+    <script type="text/javascript">
+    function bulan1(){
+      localStorage.setItem("bulan", "januari");
+      window.open("oee_plta_bulan.html", "_self");
+
+    }
+    function bulan2(){
+      localStorage.setItem("bulan", "februari");
+      window.open("oee_plta_bulan.html", "_self");
+
+    }
+    function bulan3(){
+      localStorage.setItem("bulan", "maret");
+      window.open("oee_plta_bulan.html", "_self");
+
+    }
+    </script>
+    <script type="text/javascript">
+    function oeechart(){
+      var oee =[];
+      var dataoee1 =[];
+      var dataoee2 =[];
+      var dataoee3 =[];
+      $.getJSON("https://spreadsheets.google.com/feeds/cells/10XpDFs9ixdmF7pxqNkgDGvEZeowbSoIFkQZV3bPyboA/2/public/basic?alt=json" ,function (data){
+        var gan = data.feed.entry;
+        for (var i = 0; i<gan.length; i++) {
+              oee.push(gan[i].content.$t); 
+        }
+        for(var j = 0; j<10; j++){
+            dataoee1.push(oee[j]);
+        }
+        for(var j = 23; j<36; j++){
+            dataoee2.push(oee[j]);
+        }
+        for(var j = 36; j<46; j++){
+            dataoee3.push(oee[j]);
+        }
+        var hasil = document.getElementById("output");
+        hasil.innerHTML = dataoee2[9];
+        var ctx = document.getElementById('jamChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dataoee1,
+                datasets: [{
+                    label: 'data2',
+                    data: dataoee2,
+                    backgroundColor: [
+                        'rgba(54, 162, 235)',
+                        'rgba(255, 255, 255, 0)',
+                        'rgba(255, 255, 255, 0)',
+                        'rgba(255, 255, 255, 0)',
+                        'rgba(255, 255, 255, 0)',
+                        'rgba(54, 162, 235)',
+                        'rgba(255, 255, 255, 0)',
+                        'rgba(255, 255, 255, 0)',
+                        'rgba(255, 255, 255, 0)',
+                        'rgba(255, 255, 255, 0)',
+                        'rgba(54, 162, 235)',
+                        'rgba(255, 255, 255, 0)',
+                        'rgba(54, 162, 235)',
+                    ]
+                },{
+                    label: 'data3',
+                    data: dataoee3,
+                    backgroundColor: [
+                        'rgba(54, 162, 235)',
+                        'rgba(255, 99, 132)',
+                        'rgba(255, 99, 132)',
+                        'rgba(255, 99, 132)',
+                        'rgba(255, 99, 132)',
+                        'rgba(255, 99, 132)',
+                        'rgba(255, 99, 132)',
+                        'rgba(255, 99, 132)',
+                        'rgba(255, 99, 132)',
+                        'rgba(255, 99, 132)',
+                        'rgba(255, 99, 132)',
+                    ]
+                }]
+            },
+            options: {
+                legend: {
+                  display: false
+                },
+                scales: {
+                    xAxes: [{
+                        stacked: true,
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        stacked: true,
+                        scaleLabel: {
+                          display: true,
+                          labelString: 'MWh'
+                        }
+                    }]
+                }
+            }
+        });
+      })
+    }
+    function performance(){
+      var oee =[];
+      var perf=[];
+      var avail =[];
+      var doee =[];
+      $.getJSON("https://spreadsheets.google.com/feeds/cells/10XpDFs9ixdmF7pxqNkgDGvEZeowbSoIFkQZV3bPyboA/4/public/basic?alt=json" ,function (data){
+        var gan = data.feed.entry;
+        for (var i = 0; i<gan.length; i++) {
+              oee.push(gan[i].content.$t); 
+        }
+        for(var j = 7; j<oee.length; j++){
+          if(j%7==4){
+              avail.push(oee[j]);
+          }
+        }
+        for(var j = 7; j<oee.length; j++){
+          if(j%7==5){
+              perf.push(oee[j]);
+          }
+        }
+        for(var j = 7; j<oee.length; j++){
+          if(j%7==6){
+              doee.push(oee[j]);
+          }
+        }
+        //var hasil = document.getElementById("output2");
+        //hasil.innerHTML = dataoee1[10];
+        var ctx = document.getElementById('perChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Januari','Februari','Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+                datasets: [{
+                    label: 'Availability',
+                    data: avail,
+                    backgroundColor:
+                        'rgba(255, 255, 255, 0)',
+                    borderColor:
+                        'rgba(255, 99, 132)',
+                        
+                    borderWidth: 2
+                },{
+                    label: 'Performance',
+                    data: perf,
+                    backgroundColor:
+                        'rgba(255, 255, 255, 0)',
+                    borderColor:
+                        'rgba(54, 162, 235, 1)',
+                        
+                    borderWidth: 2
+                },{
+                    label: 'OEE',
+                    data: doee,
+                    backgroundColor:
+                        'rgba(255, 255, 255, 0)',
+                    borderColor:
+                        'rgba(255, 206, 86, 1)',
+                        
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        scaleLabel: {
+                          display: true,
+                          labelString: '%'
+                        }
+                    }]
+                }
+            }
+        });
+      })
+    }
+    </script>
+  </body>
+</html>
