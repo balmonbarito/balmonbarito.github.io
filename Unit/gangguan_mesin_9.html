@@ -29,7 +29,7 @@
 
     <title>BALMON</title>
   </head>
-  <body onload="session()">
+  <body onload="gang()">
     <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
       <a class="navbar-brand text-white"  href="#">BALMON | Barito Losses Monitoring</a>
       <div class="d-flex my-2 my-lg-0 ml-auto">
@@ -294,13 +294,27 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="admin.js"></script>
+    <script type="text/javascript" src="revisi.js"></script>
     <script type="text/javascript">
       function ex9(){
+        localStorage.removeItem("revisi");
         formSubmit9();
         simpan9();
         setTimeout( function(){
           window.open("page_9.html", "_self");
         }, 500 );
+      }
+    </script>
+    <script type="text/javascript">
+      function gang(){
+        var page = localStorage.getItem("revisi");
+        if(page == "revisi"){
+          session();
+          revisi_9();
+        }
+        else{
+          session();
+        }
       }
     </script>
   </body>
