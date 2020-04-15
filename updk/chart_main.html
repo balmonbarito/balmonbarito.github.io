@@ -60,10 +60,11 @@
       <div class="col-md-10 p-5 pt-2 bg-light">
         <h5><i class="fas fa-chart-bar mr-2"></i>OEE Pembangkit</h5><hr>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6" >
             <div class="row bg-info mb-3 ml-3 mt-3 ">
-              <div class="d-flex justify-content-between text-white mt-3 ml-3 mb-1">
-                <p class="align-self-end" style="font-size: 23px;">ULPLTDG Trisakti</p>
+              <div class="text-white mt-4 ml-3 mb-1">
+                <p style="font-size: 23px;line-height: 2px;">ULPLTD/G Trisakti</p>
+                <p class="ml-2">OEE  •  s/d Februari 2020</p>
               </div>
             </div>
             <div class="row mb-3 ml-1 mt-3">
@@ -71,7 +72,7 @@
                 <div class="mb-3">
                   <div class="shadow bg-white rounded">
                     <div class="card border-light bg-white">
-                      <div class="card-body">
+                      <div class="card-body" style="height: 430px;">
                         <canvas id="jamC" height="510px"></canvas>
                       </div>
                     </div>
@@ -89,7 +90,7 @@
                       </tr>
                       <tr style="line-height: 2px;">
                         <td class="text-white">
-                          <p style="font-size: 16px;">90 %</p>
+                          <p style="font-size: 16px;" id="avail_pltd"></p>
                           <p>Availability</p>
                         </td>
                       </tr>
@@ -102,7 +103,7 @@
                       </tr>
                       <tr style="line-height: 2px;">
                         <td class="text-white">
-                          <p style="font-size: 16px;">73 %</p>
+                          <p style="font-size: 16px;" id="perf_pltd"></p>
                           <p>Performance</p>
                         </td>
                       </tr>
@@ -115,7 +116,7 @@
                       </tr>
                       <tr style="line-height: 2px;">
                         <td class="text-white">
-                          <p style="font-size: 16px;">58 %</p>
+                          <p style="font-size: 16px;" id="oee_pltd"></p>
                           <p>OEE</p>
                         </td>
                       </tr>
@@ -128,8 +129,9 @@
           </div>
           <div class="col-md-6">
             <div class="row bg-info mb-3 ml-3 mt-3">
-              <div class="d-flex justify-content-between text-white mt-3 ml-3 mb-1">
-                <p class="align-self-end" style="font-size: 23px;">PLTA Ir. PM. Noor</p>
+              <div class="text-white mt-4 ml-3 mb-1">
+                <p style="font-size: 23px;line-height: 2px;">PLTA Ir. PM. Noor</p>
+                <p class="ml-2">OEE  •  s/d Februari 2020</p>
               </div>
             </div>
             <div class="row mb-3 ml-1 mt-3">
@@ -137,7 +139,7 @@
                 <div class="mb-3">
                   <div class="shadow bg-white rounded">
                     <div class="card border-light bg-white">
-                      <div class="card-body">
+                      <div class="card-body" style="height: 430px;">
                         <canvas id="myChart" height="510px"></canvas>
                       </div>
                     </div>
@@ -155,7 +157,7 @@
                       </tr>
                       <tr style="line-height: 2px;">
                         <td class="text-white">
-                          <p style="font-size: 16px;">90 %</p>
+                          <p style="font-size: 16px;" id="avail_plta"></p>
                           <p>Availability</p>
                         </td>
                       </tr>
@@ -168,7 +170,7 @@
                       </tr>
                       <tr style="line-height: 2px;">
                         <td class="text-white">
-                          <p style="font-size: 16px;">73 %</p>
+                          <p style="font-size: 16px;" id="perf_plta"></p>
                           <p>Performance</p>
                         </td>
                       </tr>
@@ -181,7 +183,7 @@
                       </tr>
                       <tr style="line-height: 2px;">
                         <td class="text-white">
-                          <p style="font-size: 16px;">58 %</p>
+                          <p style="font-size: 16px;" id="oee_plta"></p>
                           <p>OEE</p>
                         </td>
                       </tr>
@@ -211,29 +213,36 @@
     </script>
     <script>
       function jumlah(){
-        var bar2 =[];
-        var label3 =[];
-        var time = [];
+        var dataall =[];
+        var dataoee =[];
         var inter =[];
-        var total = 0;
-        $.getJSON("https://spreadsheets.google.com/feeds/cells/1mPy5mL6vN86HA7yMthPo4PR1CXdFDd8bFTjvv6P0suA/3/public/basic?alt=json" ,function (data){
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/10XpDFs9ixdmF7pxqNkgDGvEZeowbSoIFkQZV3bPyboA/2/public/basic?alt=json" ,function (data){
           var gan = data.feed.entry;
           for (var i = 6; i<gan.length; i++) {
-                bar2.push(gan[i].content.$t); 
+                dataall.push(gan[i].content.$t); 
           }
-          inter = bar2.map(Number);
-          for (var k = 0; k<inter.length; k++){
-            total += inter[k];
+          for (var i = 17; i< 35; i++) {
+                dataoee.push(dataall[i]); 
           }
+          inter = dataoee.map(Number);
+          inter[10] = (0.7534*100).toFixed(2);
+          inter[11] = (0.4213*100).toFixed(2);
+          inter[12] = (0.2154*100).toFixed(2);
+          var avail = document.getElementById("avail_pltd");
+          avail.innerHTML = inter[10] + " %";
+          var perf = document.getElementById("perf_pltd");
+          perf.innerHTML = inter[11] + " %";
+          var oee = document.getElementById("oee_pltd");
+          oee.innerHTML = inter[12] + " %";
 
-          var ctx = document.getElementById('myChart').getContext('2d');
+          var ctx = document.getElementById('jamC').getContext('2d');
           var myChart = new Chart(ctx, {
               type: 'bar',
               data: {
                   labels: ['Avail', 'Perform', 'OEE'],
                   datasets: [{
                       label: '',
-                      data: [inter[0], inter[1], inter[2], inter[3], inter[4], inter[5]],
+                      data: [inter[10], inter[11], inter[12]],
                       backgroundColor: [
                           'rgba(255, 99, 132)',
                           'rgba(54, 162, 235)',
@@ -260,7 +269,8 @@
                   scales: {
                       yAxes: [{
                           ticks: {
-                              beginAtZero: true
+                              beginAtZero: true,
+                              suggestedMax: 100
                           }
                       }]
                   }
@@ -272,29 +282,36 @@
     </script>
     <script>
       function jam(){
-        var bar2 =[];
-        var label3 =[];
-        var time = [];
+        var dataall =[];
+        var dataoee =[];
         var inter =[];
-        var total = 0;
-        $.getJSON("https://spreadsheets.google.com/feeds/cells/1mPy5mL6vN86HA7yMthPo4PR1CXdFDd8bFTjvv6P0suA/4/public/basic?alt=json" ,function (data){
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/10XpDFs9ixdmF7pxqNkgDGvEZeowbSoIFkQZV3bPyboA/2/public/basic?alt=json" ,function (data){
           var gan = data.feed.entry;
           for (var i = 6; i<gan.length; i++) {
-                bar2.push(gan[i].content.$t); 
+                dataall.push(gan[i].content.$t); 
           }
-          inter = bar2.map(Number);
-          for (var k = 0; k<inter.length; k++){
-            total += inter[k];
+          for (var i = 17; i< 35; i++) {
+                dataoee.push(dataall[i]); 
           }
-          total=total.toFixed(2);
-          var ctx = document.getElementById('jamC').getContext('2d');
+          inter = dataoee.map(Number);
+          inter[10] = (inter[10]*100).toFixed(2);
+          inter[11] = (inter[11]*100).toFixed(2);
+          inter[12] = (inter[12]*100).toFixed(2);
+          var avail = document.getElementById("avail_plta");
+          avail.innerHTML = inter[10] + " %";
+          var perf = document.getElementById("perf_plta");
+          perf.innerHTML = inter[11] + " %";
+          var oee = document.getElementById("oee_plta");
+          oee.innerHTML = inter[12] + " %";
+
+          var ctx = document.getElementById('myChart').getContext('2d');
           var myChart = new Chart(ctx, {
               type: 'bar',
               data: {
                   labels: ['Avail', 'Perform', 'OEE'],
                   datasets: [{
                       label: '',
-                      data: [inter[0], inter[1], inter[2], inter[3], inter[4], inter[5]],
+                      data: [inter[10], inter[11], inter[12]],
                       backgroundColor: [
                           'rgba(255, 99, 132)',
                           'rgba(54, 162, 235)',
@@ -321,7 +338,8 @@
                   scales: {
                       yAxes: [{
                           ticks: {
-                              beginAtZero: true
+                              beginAtZero: true,
+                              suggestedMax: 100
                           }
                       }]
                   }

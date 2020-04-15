@@ -9,22 +9,37 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="admin.css">
     <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+    <style>
+      .sidenav {
+        height: 100%;
+        width: 228px;
+        position: fixed;
+        z-index: 1;
+        top: 48px;
+        left: 0;
+        overflow-x: hidden;
+        padding-top: 20px;
+      }
+      .main {
+        margin-left: 228px;
+        padding: 0px 10px;
+        width: 1200px;
+      }
+    </style>
 
     <title>BALMON</title>
   </head>
-  <body onload="session();">
+  <body onload="session()">
     <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
       <a class="navbar-brand text-white"  href="#">BALMON | Barito Losses Monitoring</a>
-      
-        <form class="form-inline my-2 my-lg-0 ml-auto">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <div class="icon ml-2 text-white">
-          <button class="btn btn-info my-2 my-sm-0 text-center" type="button" onclick="logout()">
-              <i class="fas fa-power-off"></i>
+      <div class="d-flex my-2 my-lg-0 ml-auto">
+        <a class="navbar-brand text-white my-2 my-sm-0" href="#">PLTD Trisakti</a>
+        <div class="icon text-white">
+          <button class="btn btn-info my-2 my-sm-0 text-center" type="button" onclick="logout()" data-toggle="tooltip" title="Log Out?" data-placement="bottom">
+              <i class="fas fa-power-off" ></i>
           </button>          
         </div>
+      </div>
         <!--div class="icon ml-4">
           <h5>
             <i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Pesan Masuk"></i> 
@@ -32,30 +47,26 @@
             <i class="fas fa-sign-out-alt mr-3" data-toggle="tooltip" title="Sign Out"></i>
           </h5>
         </div-->
-      </div>
     </nav>
     
     <div class="row no-gutters mt-5" style="height:auto;">
-      <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
+      <div class="sidenav bg-dark mt-2 pr-3 pt-4">
         <ul class="nav flex-column ml-3 mb-5" style="height:565px;">
           <li class="nav-item">
             <a class="nav-link active text-white" href="dashboard.html"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a><hr class="bg-secondary">
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="gangguan_main.html"><i class="fas fa-cogs mr-2"></i>Gangguan</a><hr class="bg-secondary">
+            <a class="nav-link text-white" href="gangguan_main.html"><i class="fas fa-cogs mr-2"></i>Input Gangguan</a><hr class="bg-secondary">
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>Paretto Chart</a><hr class="bg-secondary">
+            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>Pareto Chart</a><hr class="bg-secondary">
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="lho5.html"><i class="fas fa-file-pdf mr-2"></i>LHO5</a><hr class="bg-secondary">
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="pembangkit.html"><i class="fas fa-file-medical-alt mr-2"></i>Indeks Pembangkit</a><hr class="bg-secondary">
-          </li>
         </ul>
       </div>
-      <div class="col-md-10 p-5 pt-2">
+      <div class="main p-5 pt-2 bg-light">
         <h5><i class="fas fa-cogs mr-2"></i>Gangguan Mesin 2</h5><hr>
         <form id="gangguan2" class="ml-3">
           <div class="form-group row">
@@ -260,14 +271,14 @@
                 <option value="PH Manager Unit Layanan">PH Manager Unit Layanan</option>
               </select>
               <div id="ipm">
-                <textarea type="text" class="form-control mb-3" id="22_2" placeholder="Nama PH Manager" rows="1"></textarea>
+                <textarea type="text" class="form-control mb-3" id="22_2" placeholder="Nama Manager/PH" rows="1"></textarea>
               </div>
               <select class="form-control mb-3" id="21_2">
                 <option value="Supervisor Operasi dan Pemeliharaan 1">Supervisor Operasi dan Pemeliharaan 1</option>
                 <option value="PH Supervisor Operasi dan Pemeliharaan 1">PH Supervisor Operasi dan Pemeliharaan 1</option>
               </select>
               <div id="ips">
-                <textarea type="text" class="form-control mb-3" id="23_2" placeholder="Nama PH SPV" rows="1"></textarea>
+                <textarea type="text" class="form-control mb-3" id="23_2" placeholder="Nama SPV/PH" rows="1"></textarea>
               </div>
             </div>
           </div>
@@ -283,26 +294,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="admin.js"></script>
-    <script type="text/javascript">
-      $("#20_2").change(function() {
-        if ($(this).val() == "PH Manager Unit Layanan") {
-          $('#ipm').show();
-        } else {
-          $('#ipm').hide();
-        }
-      });
-      $("#20_2").trigger("change");
-    </script>
-    <script type="text/javascript">
-      $("#21_2").change(function() {
-        if ($(this).val() == "PH Supervisor Operasi dan Pemeliharaan 1") {
-          $('#ips').show();
-        } else {
-          $('#ips').hide();
-        }
-      });
-      $("#21_2").trigger("change");
-    </script>
+    
     <script type="text/javascript">
       function ex2(){
         formSubmit2();

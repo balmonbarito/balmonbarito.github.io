@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+
+    <title>BALMON</title>
+  </head>
+  <body onload="session()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
+      <a class="navbar-brand text-white"  href="#">BALMON | Barito Losses Monitoring</a>
+      
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="icon ml-2 text-white">
+          <button class="btn btn-info my-2 my-sm-0 text-center" type="button" onclick="logout()">
+              <i class="fas fa-power-off"></i>
+          </button>          
+        </div>
+        <!--div class="icon ml-4">
+          <h5>
+            <i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Pesan Masuk"></i> 
+            <i class="fas fa-bell mr-3" data-toggle="tooltip" title="Notifikasi"></i>
+            <i class="fas fa-sign-out-alt mr-3" data-toggle="tooltip" title="Sign Out"></i>
+          </h5>
+        </div-->
+      </div>
+    </nav>
+    
+    <div class="row no-gutters mt-5" style="height:auto;">
+      <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
+        <ul class="nav flex-column ml-3 mb-5" style="height:565px;">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="dashboard.html"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="gangguan_main.html"><i class="fas fa-cogs mr-2"></i>Gangguan</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>Paretto Chart</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="lho5.html"><i class="fas fa-file-pdf mr-2"></i>LHO5</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="pembangkit.html"><i class="fas fa-file-medical-alt mr-2"></i>Indeks Pembangkit</a><hr class="bg-secondary">
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-10 p-5 pt-2 bg-light">
+        <h5><i class="fas fa-chart-bar mr-2"></i>LH05</h5><hr>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card shadow chart-card">
+
+              <!-- Card content -->
+              <div class="card-body pb-0">
+
+                <!-- Title -->
+                <h5 class="card-title">Upload Lembar LH05</h5>
+                <p class="card-text mb-4">Upload • Lembar LH05 yang telah disahkan</p>
+                <!-- Text -->
+
+              </div>
+
+              <!-- Classic tabs -->
+              <div class="classic-tabs bg-info">
+
+                <!-- Nav tabs -->
+                <ul class="nav tabs-white nav-fill" role="tablist">
+                  <li class="nav-item ml-0">
+                    <a class="nav-link waves-light active text-white" data-toggle="tab" href="#panel1001" role="tab">Sulzer</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link waves-light text-white" data-toggle="tab" href="#panel1002" role="tab">Pielstick</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link waves-light text-white" data-toggle="tab" href="#panel1003" role="tab">SWD 16 TM</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link waves-light text-white" data-toggle="tab" href="#panel1004" role="tab">SWD 9 TM</a>
+                  </li>
+                </ul>
+
+                <div class="tab-content rounded-bottom">
+                  <!--Panel 1-->
+                  <div class="tab-pane fade in show active" id="panel1001" role="tabpanel">
+                    <div class="card border-info mb-3 ml-4 bg-info" style="width: 90%; height: 12rem; text-align:center;">
+                      <div class="card-body">
+                        <div class="row mt-3" style="text-align: center;">
+                          <div class="col">
+                            <a class="btn btn-info" href="https://drive.google.com/drive/folders/1vjxLr6Tsae8ed5lupyX7FGP1UKg8ElMq?usp=sharing" role="button" target="_blank">
+                              <i class="fas fa-envelope text-white" style="font-size: 80px;"></i>
+                              <p>Mesin 2</p>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                  </div>
+                  <!--/.Panel 1-->
+                  <!--Panel 2-->
+                  <div class="tab-pane fade" id="panel1002" role="tabpanel">
+                    <div class="card border-info mb-3 ml-4 bg-info" style="width: 90%; height: 12rem; text-align:center;">
+                      <div class="card border-info mb-3 ml-4 bg-info" style="width: 90%; height: 12rem; text-align:center;">
+                      <div class="card-body">
+                        <div class="row mt-3" style="text-align: center;">
+                          <div class="col">
+                            <a class="btn btn-info" href="https://drive.google.com/open?id=1-A2jv4kiJMoOWIaSJKYXfGkeVkDcXx5_" role="button" target="_blank">
+                              <i class="fas fa-envelope text-white" style="font-size: 80px;"></i>
+                              <p>Mesin 3</p>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                  <!--/.Panel 2-->
+                  <!--Panel 3-->
+                  <div class="tab-pane fade" id="panel1003" role="tabpanel">
+                    <div class="card border-info mb-3 ml-4 bg-info" style="width: 90%; height: 12rem; text-align:center;">
+                      <div class="card-body">
+                        <div class="row mt-3">
+                          <div class="col-md-6">
+                            <a class="btn btn-info" href="https://drive.google.com/open?id=1-F31nAb4oce1U7noRJTSAq44stN-crIP" role="button" target="_blank">
+                              <i class="fas fa-envelope text-white" style="font-size: 80px;"></i>
+                              <p>Mesin 5</p>
+                            </a>
+                          </div>
+                          <div class="col-md-6">
+                            <a class="btn btn-info" href="https://drive.google.com/open?id=1r9rFHaNUK-uSQmxwIfoajgixdS7Mlf0c" role="button" target="_blank">
+                              <i class="fas fa-envelope text-white" style="font-size: 80px;"></i>
+                              <p>Mesin 6</p>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--/.Panel 3-->
+                  <div class="tab-pane fade" id="panel1004" role="tabpanel">
+                    <div class="card border-info mb-3 ml-4 bg-info" style="width: 90%; height: 12rem; text-align:center;">
+                      <div class="card-body">
+                        <div class="row mt-3">
+                          <div class="col-md-6">
+                            <a class="btn btn-info" href="https://drive.google.com/open?id=1JJ9Dt5WTMZ8JKosH5a_w1gnMMbMsfevw" role="button" target="_blank">
+                              <i class="fas fa-envelope text-white" style="font-size: 80px;"></i>
+                              <p>Mesin 9</p>
+                            </a>
+                          </div>
+                          <div class="col-md-6">
+                            <a class="btn btn-info" href="https://drive.google.com/open?id=1QtTm58m8Kd2GJpaSkvoQFxVAm-VUHPWP" role="button" target="_blank">
+                              <i class="fas fa-envelope text-white" style="font-size: 80px;"></i>
+                              <p>Mesin 10</p>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Classic tabs -->
+            </div>
+            <!-- Card -->
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow chart-card">
+
+              <!-- Card content -->
+              <div class="card-body pb-0">
+
+                <!-- Title -->
+                <h5 class="card-title">Revisi LH05 Terakhir</h5>
+                <p class="card-text mb-4">Revisi • Lembar LH05 terakhir yang belum disahkan</p>
+                <!-- Text -->
+              </div>
+              <!-- Classic tabs -->
+              <div class="classic-tabs" style="background-color: purple;">
+
+                <!-- Nav tabs -->
+                <ul class="nav tabs-white nav-fill" role="tablist">
+                  <li class="nav-item ml-0">
+                    <a class="nav-link waves-light active text-white" data-toggle="tab" href="#panel1005" role="tab">Sulzer</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link waves-light text-white" data-toggle="tab" href="#panel1006" role="tab">Pielstick</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link waves-light text-white" data-toggle="tab" href="#panel1007" role="tab">SWD 16 TM</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link waves-light text-white" data-toggle="tab" href="#panel1008" role="tab">SWD 9 TM</a>
+                  </li>
+                </ul>
+
+                <div class="tab-content rounded-bottom">
+                  <!--Panel 1-->
+                  <div class="tab-pane fade in show active" id="panel1005" role="tabpanel">
+                    <div class="card mb-3 ml-4 " style="width: 90%; height: 12rem; text-align:center; border-color: purple; background-color: purple;">
+                      <div class="card-body">
+                        <div class="row mt-3" style="text-align: center;">
+                          <div class="col">
+                            <a class="btn text-white" href="page_2.html" role="button" style="border-color: purple; background-color: purple;">
+                              <i class="fas fa-file-pdf text-white" style="font-size: 80px;"></i>
+                              <p>Mesin 2</p>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                  </div>
+                  <!--/.Panel 1-->
+                  <!--Panel 2-->
+                  <div class="tab-pane fade" id="panel1006" role="tabpanel">
+                    <div class="card mb-3 ml-4 " style="width: 90%; height: 12rem; text-align:center; border-color: purple; background-color: purple;">
+                      <div class="card-body">
+                        <div class="row mt-3" style="text-align: center;">
+                          <div class="col">
+                            <a class="btn text-white" href="page_3.html" role="button" style="border-color: purple; background-color: purple;">
+                              <i class="fas fa-file-pdf text-white" style="font-size: 80px;"></i>
+                              <p>Mesin 3</p>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                  </div>
+                  <!--/.Panel 2-->
+                  <!--Panel 3-->
+                  <div class="tab-pane fade" id="panel1007" role="tabpanel">
+                    <div class="card mb-3 ml-4" style="width: 90%; height: 12rem; text-align:center;border-color: purple; background-color: purple;">
+                      <div class="card-body">
+                        <div class="row mt-3">
+                          <div class="col-md-6">
+                            <a class="btn text-white" href="page_5.html" role="button" style="border-color: purple; background-color: purple;">
+                              <i class="fas fa-file-pdf text-white" style="font-size: 80px;"></i>
+                              <p>Mesin 5</p>
+                            </a>
+                          </div>
+                          <div class="col-md-6">
+                            <a class="btn text-white" href="page_6.html" role="button" style="border-color: purple; background-color: purple;">
+                              <i class="fas fa-file-pdf text-white" style="font-size: 80px"></i>
+                              <p>Mesin 6</p>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--/.Panel 3-->
+                  <div class="tab-pane fade" id="panel1008" role="tabpanel">
+                    <div class="card mb-3 ml-4" style="width: 90%; height: 12rem; text-align:center;border-color: purple; background-color: purple;">
+                      <div class="card-body">
+                        <div class="row mt-3">
+                          <div class="col-md-6">
+                            <a class="btn text-white" href="page_9.html" role="button" style="border-color: purple; background-color: purple;">
+                              <i class="fas fa-file-pdf text-white" style="font-size: 80px;"></i>
+                              <p>Mesin 9</p>
+                            </a>
+                          </div>
+                          <div class="col-md-6">
+                            <a class="btn text-white" href="page_10.html" role="button" style="border-color: purple; background-color: purple;">
+                              <i class="fas fa-file-pdf text-white" style="font-size: 80px"></i>
+                              <p>Mesin 10</p>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Classic tabs -->
+              
+
+            </div>
+            <!-- Card -->
+          </div>
+        </div>  
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
+    <script>
+      var ctxL = document.getElementById("lineChart").getContext('2d');
+      var myLineChart = new Chart(ctxL, {
+        type: 'line',
+        data: {
+          labels: ["mesin 2", "mesin 3", "mesin 5", "mesin 6", "mesin 9", "mesin 10"],
+          datasets: [
+            {
+              fill: false,
+              borderColor: "#673ab7",
+              pointBackgroundColor: "#673ab7",
+              data: [885, 884, 887, 883, 888, 889]
+            }
+          ]
+        },
+        options: {
+          responsive: false,
+          legend: {
+            display: false
+          },
+          elements: {
+            line: {
+              tension: 0.0
+            }
+          },
+          scales: {
+            xAxes: [{
+              gridLines: {
+                display: false,
+              },
+              ticks: {
+                padding: 15,
+                height: 30
+              }
+            }],
+            yAxes: [{
+              gridLines: {
+                drawBorder: false
+              },
+              ticks: {
+                  maxTicksLimit: 5,
+                  padding: 15,
+                  min: 880,
+                  max: 890
+                }
+            }]
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

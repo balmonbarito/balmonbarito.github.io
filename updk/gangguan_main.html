@@ -58,65 +58,154 @@
       
         
       <div class="col-md-10 p-5 pt-2 bg-light">
-        <h5><i class="fas fa-cogs mr-2"></i>Rekap Gangguan</h5><hr>
+        <h5><i class="fas fa-chart-bar mr-2"></i>Rekap Gangguan</h5><hr>
         <div class="row">
-          <div class="col-md-8">
-            <div class="row mt-3 ml-3">
-              <div class="shadow bg-white rounded">
-                <div class="card border-light bg-white">
-                  <div class="card-body">
-                    <h4>Kontribusi Gangguan</h4>
-                    <p class="card-text mb-4">Total  •  Jumlah Gangguan</p>
-                    <div style="width: 8%">
-                        <table class="table table-borderless" style="line-height: 0px;">
-                          <tr>
-                            <td><p id="output" style="font-size: 30px;"></p></td>
-                            <td><p style="font-size: 30px;"> Kali</p></td>
-                          </tr>
-                        </table>  
-                    </div>
-                    <canvas id="myChart" width="600" height="300"></canvas>
-                  </div>
-                </div>
+          <div class="col-md-6" >
+            <div class="row bg-info mb-3 ml-3 ">
+              <div class="text-white mt-4 ml-3 mb-1">
+                <p style="font-size: 23px;line-height: 2px;">ULPLTD/G Trisakti</p>
+                <p>Rekap Gangguan  •  s/d Februari 2020</p>
               </div>
             </div>
-            <div class="row mt-3 ml-3">
-              <div class="shadow bg-white rounded">
-                <div class="card border-light bg-white">
-                  <div class="card-body">
-                    <h4>Kontribusi Jam Gangguan</h4>
-                    <p class="card-text mb-4">Total  •  Jumlah Jam Gangguan</p>
-                    <div style="width: 8%">
-                        <table class="table table-borderless" style="line-height: 0px;">
-                          <tr>
-                            <td><p id="jam" style="font-size: 30px;"></p></td>
-                            <td><p style="font-size: 30px;"> Jam</p></td>
-                          </tr>
-                        </table>  
+            <div class="row mb-3 ml-1 mt-3">
+              <div class="col-md-7">
+                <div class="mb-3">
+                  <div class="shadow bg-white rounded">
+                    <div class="card border-light bg-white">
+                      <div class="mt-3 ml-3" style="height: 50px;">
+                        <h5>Total •  Gangguan</h5>
+                        <p id="total_pltd"></p>
+                      </div>
+                      <div class="card-body" style="height: 400px;">
+                        <canvas id="jamC" height="300px"></canvas>
+                      </div>
                     </div>
-                    <canvas id="jamC" width="600" height="300"></canvas>
+                  </div>
+                </div> 
+              </div>
+              <div class="col-md-5 bg-info mb-3" >
+                <div class="card-body text-white">
+                  <div class="text-center">
+                    <a class="btn btn-info" href="gangguan_pltd.html" style="text-decoration: none;">
+                      <table class="table table-borderless mb-2">
+                        <tr style="line-height: 0px;">
+                          <td class="text-white">
+                            <img src="graph_1.png" class="img-fluid">
+                          </td>
+                        </tr>
+                        <tr style="line-height: 2px;">
+                          <td class="text-white">
+                            <p style="font-size: 16px;" id="avail_pltd"></p>
+                            <p>PLTD Trisakti</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </a>
+                    <a class="btn btn-info" href="gangguan_pltg.html" style="text-decoration: none;">
+                      <table class="table table-borderless mb-3">
+                        <tr style="line-height: 0px;">
+                          <td class="text-white">
+                            <img src="graph_1.png" class="img-fluid">
+                          </td>
+                        </tr>
+                        <tr style="line-height: 2px;">
+                          <td class="text-white">
+                            <p style="font-size: 16px;" id="perf_pltd"></p>
+                            <p>PLTG Trisakti</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </a>
+                    <a class="btn btn-info" href="gangguan_pltdk.html" style="text-decoration: none;">
+                      <table class="table table-borderless mb-3">
+                        <tr style="line-height: 0px;">
+                          <td class="text-white">
+                            <img src="graph_1.png" class="img-fluid">
+                          </td>
+                        </tr>
+                        <tr style="line-height: 2px;">
+                          <td class="text-white">
+                            <p style="font-size: 16px;" id="oee_pltd"></p>
+                            <p>PLTD Kapuas</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </a>
                   </div>
                 </div>
               </div>
+              
             </div>
           </div>
-          <div class="col-md-4 bg-info mt-3">
-            <div class="d-flex justify-content-between text-white mt-3 mb-3">
-              <p class="align-self-end" style="font-size: 30px;">Pareto Mesin</p>
+          <div class="col-md-6">
+            <div class="row bg-info mb-3 ml-3">
+              <div class="text-white mt-4 ml-3 mb-1">
+                <p style="font-size: 23px;line-height: 2px;">PLTA Ir. PM. Noor</p>
+                <p>Rekap Gangguan  •  s/d Februari 2020</p>
+              </div>
             </div>
-            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
-              <a class="btn btn-info" href="chart_2.html" role="button">Sulzer #2</a>
-              <a class="btn btn-info" href="chart_3.html" role="button">Pielstick #3</a>
-              <p id="2"></p>
+            <div class="row ml-1 mt-3">
+              <div class="col-md-7">
+                <div class="mb-3">
+                  <div class="shadow bg-white rounded">
+                    <div class="card border-light bg-white">
+                      <div class="mt-3 ml-3" style="height: 50px;">
+                        <h5>Total •  Gangguan</h5>
+                        <p id="total_plta"></p>
+                      </div>
+                      <div class="card-body" style="height: 400px;">
+                        <canvas id="myChart" height="300px"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+              <a class="col-md-5 bg-info mb-3" href="gangguan_plta.html" style="text-decoration: none;">
+                <div class="card-body text-white">
+                  <div class="text-center">
+                    <table class="table table-borderless mb-3">
+                      <tr style="line-height: 0px;">
+                        <td class="text-white">
+                          <img src="graph_1.png" class="img-fluid">
+                        </td>
+                      </tr>
+                      <tr style="line-height: 2px;">
+                        <td class="text-white">
+                          <p style="font-size: 16px;" id="avail_plta"></p>
+                          <p>Unit 1</p>
+                        </td>
+                      </tr>
+                    </table>
+                    <table class="table table-borderless mb-3">
+                      <tr style="line-height: 0px;">
+                        <td class="text-white">
+                          <img src="graph_1.png" class="img-fluid">
+                        </td>
+                      </tr>
+                      <tr style="line-height: 2px;">
+                        <td class="text-white">
+                          <p style="font-size: 16px;" id="perf_plta"></p>
+                          <p>Unit 2</p>
+                        </td>
+                      </tr>
+                    </table>
+                    <table class="table table-borderless mb-3">
+                      <tr style="line-height: 0px;">
+                        <td class="text-white">
+                          <img src="graph_1.png" class="img-fluid">
+                        </td>
+                      </tr>
+                      <tr style="line-height: 2px;">
+                        <td class="text-white">
+                          <p style="font-size: 16px;" id="oee_plta"></p>
+                          <p>Unit 3</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </a>
             </div>
-            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
-              <a class="btn btn-info" href="chart_5.html" role="button">SWD 16 TM #5</a>
-              <a class="btn btn-info" href="chart_6.html" role="button">SWD 16 TM #6</a>
-            </div>
-            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
-              <a class="btn btn-info" href="chart_9.html" role="button">SWD 9 TM #9</a>
-              <a class="btn btn-info" href="chart_10.html" role="button">SWD 9 TM #10</a>
-            </div> 
           </div>
         </div>
       </div>
@@ -138,125 +227,110 @@
     </script>
     <script>
       function jumlah(){
-        var bar2 =[];
-        var label3 =[];
-        var time = [];
+        var dataall =[];
+        var dataoee =[];
         var inter =[];
-        var total = 0;
-        $.getJSON("https://spreadsheets.google.com/feeds/cells/1mPy5mL6vN86HA7yMthPo4PR1CXdFDd8bFTjvv6P0suA/3/public/basic?alt=json" ,function (data){
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/10XpDFs9ixdmF7pxqNkgDGvEZeowbSoIFkQZV3bPyboA/2/public/basic?alt=json" ,function (data){
           var gan = data.feed.entry;
           for (var i = 6; i<gan.length; i++) {
-                bar2.push(gan[i].content.$t); 
+                dataall.push(gan[i].content.$t); 
           }
-          inter = bar2.map(Number);
-          for (var k = 0; k<inter.length; k++){
-            total += inter[k];
+          for (var i = 17; i< 35; i++) {
+                dataoee.push(dataall[i]); 
           }
-          var hasil = document.getElementById("output");
-          hasil.innerHTML = total;
+          inter = dataoee.map(Number);
+          inter[10] = (75);
+          inter[11] = (42);
+          inter[12] = (21);
+          var dtotal = inter[10]+inter[11]+inter[12];
+          var avail = document.getElementById("avail_pltd");
+          avail.innerHTML = inter[10] + " Kali";
+          var perf = document.getElementById("perf_pltd");
+          perf.innerHTML = inter[11] + " Kali";
+          var oee = document.getElementById("oee_pltd");
+          oee.innerHTML = inter[12] + " Kali";
+          var total = document.getElementById("total_pltd");
+          total.innerHTML = dtotal + " Kali";
 
-          var ctx = document.getElementById('myChart').getContext('2d');
+          var ctx = document.getElementById('jamC').getContext('2d');
           var myChart = new Chart(ctx, {
-              type: 'bar',
-              data: {
-                  labels: ['Mesin 2', 'Mesin 3', 'Mesin 5', 'Mesin 6', 'Mesin 9', 'Mesin 10'],
-                  datasets: [{
-                      label: '',
-                      data: [inter[0], inter[1], inter[2], inter[3], inter[4], inter[5]],
-                      backgroundColor: [
-                          'rgba(255, 99, 132)',
-                          'rgba(54, 162, 235)',
-                          'rgba(255, 206, 86)',
-                          'rgba(75, 192, 192)',
-                          'rgba(153, 102, 255)',
-                          'rgba(255, 159, 64)'
-                      ],
-                      borderColor: [
-                          'rgba(255, 99, 132, 1)',
-                          'rgba(54, 162, 235, 1)',
-                          'rgba(255, 206, 86, 1)',
-                          'rgba(75, 192, 192, 1)',
-                          'rgba(153, 102, 255, 1)',
-                          'rgba(255, 159, 64, 1)'
-                      ],
-                      borderWidth: 1
-                  }]
+            type: 'doughnut',
+            data: {
+              labels: ['PLTD Trs', 'PLTG Trs', 'PLTD Kps'],
+              datasets: [
+                {
+                  label: "Population (millions)",
+                  data: [inter[10], inter[11], inter[12]],
+                  backgroundColor: ["#D7269C", "#109DC0","#F5A345","#e8c3b9"],
+                }
+              ]
+            },
+            options: {
+              legend: {
+                labels: {
+                    fontColor: "black",
+                }
               },
-              options: {
-                  legend: {
-                    display: false
-                  },
-                  scales: {
-                      yAxes: [{
-                          ticks: {
-                              beginAtZero: true
-                          }
-                      }]
-                  }
+              title: {
+                display: false,
+                text: '80% Kontribusi Gangguan'
               }
+            }
           });
-
         })
       }
     </script>
     <script>
       function jam(){
-        var bar2 =[];
-        var label3 =[];
-        var time = [];
+        var dataall =[];
+        var dataoee =[];
         var inter =[];
-        var total = 0;
-        $.getJSON("https://spreadsheets.google.com/feeds/cells/1mPy5mL6vN86HA7yMthPo4PR1CXdFDd8bFTjvv6P0suA/4/public/basic?alt=json" ,function (data){
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/10XpDFs9ixdmF7pxqNkgDGvEZeowbSoIFkQZV3bPyboA/2/public/basic?alt=json" ,function (data){
           var gan = data.feed.entry;
           for (var i = 6; i<gan.length; i++) {
-                bar2.push(gan[i].content.$t); 
+                dataall.push(gan[i].content.$t); 
           }
-          inter = bar2.map(Number);
-          for (var k = 0; k<inter.length; k++){
-            total += inter[k];
+          for (var i = 17; i< 35; i++) {
+                dataoee.push(dataall[i]); 
           }
-          total=total.toFixed(2);
-          var hasil = document.getElementById("jam");
-          hasil.innerHTML = total;
-          var ctx = document.getElementById('jamC').getContext('2d');
+          inter = dataoee.map(Number);
+          inter[10] = (inter[10]*100).toFixed(2);
+          inter[11] = (inter[11]*100).toFixed(2);
+          inter[12] = (inter[12]*100).toFixed(2);
+          var dtotal = inter[10]+inter[11]+inter[12];
+          var avail = document.getElementById("avail_plta");
+          avail.innerHTML = inter[10] + " Kali";
+          var perf = document.getElementById("perf_plta");
+          perf.innerHTML = inter[11] + " Kali";
+          var oee = document.getElementById("oee_plta");
+          oee.innerHTML = inter[12] + " Kali";
+          var total = document.getElementById("total_plta");
+          total.innerHTML = dtotal + " Kali";
+
+          var ctx = document.getElementById('myChart').getContext('2d');
           var myChart = new Chart(ctx, {
-              type: 'bar',
-              data: {
-                  labels: ['Mesin 2', 'Mesin 3', 'Mesin 5', 'Mesin 6', 'Mesin 9', 'Mesin 10'],
-                  datasets: [{
-                      label: '',
-                      data: [inter[0], inter[1], inter[2], inter[3], inter[4], inter[5]],
-                      backgroundColor: [
-                          'rgba(255, 99, 132)',
-                          'rgba(54, 162, 235)',
-                          'rgba(255, 206, 86)',
-                          'rgba(75, 192, 192)',
-                          'rgba(153, 102, 255)',
-                          'rgba(255, 159, 64)'
-                      ],
-                      borderColor: [
-                          'rgba(255, 99, 132, 1)',
-                          'rgba(54, 162, 235, 1)',
-                          'rgba(255, 206, 86, 1)',
-                          'rgba(75, 192, 192, 1)',
-                          'rgba(153, 102, 255, 1)',
-                          'rgba(255, 159, 64, 1)'
-                      ],
-                      borderWidth: 1
-                  }]
+            type: 'doughnut',
+            data: {
+              labels: ['Unit 1', 'Unit 2', 'Unit 3'],
+              datasets: [
+                {
+                  label: "Population (millions)",
+                  data: [inter[10], inter[11], inter[12]],
+                  backgroundColor: ["#D7269C", "#109DC0","#F5A345","#e8c3b9"],
+                }
+              ]
+            },
+            options: {
+              legend: {
+                labels: {
+                    fontColor: "black",
+                }
               },
-              options: {
-                  legend: {
-                    display: false
-                  },
-                  scales: {
-                      yAxes: [{
-                          ticks: {
-                              beginAtZero: true
-                          }
-                      }]
-                  }
+              title: {
+                display: false,
+                text: '80% Kontribusi Gangguan'
               }
+            }
           });
         })
       }

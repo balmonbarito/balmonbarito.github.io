@@ -1,0 +1,22 @@
+.nav-link:hover{
+	background-color: purple;
+}
+.card-body-icon{
+	position: absolute;
+	z-index: 0;
+	top: 20px;
+	right:20px;
+	color:black;
+	opacity:0.2;
+	font-size:50px;
+}                
+table.table-bordered{
+    border:1px solid black;
+    margin-top:20px;
+  }
+table.table-bordered > thead > tr > th{
+    border:1px solid black;
+}
+table.table-bordered > tbody > tr > td{
+    border:1px solid black;
+}

@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+
+    <title>BALMON</title>
+  </head>
+  <body onload="page()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
+      <a class="navbar-brand text-white"  href="#">BALMON | Barito Loses Monitoring</a>
+      
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="icon ml-2 text-white">
+          <button class="btn btn-info my-2 my-sm-0 text-center" type="button" onclick="logout()">
+              <i class="fas fa-power-off"></i>
+          </button>          
+        </div>
+        <!--div class="icon ml-4">
+          <h5>
+            <i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Pesan Masuk"></i> 
+            <i class="fas fa-bell mr-3" data-toggle="tooltip" title="Notifikasi"></i>
+            <i class="fas fa-sign-out-alt mr-3" data-toggle="tooltip" title="Sign Out"></i>
+          </h5>
+        </div-->
+      </div>
+    </nav>
+    
+    <div class="row no-gutters mt-5" style="height:auto;">
+      <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
+        <ul class="nav flex-column ml-3 mb-5" style="height:565px;">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="dashboard.html"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="gangguan_main.html"><i class="fas fa-cogs mr-2"></i>Gangguan</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>Paretto Chart</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="lho5.html"><i class="fas fa-file-pdf mr-2"></i>LHO5</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="pembangkit.html"><i class="fas fa-file-medical-alt mr-2"></i>Indeks Pembangkit</a><hr class="bg-secondary">
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-10 p-5 pt-2 bg-light">
+        <h5><i class="fas fa-chart-bar mr-2"></i>Lembar LH05</h5><hr>
+        <div class="row mt-5">
+            <button onclick="generatePDF();" type="submit" class="btn btn-info ml-3">Download PDF</button>
+            <button onclick="delet();" type="submit" class="btn btn-danger ml-3" target="_blank">Revisi</button>
+        </div>
+        <div class="row mt-5">
+          <div id="content" class="bg-transparent ml-5" style="height:29.7cm; width:21cm;">
+            <div class="bg-transparent mt-4 ml-5 mr-5 mb-5">
+              <table class="table table-bordered mb-0" style="font-size:12px;">
+                <tbody>
+                  <tr style="line-height: 0.8;">
+                    <td>
+                      <table class="table table-borderless mb-0 mt-0">                        
+                        <tr style="line-height: 2px;">
+                          <td>
+                            <p>PT. PLN (Persero)</p>
+                            <p>CABANG / UPDK</p>
+                            <p class="mb-0">ULPLTD</p>
+                          </td>
+                          <td>
+                            <p>: UIKL KAL</p>
+                            <p>: BANJARMASIN/BARITO</p>
+                            <p class="mb-0">: TRISAKTI</p>
+                          </td> 
+                        </tr> 
+                      </table>
+                    </td>
+                    <td class="text-center">
+                      <table class="table table-borderless mb-0 mt-0">                        
+                        <tr style="line-height: 2px;">
+                          <td>
+                            <p>LAPORAN PENDAHULUAN/LENGKAP</p>
+                            <p>KERUSAKAN PLTD</p>
+                            <p class="mb-0">NOMER :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/LH05/ULPLTD.TRS/VIII/2020</p>
+                          </td>
+                        </tr>   
+                      </table>
+                    </td>
+                    <td class="text-center">
+                      <table class="table table-borderless mb-0 mt-0">                        
+                        <tr style="line-height: 2px;">
+                          <td>
+                            <p>FORM-VIII</p>
+                            <p>KODE</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr style="line-height: 0px;">
+                    <td colspan="3">
+                      <div class="d-flex justify-content-center">
+                        <table class="table table-borderless mb-0 mt-0" style="width:60%;">                        
+                          <tr class="mb-0" style="line-height: 1px;">
+                            <td>
+                              <p>PLTD NOMOR UNIT</p>
+                              <p>MERK/TYPE</p>
+                              <p>NOMOR SERIE</p>
+                              <p>DAYA TERPASANG</p>
+                              <p>JAM SEJAK BEROPRASI (JSB)</p>
+                              <p class="mb-0">JAM SEJAK MAYOR OVERHOUL (JSMO)</p>
+                            </td>
+                            <td>
+                              <p>:</p>
+                              <p>:</p>
+                              <p>:</p>
+                              <p>:</p>
+                              <p>:</p>
+                              <p class="mb-0">:</p>
+                            </td>
+                            <td>
+                              <p>II (Dua)</p>
+                              <p>Sulzer 12 ZV 40/48</p>
+                              <p>740023</p>
+                              <p>6.400 KW</p>
+                              <p id="9_2"></p>
+                              <p class="mb-0" id="10_2"></p>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="3">
+                       <table class="table table-borderless mb-0 mt-0">                        
+                        <tr style="line-height: 2px;">
+                          <td style="width: 3%">1.</td>
+                          <td style="width: 40%">Tanggal dan Jam Kejadian</td>
+                          <td>:</td>
+                          <td id="2_2" style="width: 57%"></td>
+                        </tr>
+                        <tr style="line-height: 2px;">
+                          <td>2.</td>
+                          <td>Kelompok SPD Yang Rusak</td>
+                          <td>:</td>
+                          <td id="0_2"></td>
+                        </tr>
+                        <tr style="line-height: 2px;">
+                          <td>3.</td>
+                          <td>Kelompok Yang Rusak</td>
+                          <td>:</td>
+                          <td id="1_2"></td>
+                        </tr>
+                        <tr style="height: auto;">
+                          <td>4.</td>
+                          <td>Gejala Yang Timbul</td>
+                          <td>:</td>
+                          <td id="6_2"></td>
+                        </tr>
+                        <tr style="line-height: auto;">
+                          <td>5</td>
+                          <td>Urutan Kejadian / Kronologis Kejadian</td>
+                          <td>:</td>
+                          <td id="7_2"></td>
+                        </tr>
+                        <tr style="line-height: 2px;">
+                          <td>6.</td>
+                          <td>Pemeriksaan Gangguan</td>
+                          <td>:</td>
+                          <td id="11_2"></td>
+                        </tr>
+                        <tr style="line-height: 0px;">
+                          <td>7.</td>
+                          <td>Analisa Gangguan</td>
+                          <td>:</td>
+                          <td id="8_2"></td>
+                        </tr>
+                        <tr style="line-height: 0px;">
+                          <td>8.</td>
+                          <td>Akibat Terhadap Sistem Pembangkit</td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr style="line-height: 0px;">
+                          <td></td>
+                          <td><p class="ml-3 mb-0">- Daya Terpasang</p></td>
+                          <td>:</td>
+                          <td>6.400</td>
+                        </tr>
+                        <tr style="line-height: 0px;">
+                          <td></td>
+                          <td><p class="ml-3 mb-0">- Daya Mampu</p></td>
+                          <td>:</td>
+                          <td id="12_2">3.500</td>
+                        </tr>
+                        <tr style="line-height: 0px;">
+                          <td></td>
+                          <td><p class="ml-3 mb-0">- Beban Puncak</p></td>
+                          <td>:</td>
+                          <td id="13_2"></td>
+                        </tr>
+                        <tr style="line-height: 2px;">
+                          <td>9.</td>
+                          <td>Tindakan Penanggulangan</td>
+                          <td>:</td>
+                          <td id="14_2"></td>
+                        </tr>
+                        <tr style="line-height: 0px;">
+                          <td>10.</td>
+                          <td>Rencana Perbaikan</td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr style="line-height: 0px;">
+                          <td></td>
+                          <td><p class="ml-3 mb-0">- Pelaksanaan</p></td>
+                          <td>:</td>
+                          <td id="15_2"></td>
+                        </tr>
+                        <tr style="line-height: 0px;"><td></td>
+                          <td><p class="ml-3 mb-0">- Jenis Pekerjaan</p></td>
+                          <td>:</td>
+                          <td id="16_2"></td>
+                        </tr>
+                        <tr style="line-height: 0px;">
+                          <td></td>
+                          <td><p class="ml-3 mb-0">- Jadwal</p></td>
+                          <td>:</td>
+                          <td id="jadwal"></td>
+                        </tr>
+                        <tr style="line-height: 0px;">
+                          <td></td>
+                          <td><p class="ml-3 mb-0">- Lama Pekerjaan</p></td>
+                          <td>:</td>
+                          <td id="lama"></td>
+                        </tr>
+                        <tr style="line-height: 0px;">
+                          <td></td>
+                          <td><p class="ml-3 mb-0">- Material</p></td>
+                          <td>:</td>
+                          <td id="17_2"></td>
+                        </tr>
+                        <tr style="line-height: 0px;">
+                          <td></td>
+                          <td><p class="ml-3 mb-0">- Perkiraan Biaya</p></td>
+                          <td>:</td>
+                          <td id="18_2"></td>
+                        </tr>
+                        <tr style="line-height: 2px;">
+                          <td>11.</td>
+                          <td>Penjelasan Lain-lain</td>
+                          <td>:</td>
+                          <td id="19_2"></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="3">
+                      <table class="table table-borderless mb-0 mt-0">
+                        <tr style="text-align: center; line-height: 2px;">
+                          <td style="width: 50%;">
+                            <p>Mengetahui</p>
+                            <p id="20_2"></p>
+                            <p>PLTD/G Trisakti</p>
+                          </td>
+                          <td>
+                            <p id='tgl'></p>
+                            <p id="21_2"></p>
+                            <p>ULPLTD/G Trisakti</p>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr style="text-align: center; line-height: 5px;">
+                          <td><b id="22_2"></b></td>
+                          <td><b id="23_2">AKHMAD JUNAIRI</b></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>                
+        </div>
+        <div id="editor"></div>
+          
+      </div>     
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+    <script>
+      var output=[];
+      output = JSON.parse(localStorage.getItem("datainput2"));
+      var bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September','Oktober','November', 'Desember'];
+      var tanggal = new Date().getDate();
+      var _bulan = new Date().getMonth();
+      var _tahun = new Date().getYear();
+      var tahun = _tahun +1900;
+      var bulan = bulan[_bulan];
+      var lengkap = tanggal + bulan + tahun;
+      function generatePDF() {
+        var element = document.getElementById("content");
+        html2canvas(element, {
+          scale: 2,
+          letterRendering: true,
+        }).then(function(canvas) {
+          var imgData = canvas.toDataURL('image/jpeg');
+          console.log('Report Image URL: '+imgData);
+          var doc = new jsPDF('p', 'mm', 'a4'); //210mm wide and 297mm high
+                
+          doc.addImage(imgData, 'jpeg', 0, 0, 211, 298);
+          var docname = output[0]+ "_Mesin2_"+lengkap+".pdf";
+          doc.save(docname);
+          
+          });
+      }
+    </script>
+    <script type="text/javascript">
+      function delet(){
+        hapus();
+        setTimeout( function(){
+          window.open("gangguan_mesin_2.html", "_self");
+        }, 500 );
+        
+      }
+      function hapus() {
+        var web = 'https://script.google.com/macros/s/AKfycbzSovahr_yRrwFksaBJrstiASRia4qQtllI8LM/exec'; 
+          $.ajax({
+            url: web,
+            type: "GET",
+          });
+        localStorage.setItem("revisi","revisi"); 
+      }
+      function page(){
+        session();
+        output_2();
+        date();
+        
+      }
+    </script>
+  </body>
+</html>
