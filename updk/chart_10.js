@@ -83,7 +83,8 @@ $.getJSON("https://spreadsheets.google.com/feeds/cells/1DQY_8rw4Mvs-OjHvOTjMaAtO
                     position:'left',
                     id:'y-axis-1',
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        stepSize: 1
                     }
                 //},{
                     //position:'right',
@@ -110,13 +111,13 @@ $.getJSON("https://spreadsheets.google.com/feeds/cells/1DQY_8rw4Mvs-OjHvOTjMaAtO
   for (var i = 0; i<gan.length; i++) {
         donat.push(gan[i].content.$t); 
     } 
-  for(var j = 5; j<donat.length; j++){
+  for(var j = 6; j<donat.length; j++){
     if(donat[j]!==""){
-      if(j%5==0){
+      if(j%6==0){
             label2.push(donat[j]);
         }
       
-      if((j-4)%5==0){
+      if((j-5)%6==0){
             persen.push(donat[j]);
       }
     }
@@ -182,7 +183,7 @@ $.getJSON("https://spreadsheets.google.com/feeds/cells/1DQY_8rw4Mvs-OjHvOTjMaAtO
   var hasil = document.getElementById("output");
   hasil.innerHTML = total;
 
-  var mwh = total*5;
+  var mwh = total*8;
   mwh= mwh.toFixed(2);
   var mwhh = document.getElementById("power");
   mwhh.innerHTML = mwh;
