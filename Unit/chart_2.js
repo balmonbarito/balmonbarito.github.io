@@ -83,7 +83,8 @@ $.getJSON("https://spreadsheets.google.com/feeds/cells/1yY4xJvY-YYrBMb2nGPBomfOW
                     position:'left',
                     id:'y-axis-1',
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        stepSize: 1
                     }
                 //},{
                     //position:'right',
