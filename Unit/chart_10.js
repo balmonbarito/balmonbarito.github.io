@@ -183,7 +183,7 @@ $.getJSON("https://spreadsheets.google.com/feeds/cells/1DQY_8rw4Mvs-OjHvOTjMaAtO
   var hasil = document.getElementById("output");
   hasil.innerHTML = total;
 
-  var mwh = total*5;
+  var mwh = total*8;
   mwh= mwh.toFixed(2);
   var mwhh = document.getElementById("power");
   mwhh.innerHTML = mwh;
