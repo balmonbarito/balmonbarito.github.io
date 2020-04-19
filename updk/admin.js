@@ -9,10 +9,10 @@ function session(){
   var cpnow = new Date().getTime();
   var delta = cpnow-logindata;
   if(logindata == null){
-    window.location.replace("login.html");
+    window.location.replace("/index.html");
   }
   if(delta > hours){
-    window.location.replace("login.html");
+    window.location.replace("/index.html");
   }
   else{
     console.log("masih login");
@@ -22,7 +22,7 @@ function session(){
 //logout function
 function logout(){
   localStorage.removeItem('cp');
-  window.location.replace("login.html");
+  window.location.replace("/index.html");
 }
 
 //get data from google sheets
