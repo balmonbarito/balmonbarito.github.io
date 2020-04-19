@@ -35,7 +35,7 @@
               <h3><i class="fas fa-power-off mr-3"></i>BALMON</h3>
             </div>
             <div class="card-body ml-4 mr-4 mb-5">
-              <form>
+              <form id="myInput">
                 <div class="form-group">
                   <label for="username">Username</label>
                   <input type="text" class="form-control" id="username" placeholder="Username">
@@ -46,7 +46,7 @@
                   <small id="salah" class="form-text text-muted"></small>
                 </div>
                 <div class="text-center mt-5">
-                  <button type="button" class="btn btn-info" style="width: 50%;" onclick="login();">Login</button>
+                  <button id="myBtn" type="button" class="btn btn-info" style="width: 50%;" onclick="login();">Login</button>
                 </div>
               </form>
             </div>
@@ -67,6 +67,18 @@
     <script type="text/javascript" src="admin.js"></script>
     <script type="text/javascript">
       var loginstore=[];
+      var input = document.getElementById("myInput");
+
+      // Execute a function when the user releases a key on the keyboard
+      input.addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+          // Cancel the default action, if needed
+          event.preventDefault();
+          // Trigger the button element with a click
+          document.getElementById("myBtn").click();
+        }
+      });
       function login(){
         loginstore[0] = document.getElementById("username").value;
         loginstore[1] = document.getElementById("password").value;
