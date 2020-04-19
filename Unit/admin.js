@@ -9,10 +9,10 @@ function session(){
   var cpnow = new Date().getTime();
   var delta = cpnow-logindata;
   if(logindata == null){
-    window.location.replace("index.html");
+    window.location.replace("/index.html");
   }
   if(delta > hours){
-    window.location.replace("index.html");
+    window.location.replace("/index.html");
   }
   else{
     console.log("masih login");
