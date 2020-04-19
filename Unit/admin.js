@@ -22,7 +22,7 @@ function session(){
 //logout function
 function logout(){
   localStorage.removeItem('cp');
-  window.location.replace("login.html");
+  window.location.replace("/index.html");
 }
 
 //date generator
