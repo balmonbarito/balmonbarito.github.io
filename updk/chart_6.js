@@ -130,7 +130,12 @@ $.getJSON("https://spreadsheets.google.com/feeds/cells/1cLWOVjH593O6Eg4qRbo0pVJS
               datasets: [
                 {
                   label: "Population (millions)",
-                  backgroundColor: ["#D7269C", "#109DC0","#F5A345","#e8c3b9"],
+                  backgroundColor: ["#D7269C", "#109DC0","#F5A345","#e8c3b9",'rgba(255, 99, 132)',
+                          'rgba(54, 162, 235)',
+                          'rgba(255, 206, 86)',
+                          'rgba(75, 192, 192)',
+                          'rgba(153, 102, 255)',
+                          'rgba(255, 159, 64)'],
                   data: persen
                 }
               ]
@@ -160,19 +165,19 @@ var total = 0;
 $.getJSON("https://spreadsheets.google.com/feeds/cells/1cLWOVjH593O6Eg4qRbo0pVJS5UamQYuFg0UcYlkutY8/6/public/basic?alt=json" ,function (data){
   var gan = data.feed.entry;
   for (var i = 0; i<gan.length; i++) {
-        bar2.push(gan[i].content.$t); 
-    } 
-  for(var j = 4; j<bar2.length; j++){
-    if(bar2[j]!==""){
-      if(j%4==0){
-            label3.push(bar2[j]);
+          bar2.push(gan[i].content.$t); 
+      } 
+    for(var j = 6; j<bar2.length; j++){
+      if(bar2[j]!==""){
+        if(j%6==0){
+              label3.push(bar2[j]);
+          }
+        
+        if((j-3)%6==0){
+              time.push(bar2[j]);
         }
-      
-      if((j-3)%4==0){
-            time.push(bar2[j]);
       }
     }
-  }
   label3.reverse();
   time.reverse();
   inter = time.map(Number);
@@ -226,6 +231,59 @@ $.getJSON("https://spreadsheets.google.com/feeds/cells/1cLWOVjH593O6Eg4qRbo0pVJS
     });
 
 })
+ //Doughnut chart
+  var donat2 =[];
+  var label4 =[];
+  var persen2 = [];
+
+  //get data from google sheet
+  $.getJSON("https://spreadsheets.google.com/feeds/cells/1cLWOVjH593O6Eg4qRbo0pVJS5UamQYuFg0UcYlkutY8/9/public/basic?alt=json" ,function (data){
+    var gan = data.feed.entry;
+    for (var i = 0; i<gan.length; i++) {
+          donat2.push(gan[i].content.$t); 
+      } 
+    for(var j = 7; j<donat2.length; j++){
+      if(donat2[j]!==""){
+        if(j%7==0){
+              label4.push(donat2[j]);
+          }
+        
+        if((j-6)%7==0){
+              persen2.push(donat2[j]);
+        }
+      }
+    }
+    //Doughnut chart
+    new Chart(document.getElementById("dcm_6"), {
+              type: 'doughnut',
+              data: {
+                labels: label4,
+                datasets: [
+                  {
+                    label: "Population (millions)",
+                    backgroundColor: ["#D7269C", "#109DC0","#F5A345","#e8c3b9",'rgba(255, 99, 132)',
+                          'rgba(54, 162, 235)',
+                          'rgba(255, 206, 86)',
+                          'rgba(75, 192, 192)',
+                          'rgba(153, 102, 255)',
+                          'rgba(255, 159, 64)'],
+                    data: persen2
+                  }
+                ]
+              },
+              options: {
+                legend: {
+                  labels: {
+                      fontColor: "white",
+                  }
+                },
+                title: {
+                  display: false,
+                  text: '80% Kontribusi Gangguan'
+                }
+              }
+          });
+      })
 
 
 

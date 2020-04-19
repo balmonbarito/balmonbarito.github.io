@@ -9,22 +9,36 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="admin.css">
     <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+    <style>
+      .sidenav {
+        height: 100%;
+        width: 228px;
+        position: fixed;
+        z-index: 1;
+        top: 48px;
+        left: 0;
+        overflow-x: hidden;
+        padding-top: 20px;
+      }
+      .main {
+        margin-left: 228px;
+        padding: 0px 10px;
+      }
+    </style>
 
     <title>BALMON</title>
   </head>
-  <body onload="session()">
+  <body onload="session();">
     <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
-      <a class="navbar-brand text-white"  href="#">BALMON | Barito Loses Monitoring</a>
-      
-        <form class="form-inline my-2 my-lg-0 ml-auto">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <div class="icon ml-2 text-white">
-          <button class="btn btn-info my-2 my-sm-0 text-center" type="button" onclick="logout()">
-              <i class="fas fa-power-off"></i>
+      <a class="navbar-brand text-white"  href="#">BALMON | Barito Losses Monitoring</a>
+      <div class="d-flex my-2 my-lg-0 ml-auto">
+        <a class="navbar-brand text-white my-2 my-sm-0" href="#">UPDK Barito</a>
+        <div class="icon text-white">
+          <button class="btn btn-info my-2 my-sm-0 text-center" type="button" onclick="logout()" data-toggle="tooltip" title="Log Out?" data-placement="bottom">
+              <i class="fas fa-power-off" ></i>
           </button>          
         </div>
+      </div>
         <!--div class="icon ml-4">
           <h5>
             <i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Pesan Masuk"></i> 
@@ -32,30 +46,26 @@
             <i class="fas fa-sign-out-alt mr-3" data-toggle="tooltip" title="Sign Out"></i>
           </h5>
         </div-->
-      </div>
     </nav>
     
     <div class="row no-gutters mt-5" style="height:auto;">
-      <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
+      <div class="sidenav bg-dark mt-2 pr-3 pt-4">
         <ul class="nav flex-column ml-3 mb-5" style="height:565px;">
           <li class="nav-item">
             <a class="nav-link active text-white" href="dashboard.html"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a><hr class="bg-secondary">
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="gangguan_main.html"><i class="fas fa-cogs mr-2"></i>Gangguan</a><hr class="bg-secondary">
+            <a class="nav-link text-white" href="gangguan_main.html"><i class="fas fa-cogs mr-2"></i>Rekap Gangguan</a><hr class="bg-secondary">
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>Pareto Chart</a><hr class="bg-secondary">
+            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>OEE Pembangkit</a><hr class="bg-secondary">
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="lho5.html"><i class="fas fa-file-pdf mr-2"></i>LHO5</a><hr class="bg-secondary">
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="pembangkit.html"><i class="fas fa-file-medical-alt mr-2"></i>Indeks Pembangkit</a><hr class="bg-secondary">
-          </li>
         </ul>
       </div>
-      <div class="col-md-10 p-5 pt-2 bg-light">
+      <div class="main p-5 pt-2 bg-light">
         <h5><i class="fas fa-chart-bar mr-2"></i>SWD 16 TM Mesin 5</h5><hr>
         <!--div class="embed-responsive embed-responsive-16by9">
           <iframe class="embed-responsive-item" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS5aKsQGP_N8r5b10coqnF5try3iRXhqT5tzK7gZSCEqfSpddiOVNwxP2NNLk6EjT5b5YD0qQ3cSzoq/pubchart?oid=1046041781&format=interactive" style="width:100%" class="fadeInUp"></iframe>
@@ -69,7 +79,7 @@
                   <div class="card-body">
                     <h4>Kontribusi Gangguan</h4>
                     <p class="card-text mb-4">Jumlah • Gangguan</p>
-                    <canvas id="bc_6" width="700" height="400"></canvas>
+                    <canvas id="bc_6" width="700" height="450"></canvas>
                   </div>
                 </div>
               </div>
@@ -78,7 +88,7 @@
           <div class="col-md-3 bg-info mt-3">
             <div class="text-white mt-3 mb-3">
               <p class="align-self-end" style="font-size: 20px;">Detail Gangguan</p>
-              <p class="card-text mb-4">80% • Kontribusi Gangguan</p>
+              <p class="card-text mb-4">80% • Kontribusi Jumlah Gangguan</p>
             </div>
             <div class="mt-3">
               <canvas id="dc_6" width="500" height="500"></canvas>
@@ -94,18 +104,22 @@
                   <div class="card-body">
                     <h4>Kontribusi Jam Gangguan</h4>
                     <p class="card-text mb-4">Jumlah • Jam Gangguan</p>
-                    <canvas id="tc_6" width="700" height="400"></canvas>
+                    <canvas id="tc_6" width="700" height="500"></canvas>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-md-3 bg-info mt-3">
-            <div class="d-flex justify-content-between text-white mt-3 mb-3">
-              <p class="align-self-end" style="font-size: 20px;">Total Jam Gangguan</p>
+            <div class="text-white mt-3 mb-3">
+              <p class="align-self-end" style="font-size: 20px;">Detail Gangguan</p>
+              <p class="card-text mb-4">80% • Kontribusi Jam Gangguan</p>
+            </div>
+            <div class="mt-3">
+              <canvas id="dcm_6" width="500" height="500"></canvas>
             </div>
             <div>
-              <table class="table table-borderless text-white">
+              <table class="table table-borderless text-white mt-5">
                 <tr>
                   <td><p class="card-title">Jam Gangguan</p></td>
                   <td><h5 id="output" class="text-right"></h5></td>
@@ -116,8 +130,8 @@
                 </tr>
               </table>
             </div>
-            <div class="mt-5" style="text-align:center;">
-              <a class="btn btn-info mt-5" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkZGG8AIF19lzJmEANnzo8__IMivrXN301foO-cgc7tdnp7rfF9JMQ6yhvhwa_07IHEu3qdP0RdrEN/pub?gid=2089626624&single=true&output=csv" role="button">Download Data</a>
+            <div style="text-align:center;">
+              <a class="btn btn-info mt-2 mb-2" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTW1A_wMZSVTFvP1JssphO82vY8HdZhYjI-OU2iqr2vRJrWjfIfkYcxcowZ24BfQyMZ884s4okgb3b0/pub?gid=1921317437&single=true&output=csv" role="button">Download Data</a>
             </div>
 
           </div>
@@ -133,5 +147,7 @@
     <script type="text/javascript" src="admin.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script type="text/javascript" src="chart_5.js"></script>
+    <script type="text/javascript">
+    </script>
   </body>
 </html>
