@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+
+    <title>BALMON</title>
+  </head>
+  <body onload="gangguan()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
+      <a class="navbar-brand text-white"  href="#">BALMON | Barito Losses Monitoring</a>
+      
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="icon ml-2 text-white">
+          <button class="btn btn-info my-2 my-sm-0 text-center" type="button" onclick="logout()">
+              <i class="fas fa-power-off"></i>
+          </button>          
+        </div>
+        <!--div class="icon ml-4">
+          <h5>
+            <i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Pesan Masuk"></i> 
+            <i class="fas fa-bell mr-3" data-toggle="tooltip" title="Notifikasi"></i>
+            <i class="fas fa-sign-out-alt mr-3" data-toggle="tooltip" title="Sign Out"></i>
+          </h5>
+        </div-->
+      </div>
+    </nav>
+    
+    <div class="row no-gutters mt-5" style="height:auto;">
+      <div class="col-md-2 bg-dark mt-2 pr-3 pt-4">
+        <ul class="nav flex-column ml-3 mb-5" style="height:565px;">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="dashboard.html"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="gangguan_main.html"><i class="fas fa-cogs mr-2"></i>Rekap Gangguan</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>OEE Pembangkit</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="lho5.html"><i class="fas fa-file-pdf mr-2"></i>LHO5</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="pembangkit.html"><i class="fas fa-file-medical-alt mr-2"></i>Indeks Pembangkit</a><hr class="bg-secondary">
+          </li>
+        </ul>
+      </div>
+      
+        
+      <div class="col-md-10 p-5 pt-2 bg-light">
+        <h5><i class="fas fa-chart-bar mr-2"></i>Rekap Gangguan</h5><hr>
+        <div class="row">
+          <div class="col-md-6" >
+            <div class="row bg-info mb-3 ml-3 ">
+              <div class="text-white mt-4 ml-3 mb-1">
+                <p style="font-size: 23px;line-height: 2px;">ULPLTD/G Trisakti</p>
+                <p>Rekap Gangguan  •  s/d Februari 2020</p>
+              </div>
+            </div>
+            <div class="row mb-3 ml-1 mt-3">
+              <div class="col-md-7">
+                <div class="mb-3">
+                  <div class="shadow bg-white rounded">
+                    <div class="card border-light bg-white">
+                      <div class="mt-3 ml-3" style="height: 50px;">
+                        <h5>Total •  Gangguan</h5>
+                        <p id="total_pltd"></p>
+                      </div>
+                      <div class="card-body" style="height: 400px;">
+                        <canvas id="jamC" height="300px"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+              <div class="col-md-5 bg-info mb-3" >
+                <div class="card-body text-white">
+                  <div class="text-center">
+                    <a class="btn btn-info" href="gangguan_pltd.html" style="text-decoration: none;">
+                      <table class="table table-borderless mb-2">
+                        <tr style="line-height: 0px;">
+                          <td class="text-white">
+                            <img src="graph_1.png" class="img-fluid">
+                          </td>
+                        </tr>
+                        <tr style="line-height: 2px;">
+                          <td class="text-white">
+                            <p style="font-size: 16px;" id="avail_pltd"></p>
+                            <p>PLTD Trisakti</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </a>
+                    <a class="btn btn-info" href="gangguan_pltg.html" style="text-decoration: none;">
+                      <table class="table table-borderless mb-3">
+                        <tr style="line-height: 0px;">
+                          <td class="text-white">
+                            <img src="graph_1.png" class="img-fluid">
+                          </td>
+                        </tr>
+                        <tr style="line-height: 2px;">
+                          <td class="text-white">
+                            <p style="font-size: 16px;" id="perf_pltd"></p>
+                            <p>PLTG Trisakti</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </a>
+                    <a class="btn btn-info" href="gangguan_pltdk.html" style="text-decoration: none;">
+                      <table class="table table-borderless mb-3">
+                        <tr style="line-height: 0px;">
+                          <td class="text-white">
+                            <img src="graph_1.png" class="img-fluid">
+                          </td>
+                        </tr>
+                        <tr style="line-height: 2px;">
+                          <td class="text-white">
+                            <p style="font-size: 16px;" id="oee_pltd"></p>
+                            <p>PLTD Kapuas</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row bg-info mb-3 ml-3">
+              <div class="text-white mt-4 ml-3 mb-1">
+                <p style="font-size: 23px;line-height: 2px;">PLTA Ir. PM. Noor</p>
+                <p>Rekap Gangguan  •  s/d Februari 2020</p>
+              </div>
+            </div>
+            <div class="row ml-1 mt-3">
+              <div class="col-md-7">
+                <div class="mb-3">
+                  <div class="shadow bg-white rounded">
+                    <div class="card border-light bg-white">
+                      <div class="mt-3 ml-3" style="height: 50px;">
+                        <h5>Total •  Gangguan</h5>
+                        <p id="total_plta"></p>
+                      </div>
+                      <div class="card-body" style="height: 400px;">
+                        <canvas id="myChart" height="300px"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+              <a class="col-md-5 bg-info mb-3" href="gangguan_plta.html" style="text-decoration: none;">
+                <div class="card-body text-white">
+                  <div class="text-center">
+                    <table class="table table-borderless mb-3">
+                      <tr style="line-height: 0px;">
+                        <td class="text-white">
+                          <img src="graph_1.png" class="img-fluid">
+                        </td>
+                      </tr>
+                      <tr style="line-height: 2px;">
+                        <td class="text-white">
+                          <p style="font-size: 16px;" id="avail_plta"></p>
+                          <p>Unit 1</p>
+                        </td>
+                      </tr>
+                    </table>
+                    <table class="table table-borderless mb-3">
+                      <tr style="line-height: 0px;">
+                        <td class="text-white">
+                          <img src="graph_1.png" class="img-fluid">
+                        </td>
+                      </tr>
+                      <tr style="line-height: 2px;">
+                        <td class="text-white">
+                          <p style="font-size: 16px;" id="perf_plta"></p>
+                          <p>Unit 2</p>
+                        </td>
+                      </tr>
+                    </table>
+                    <table class="table table-borderless mb-3">
+                      <tr style="line-height: 0px;">
+                        <td class="text-white">
+                          <img src="graph_1.png" class="img-fluid">
+                        </td>
+                      </tr>
+                      <tr style="line-height: 2px;">
+                        <td class="text-white">
+                          <p style="font-size: 16px;" id="oee_plta"></p>
+                          <p>Unit 3</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
+    <script type="text/javascript">
+      function gangguan(){
+        session();
+        jumlah();
+        jam();
+      }
+    </script>
+    <script>
+      function jumlah(){
+        var dataall =[];
+        var dataoee =[];
+        var inter =[];
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/10XpDFs9ixdmF7pxqNkgDGvEZeowbSoIFkQZV3bPyboA/2/public/basic?alt=json" ,function (data){
+          var gan = data.feed.entry;
+          for (var i = 6; i<gan.length; i++) {
+                dataall.push(gan[i].content.$t); 
+          }
+          for (var i = 17; i< 35; i++) {
+                dataoee.push(dataall[i]); 
+          }
+          inter = dataoee.map(Number);
+          inter[10] = (75);
+          inter[11] = (42);
+          inter[12] = (21);
+          var dtotal = inter[10]+inter[11]+inter[12];
+          var avail = document.getElementById("avail_pltd");
+          avail.innerHTML = inter[10] + " Kali";
+          var perf = document.getElementById("perf_pltd");
+          perf.innerHTML = inter[11] + " Kali";
+          var oee = document.getElementById("oee_pltd");
+          oee.innerHTML = inter[12] + " Kali";
+          var total = document.getElementById("total_pltd");
+          total.innerHTML = dtotal + " Kali";
+
+          var ctx = document.getElementById('jamC').getContext('2d');
+          var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+              labels: ['PLTD Trs', 'PLTG Trs', 'PLTD Kps'],
+              datasets: [
+                {
+                  label: "Population (millions)",
+                  data: [inter[10], inter[11], inter[12]],
+                  backgroundColor: ["#D7269C", "#109DC0","#F5A345","#e8c3b9"],
+                }
+              ]
+            },
+            options: {
+              legend: {
+                labels: {
+                    fontColor: "black",
+                }
+              },
+              title: {
+                display: false,
+                text: '80% Kontribusi Gangguan'
+              }
+            }
+          });
+        })
+      }
+    </script>
+    <script>
+      function jam(){
+        var dataall =[];
+        var dataoee =[];
+        var inter =[];
+        $.getJSON("https://spreadsheets.google.com/feeds/cells/10XpDFs9ixdmF7pxqNkgDGvEZeowbSoIFkQZV3bPyboA/2/public/basic?alt=json" ,function (data){
+          var gan = data.feed.entry;
+          for (var i = 6; i<gan.length; i++) {
+                dataall.push(gan[i].content.$t); 
+          }
+          for (var i = 17; i< 35; i++) {
+                dataoee.push(dataall[i]); 
+          }
+          inter = dataoee.map(Number);
+          inter[10] = (inter[10]*100).toFixed(2);
+          inter[11] = (inter[11]*100).toFixed(2);
+          inter[12] = (inter[12]*100).toFixed(2);
+          var dtotal = inter[10]+inter[11]+inter[12];
+          var avail = document.getElementById("avail_plta");
+          avail.innerHTML = inter[10] + " Kali";
+          var perf = document.getElementById("perf_plta");
+          perf.innerHTML = inter[11] + " Kali";
+          var oee = document.getElementById("oee_plta");
+          oee.innerHTML = inter[12] + " Kali";
+          var total = document.getElementById("total_plta");
+          total.innerHTML = dtotal + " Kali";
+
+          var ctx = document.getElementById('myChart').getContext('2d');
+          var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+              labels: ['Unit 1', 'Unit 2', 'Unit 3'],
+              datasets: [
+                {
+                  label: "Population (millions)",
+                  data: [inter[10], inter[11], inter[12]],
+                  backgroundColor: ["#D7269C", "#109DC0","#F5A345","#e8c3b9"],
+                }
+              ]
+            },
+            options: {
+              legend: {
+                labels: {
+                    fontColor: "black",
+                }
+              },
+              title: {
+                display: false,
+                text: '80% Kontribusi Gangguan'
+              }
+            }
+          });
+        })
+      }
+    </script>
+  </body>
+</html>
