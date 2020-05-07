@@ -213,6 +213,8 @@
     <script type="text/javascript" src="admin.js"></script>
     <script type="text/javascript" src="/updk/oeeplta/oee_plta_bulan_1.js"></script>
     <script type="text/javascript" src="/updk/oeeplta/oee_plta_bulan_2.js"></script>
+    <script type="text/javascript" src="/updk/oeeplta/oee_plta_bulan_3.js"></script>
+    <script type="text/javascript" src="/updk/oeeplta/oee_plta_bulan_4.js"></script>
     <script>
     function oeepage(){
       var page = localStorage.getItem("bulan");
@@ -220,6 +222,12 @@
         oeebulan_1();
       }
       if(page == "februari"){
+        oeebulan_2();
+      }
+      if(page == "maret"){
+        oeebulan_2();
+      }
+      if(page == "april"){
         oeebulan_2();
       }
     }
@@ -234,6 +242,18 @@
       oeeplta1_2();
       oeeplta2_2();
       oeeplta3_2();
+    }
+    function oeebulan_3(){
+      session();
+      oeeplta1_3();
+      oeeplta2_3();
+      oeeplta3_3();
+    }
+    function oeebulan_4(){
+      session();
+      oeeplta1_4();
+      oeeplta2_4();
+      oeeplta3_4();
     }
     </script>
   </body>
