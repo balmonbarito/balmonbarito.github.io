@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="switch.css">
+
+    <title>BALMON</title>
+  </head>
+  <body onload="sim();">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top warna" >
+      <div class="container-fluid">
+        <a class="navbar-brand text-white"  href="#">SIMREL | Simulasi Relokasi</a>
+        <div class="navbar-nav ml-auto">
+          <a class="navbar-brand text-white my-2 my-sm-0" href="#">UPDK Barito</a>
+          <div class="icon text-white">
+            <button class="btn btn-info my-2 my-sm-0 text-center warna" type="button" onclick="logout()" data-toggle="tooltip" title="Log Out?" data-placement="bottom">
+                <i class="fas fa-power-off" ></i>
+            </button>          
+          </div>
+        </div>
+      </div>
+        <!--div class="icon ml-4">
+          <h5>
+            <i class="fas fa-envelope mr-3" data-toggle="tooltip" title="Pesan Masuk"></i> 
+            <i class="fas fa-bell mr-3" data-toggle="tooltip" title="Notifikasi"></i>
+            <i class="fas fa-sign-out-alt mr-3" data-toggle="tooltip" title="Sign Out"></i>
+          </h5>
+        </div-->
+    </nav>
+    
+    <div class="row no-gutters mt-5" style="height:auto;">
+      <div class="sidenav bg-dark mt-2 pr-3 pt-4">
+        <ul class="nav flex-column ml-3 mb-5" style="height:565px;">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="dashboard.html"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="simulasi.html"><i class="fas fa-chart-bar mr-2"></i>Simulasi</a><hr class="bg-secondary">
+          </li>
+          
+        </ul>
+      </div>
+      <div class="main container p-5 pt-2 bg-wihte">
+        <h5><i class="fas fa-chart-bar mr-2"></i>Simulasi Relokasi</h5><hr>
+                    <!-- Card -->
+          <div class="card chart-card shadow rounded" style="width:100%;">
+
+            <!-- Card content -->
+            <div class="card-body pb-0">
+
+              <!-- Title -->
+              <p class="card-title" style="font-size: 30px;">PLTD Isolated</p>
+              <!-- Text -->
+              <p class="card-text mb-4">ULPLTD Tambun Bungai  •  UPDK Barito</p>
+            </div>
+            
+
+            <!-- Classic tabs -->
+            <div class="classic-tabs">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link waves-light" data-toggle="tab" href="#panel1001" role="tab">Hasil Simulasi</a>
+                </li>
+              </ul>
+            </div>
+              <div class="tab-content rounded-bottom ml-3">
+                <!--Panel 1-->
+                <div class="tab-pane fade in show active" id="panel1001" role="tabpanel">
+                  <div class="row mt-3 mb-3">
+                    <form id="relokasi" class="ml-5 mr-5" style="width: 100%;">
+                      <div class="form-group row">
+                        <label for="part" class="col-sm-5 col-form-label"><i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Tujuan Relokasi</label>
+                        <div class="col-sm-7">
+                          <select class="form-control" id="tujuan" name="spd" onchange="hidekp();">
+                            <option disabled selected>Tujuan Relokasi</option>
+                            <option value="PLTD Kuala Pembuang">PLTD Kuala Pembuang</option>
+                            <option value="PLTD Nangabulik">PLTD Nangabulik</option>
+                            <option value="PLTD Sukamara">PLTD Sukamara</option>
+                            <option value="PLTD Kuala Kurun">PLTD Kuala Kurun</option>
+                            <option value="PLTD Puruk Cahu">PLTD Puruk Cahu</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-5 col-form-label">
+                          <i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>Target Daya Mampu
+                        </label>
+                        <div class="col-sm-7">
+                          <textarea type="text" class="form-control" id="inputdaya" placeholder="Target Daya Mampu (KiloWatt)" rows="1"></textarea>
+                        </div>
+                      </div>
+                    </form>
+                    <form id="grid" class="ml-5 mr-5" style="width: 100%;">
+                      <div class="form-group row">
+                        <label for="daya" class="col-sm-6 col-form-label"><i class="fas fa-dot-circle mr-2" style="font-size: 10px;"></i>PLTD Isolated yang telah Interkoneksi</label>
+                        <div class="col-sm-6">
+                          <div id="kp">
+                            <div class="d-flex justify-content-start mt-2">
+                              <label class="switch">
+                                <input type="checkbox" id="sw1" name="kualapembuang">
+                                <span class="slider round"></span>
+                              </label>
+                              <label class="ml-3">
+                                PLTD Kuala Pembuang
+                              </label>
+                            </div>
+                          </div>
+                          <div id="nb">
+                            <div class="d-flex justify-content-start mt-2">
+                              <label class="switch">
+                                <input type="checkbox" id="sw2" name="nangabulik">
+                                <span class="slider round"></span>
+                              </label>
+                              <label class="ml-3">
+                                PLTD Nanga Bulik
+                              </label>
+                            </div>
+                          </div>
+                          <div id="sm">
+                            <div class="d-flex justify-content-start mt-2">
+                              <label class="switch">
+                                <input type="checkbox" id="sw3" name="sukamara">
+                                <span class="slider round"></span>
+                              </label>
+                              <label class="ml-3">
+                                PLTD Sukamara
+                              </label>
+                            </div>
+                          </div>
+                          <div id="kk">
+                            <div class="d-flex justify-content-start mt-2">
+                              <label class="switch">
+                                <input type="checkbox" id="sw4" name="kualakurun">
+                                <span class="slider round"></span>
+                              </label>
+                              <label class="ml-3">
+                                PLTD Kuala Kurun
+                              </label>
+                            </div>
+                          </div>
+                          <div id="pc">
+                            <div class="d-flex justify-content-start mt-2">
+                              <label class="switch">
+                                <input type="checkbox" id="sw5" name="purukcahu">
+                                <span class="slider round"></span>
+                              </label>
+                              <label class="ml-3">
+                                PLTD Puruk Cahu
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <div>
+                      <div class="d-flex justify-content-end ml-5 mr-5 mt-5">
+                        <button class="btn btn-info" style="width: 160px;" onclick="pindah();">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--/.Panel 1-->
+
+              </div>
+
+            </div>
+            <!-- Classic tabs -->
+            <!--Panel 2-->
+            <div>
+              <div class="card chart-card shadow rounded mt-4" style="width:100%;">
+                <div class="row">
+                  <div class="col-md-9">
+                    <div class="row">
+                      <div class="card-body">
+                        <h4 class="ml-3">Rekomendasi</h4>
+                        <p class="card-text ml-3 mb-5" id="mesin"></p>
+                        <table class="table ml-3 table-hover">
+                          <thead class="thead-dark">
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Lokasi</th>
+                              <th scope="col">Mesin</th>
+                              <th scope="col">Daya Terpasang</th>
+                              <th scope="col">Daya Mampu</th>
+                              <th scope="col">SFC</th>
+                              <th scope="col">Biaya Relokasi</th>
+                              <th scope="col">BEP</th>
+                            </tr>
+                          </thead>
+                          <tbody id=tabelrek></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="warna" style="height: 100%;">
+                      <div class="d-flex justify-content-between text-white ml-3 mb-5">
+                        <p class="align-self-end mt-3" style="font-size: 25px;">Hasil Perhitungan</p>
+                      </div>
+                      <div class="card-text mb-5 text-white text-center">
+                        <div class="mb-5">
+                          <p>Total Daya Mampu</p>
+                          <h5 id="jumdayarek">0 kW</h5>
+                        </div>
+                        <div class="mb-5">
+                          <p>SFC Rata-rata</p>
+                          <h5 id="jumsfcrek">0 liter/kWH</h5>
+                        </div>
+                        <div class="mb-5">
+                          <p>Biaya Relokasi</p>
+                          <h5 id="jumbiayarek">Rp 0</h5>
+                        </div>
+                        <div class="mb-5">
+                          <p>Break Even Point (BEP)</p>
+                          <h5>0 Tahun</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row ml-2 mt-4">
+                <button class="btn btn-info" style="width: 160px;" onclick="hidetil();">Detail Perhitungan</button>
+              </div>
+              
+              <div id="detil" display="none">
+                <div class="card chart-card shadow rounded mt-4" style="width:100%;">
+                  <div class="row">
+                    <div class="col-md-9">
+                      <div class="row mr-5">
+                        <div class="card-body">
+                          <h4 class="ml-3">Daya Mampu</h4>
+                          <p class="card-text ml-3 mb-5">Rekomendasi • Berdasarkan Daya Mampu</p>
+                          <canvas id="daya" width="450" height="250"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="warna" style="height: 100%;">
+                        <div class="d-flex justify-content-between text-white text-center ml-3 mr-3 mb-4">
+                          <p class="align-self-end mt-3" style="font-size: 23px;">Daya Mampu Tertinggi</p>
+                        </div>
+                        <div class="card-text mb-5 text-white text-center ml-3 mr-3">
+                          <div class="mb-5">
+                            <p>Mesin</p>
+                            <h5 id="mdtertinggi"></h5>
+                          </div>
+                          <div class="mb-5">
+                            <p>Lokasi</p>
+                            <h5 id="ldtertinggi"></h5>
+                          </div>
+                          <div class="mb-5">
+                            <p>Daya Mampu</p>
+                            <h5 id="dtertinggi"></h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card chart-card shadow rounded mt-4" style="width:100%;">
+                  <div class="row">
+                    <div class="col-md-9">
+                      <div class="row mr-5">
+                        <div class="card-body">
+                          <h4 class="ml-3">SFC (Efisensi)</h4>
+                          <p class="card-text ml-3 mb-5">Rekomendasi • Berdasarkan SFC</p>
+                          <canvas id="sfc" width="450" height="250"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="warna" style="height: 100%;">
+                        <div class="d-flex justify-content-center text-white text-center ml-3 mr-3 mb-4">
+                          <p class="align-self-end mt-3" style="font-size: 23px;">SFC Minimum</p>
+                        </div>
+                        <div class="card-text mb-5 text-white text-center ml-3 mr-3">
+                          <div class="mb-5">
+                            <p>Mesin</p>
+                            <h5 id="mstertinggi"></h5>
+                          </div>
+                          <div class="mb-5">
+                            <p>Lokasi</p>
+                            <h5 id="lstertinggi"></h5>
+                          </div>
+                          <div class="mb-5">
+                            <p>Efisiensi (SFC)</p>
+                            <h5 id="stertinggi"></h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card chart-card shadow rounded mt-4" style="width:100%;">
+                  <div class="row">
+                    <div class="col-md-9">
+                      <div class="row mr-5">
+                        <div class="card-body">
+                          <h4 class="ml-3">Biaya Relokasi</h4>
+                          <p class="card-text ml-3 mb-5">Rekomendasi • Berdasarkan Biaya Relokasi</p>
+                          <canvas id="harga" width="450" height="250"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="warna" style="height: 100%;">
+                        <div class="d-flex justify-content-between text-white text-center ml-3 mr-3 mb-4">
+                          <p class="align-self-end mt-3" style="font-size: 23px;">Biaya Relokasi Minimum</p>
+                        </div>
+                        <div class="card-text mb-5 text-white text-center ml-3 mr-3">
+                          <div class="mb-5">
+                            <p>Mesin</p>
+                            <h5 id="mbterendah"></h5>
+                          </div>
+                          <div class="mb-5">
+                            <p>Lokasi</p>
+                            <h5 id="lbterendah"></h5>
+                          </div>
+                          <div class="mb-5">
+                            <p>Biaya Relokasi</p>
+                            <h5 id="bterendah"></h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card chart-card shadow rounded mt-4" style="width:100%;">
+                  <div class="row">
+                    <div class="col-md-9">
+                      <div class="row mr-5">
+                        <div class="card-body">
+                          <h4 class="ml-3">Break Even Point (BEP)</h4>
+                          <p class="card-text ml-3 mb-5">Rekomendasi • Berdasarkan BEP</p>
+                          <canvas id="bep" width="450" height="250"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="warna" style="height: 100%;">
+                        <div class="d-flex justify-content-center text-white text-center ml-3 mr-3 mb-4">
+                          <p class="align-self-end mt-3" style="font-size: 23px;">BEP Minimum</p>
+                        </div>
+                        <div class="card-text mb-5 text-white text-center ml-3 mr-3">
+                          <div class="mb-5">
+                            <p>Mesin</p>
+                            <h5 id="mbpterendah"></h5>
+                          </div>
+                          <div class="mb-5">
+                            <p>Lokasi</p>
+                            <h5 id="lbpterendah"></h5>
+                          </div>
+                          <div class="mb-5">
+                            <p>BEP Minimum</p>
+                            <h5 id="bpterendah"></h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row ml-2 mt-4">
+                <button class="btn btn-info" style="width: 160px;"onclick="hidmanual();">Hitung Manual</button>
+              </div>
+              <div id="manual">
+                <div class="card chart-card shadow rounded mt-4" style="width:100%;">
+                  <div class="row">
+                    <div class="col-md-9">
+                      <div class="row">
+                        <div class="card-body">
+                          <h4 class="ml-3">Hitung Manual</h4>
+                          <p class="card-text ml-3 mb-5" id="mesirek"></p>
+                          <table class="table ml-3 table-hover">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Lokasi</th>
+                                <th scope="col">Mesin</th>
+                                <th scope="col">Daya Terpasang</th>
+                                <th scope="col">Daya Mampu</th>
+                                <th scope="col">SFC</th>
+                                <th scope="col">Biaya Relokasi</th>
+                                <th scope="col">BEP</th>
+                                <th scope="col">Pilih</th>
+                              </tr>
+                            </thead>
+                            <tbody id="output"></tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="warna" style="height: 100%;">
+                        <div class="d-flex justify-content-between text-white ml-3 mb-3">
+                          <p class="align-self-end mt-4" style="font-size: 25px;">Hasil Perhitungan</p>
+                        </div>
+                        <div class="card-text mb-5 text-white text-center">
+                          <div class="mb-5 mt-5">
+                            <p>Total Daya Mampu</p>
+                            <h5 id="jumdaya">0 kW</h5>
+                          </div>
+                          <div class="mb-5">
+                            <p>SFC Rata-rata</p>
+                            <h5 id="jumsfc">0 liter/kWH</h5>
+                          </div>
+                          <div class="mb-5">
+                            <p>Biaya Relokasi</p>
+                            <h5 id="jumbiaya">Rp 0</h5>
+                          </div>
+                          <div class="mb-5">
+                            <p>Break Even Point (BEP)</p>
+                            <h5>0 Tahun</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
+    <script type="text/javascript" src="dashboard.js"></script>
+    <script type="text/javascript" src="grafikkp.js"></script>
+    <script type="text/javascript" src="grafiknb.js"></script>
+    <script type="text/javascript" src="grafiksm.js"></script>
+    <script type="text/javascript" src="grafikkk.js"></script>
+    <script type="text/javascript" src="grafikpc.js"></script>
+    <script type="text/javascript" src="tabelkp.js"></script>
+    <script type="text/javascript" src="tabelnb.js"></script>
+    <script type="text/javascript" src="tabelsm.js"></script>
+    <script type="text/javascript" src="tabelkk.js"></script>
+    <script type="text/javascript" src="tabelpc.js"></script>
+    <script type="text/javascript">
+      var page=[];
+      function sim(){
+        page=JSON.parse(localStorage.getItem("datainput"));
+        if(page[0] == "PLTD Kuala Pembuang"){
+          kp();
+        }
+        if(page[0] == "PLTD Nangabulik"){
+          nb();
+        }
+        if(page[0] == "PLTD Sukamara"){
+          sm();
+        }
+        if(page[0] == "PLTD Kuala Kurun"){
+          kk();
+        }
+        if(page[0] == "PLTD Puruk Cahu"){
+          pc();
+        } 
+      }
+      function kp(){
+        tabelrekkp();
+        tabelkp();
+        dayakp(); 
+        sfckp(); 
+        hargakp(); 
+        bepkp();
+      }
+      function nb(){
+        tabelreknb();
+        tabelnb();
+        dayanb(); 
+        sfcnb(); 
+        harganb(); 
+        bepnb();
+      }
+      function sm(){
+        tabelreksm();
+        tabelsm();
+        dayasm(); 
+        sfcsm(); 
+        hargasm(); 
+        bepsm();
+      }
+      function kk(){
+        tabelrekkk();
+        tabelkk();
+        dayakk(); 
+        sfckk(); 
+        hargakk(); 
+        bepkk();
+      }
+      function pc(){
+        tabelrekpc();
+        tabelpc();
+        dayapc(); 
+        sfcpc(); 
+        hargapc(); 
+        beppc();
+      }
+    </script>
+    <script type="text/javascript">
+      var x = document.getElementById("detil");
+      x.style.display = "none";
+      function hidetil(){
+        var x = document.getElementById("detil");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+      var y = document.getElementById("manual");
+      y.style.display = "none";
+      function hidmanual(){
+        var y = document.getElementById("manual");
+        if (y.style.display === "none") {
+          y.style.display = "block";
+        } else {
+          y.style.display = "none";
+        }
+      }
+    </script>
+    <script type="text/javascript">
+      var cd = document.getElementById("tujuan");
+      var x = document.getElementById("kp");
+      var y = document.getElementById("nb");
+      var z = document.getElementById("sm");
+      var a = document.getElementById("kk");
+      var b = document.getElementById("pc");
+      
+      x.style.display = "block";
+      y.style.display = "block";
+      z.style.display = "block";
+      a.style.display = "block";
+      b.style.display = "block";
+      function hidekp(){
+        if(cd.value=="PLTD Kuala Pembuang"){
+          x.style.display = "none";
+          y.style.display = "block";
+          z.style.display = "block";
+          a.style.display = "block";
+          b.style.display = "block";
+          
+        }
+        if(cd.value=="PLTD Nangabulik"){
+          y.style.display = "none";
+          x.style.display = "block";
+          z.style.display = "block";
+          a.style.display = "block";
+          b.style.display = "block";
+          
+        }
+        if(cd.value=="PLTD Sukamara"){
+          z.style.display = "none";
+          x.style.display = "block";
+          y.style.display = "block";
+          a.style.display = "block";
+          b.style.display = "block";
+          
+        }
+        if(cd.value=="PLTD Kuala Kurun"){
+          a.style.display = "none";
+          x.style.display = "block";
+          y.style.display = "block";
+          z.style.display = "block";
+          b.style.display = "block";
+          
+        }
+        if(cd.value=="PLTD Puruk Cahu"){
+          b.style.display = "none";
+          x.style.display = "block";
+          y.style.display = "block";
+          z.style.display = "block";
+          a.style.display = "block";
+          
+        }
+        
+      }
+    </script>
+  </body>
+</html>
