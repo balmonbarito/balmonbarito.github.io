@@ -255,12 +255,12 @@
         var oe = dataoee2[12];
         var hasil = document.getElementById("output");
         hasil.innerHTML = dataoee2[9];
-        var hasil = document.getElementById("ava");
-        hasil.innerHTML = ava.toFixed(2);
-        var hasil = document.getElementById("per");
-        hasil.innerHTML = per.toFixed(2);
-        var hasil = document.getElementById("oe");
-        hasil.innerHTML = oe.toFixed(2);
+        var hasilava = document.getElementById("ava");
+        hasilava.innerHTML = ava.toFixed(2);
+        var hasilper = document.getElementById("per");
+        hasilper.innerHTML = per.toFixed(2);
+        var hasiloe = document.getElementById("oe");
+        hasiloe.innerHTML = oe.toFixed(2);
         var ctx = document.getElementById('jamChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
