@@ -69,7 +69,7 @@
                 <div class="card border-light bg-white">
                   <div class="card-body">
                     <h4>OEE PLTA Ir. PM. Noor</h4>
-                    <p class="card-text mb-4">Net  •  Production s/d April 2020</p>
+                    <p class="card-text mb-4">Net  •  Production s/d Juni 2020</p>
                     <div style="width: 10%">
                         <table class="table table-borderless" style="line-height: 0px;">
                           <tr>
@@ -86,7 +86,29 @@
           </div>
           <div class="col-md-3 bg-info mt-3">
             <div class="d-flex justify-content-between text-white mt-3 mb-3">
-              <p class="align-self-end" style="font-size: 30px;">OEE Unit Mesin</p>
+              <p class="align-self-end" style="font-size: 24px;">OEE s/d Juni 2020</p>
+            </div>
+            <div class="mb-4">
+              <table class="table table-borderless text-white">
+                <tr>
+                  <td><p class="card-title">Availability</p></td>
+                  <td><h5 id="ava" class="text-right"></h5></td>
+                  <td><h5>%</h5></td>
+                </tr>
+                <tr>
+                  <td><p class="card-text">Performance</p></td>
+                  <td><h5 id="per" class="text-right"></h5></td>
+                  <td><h5>%</h5></td>
+                </tr>
+                <tr>
+                  <td><p class="card-text">OEE</p></td>
+                  <td><h5 id="oe" class="text-right"></h5></td>
+                  <td><h5>%</h5></td>
+                </tr>
+              </table>
+            </div>
+            <div class="d-flex justify-content-between text-white mt-3 mb-3">
+              <p class="align-self-end" style="font-size: 24px;">OEE per Unit Mesin</p>
             </div>
             <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
               <button class="btn btn-info" type="button" onclick="button1()">Unit 1</button>
@@ -95,6 +117,7 @@
             <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
               <button class="btn btn-info" type="button" onclick="button3()">Unit 3</button>
             </div>
+            
           </div>
         </div>
         <div class="row">
@@ -229,6 +252,12 @@
         }
         var hasil = document.getElementById("output");
         hasil.innerHTML = dataoee2[9];
+        var hasil = document.getElementById("ava");
+        hasil.innerHTML = dataoee2[10].toFixed(2);;
+        var hasil = document.getElementById("per");
+        hasil.innerHTML = dataoee2[11].toFixed(2);;
+        var hasil = document.getElementById("oe");
+        hasil.innerHTML = dataoee2[12].toFixed(2);;
         var ctx = document.getElementById('jamChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
