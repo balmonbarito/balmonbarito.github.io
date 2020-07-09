@@ -250,14 +250,17 @@
         for(var j = 36; j<46; j++){
             dataoee3.push(oee[j]);
         }
+        var ava = dataoee2[10];
+        var per = dataoee2[11];
+        var oe = dataoee2[12];
         var hasil = document.getElementById("output");
         hasil.innerHTML = dataoee2[9];
         var hasil = document.getElementById("ava");
-        hasil.innerHTML = dataoee2[10].toFixed(2);;
+        hasil.innerHTML = ava.toFixed(2);
         var hasil = document.getElementById("per");
-        hasil.innerHTML = dataoee2[11].toFixed(2);;
+        hasil.innerHTML = per.toFixed(2);
         var hasil = document.getElementById("oe");
-        hasil.innerHTML = dataoee2[12].toFixed(2);;
+        hasil.innerHTML = oe.toFixed(2);
         var ctx = document.getElementById('jamChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
