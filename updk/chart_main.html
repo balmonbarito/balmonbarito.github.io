@@ -124,8 +124,8 @@
               <button class="btn btn-info" type="button" onclick="bulan4()">April</button>
             </div>
             <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
-              <a class="btn btn-info" href="chart_9.html" role="button">Mei</a>
-              <a class="btn btn-info" href="chart_10.html" role="button">Juni</a>
+              <button class="btn btn-info" type="button" onclick="bulan5()">Mei</button>
+              <button class="btn btn-info" type="button" onclick="bulan6()">Juni</button>
             </div> 
             <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
               <a class="btn btn-info" href="chart_9.html" role="button">Juli</a>
@@ -193,6 +193,16 @@
     }
     function bulan4(){
       localStorage.setItem("bulan", "april");
+      window.open("oee_plta_bulan.html", "_self");
+
+    }
+    function bulan5(){
+      localStorage.setItem("bulan", "mei");
+      window.open("oee_plta_bulan.html", "_self");
+
+    }
+    function bulan6(){
+      localStorage.setItem("bulan", "juni");
       window.open("oee_plta_bulan.html", "_self");
 
     }

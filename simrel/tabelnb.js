@@ -26,7 +26,7 @@ function tabelnb(){
         tabel += '<td>'+ label[j] + '</td>';
 
       }
-      tabel += '<td><div class="text-right"><label class="switch"><input type="checkbox" onclick="checkkp();"'+ 'id= "tombol'+ (i+1) +'"' +'><span class="slider round"></span></label></div></td></tr>';
+      tabel += '<td><div class="text-right"><label class="switch"><input type="checkbox" onclick="checknb();"'+ 'id= "tombol'+ (i+1) +'"' +'><span class="slider round"></span></label></div></td></tr>';
     }
     
     var hasil = document.getElementById('output');
@@ -44,12 +44,14 @@ function  checknb(){
   var sfc=[];
   var biaya=[];
   var bep = [];
+  var pembagi = [];
 
   var total=0;
   var totsfc=0;
-  var totsfcs=0;
   var totbiaya=0;
   var totbep=0;
+  var totpembagi = 0;
+  var tots = 0;
 
   var checkbox = [];
   var inter=[];
@@ -71,21 +73,25 @@ function  checknb(){
          daya[k] = inter[4+(14*(k-1))];
          sfc[k] = inter[5+(14*(k-1))];
          biaya[k] = inter[12+(14*(k-1))];
+         pembagi[k] = 1;
+
       }
       if(checkbox[k].checked == false){
          daya[k] = 0;
          sfc[k] = 0;
          biaya[k] = 0;
+         pembagi[k] = 0;
       }
+      totpembagi+=pembagi[k];
       total+=daya[k];
       totsfc+=sfc[k];
-      totsfcs =totsfc/sfc.length;
+      tots=(totsfc/totpembagi);
       totbiaya+=biaya[k];
 
       var output = document.getElementById('jumdaya');
       output.innerHTML = total+" kW";
       var outputsfc = document.getElementById('jumsfc');
-      outputsfc.innerHTML = totsfc.toFixed(3); +" liter/kWH";
+      outputsfc.innerHTML = tots.toFixed(3) +" liter/kWH";
       var outputbiaya = document.getElementById('jumbiaya');
       outputbiaya.innerHTML = "Rp "+ totbiaya.toLocaleString();
     }

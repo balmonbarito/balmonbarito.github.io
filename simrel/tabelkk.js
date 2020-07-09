@@ -26,7 +26,7 @@ function tabelkk(){
         tabel += '<td>'+ label[j] + '</td>';
 
       }
-      tabel += '<td><div class="text-right"><label class="switch"><input type="checkbox" onclick="checkkp();"'+ 'id= "tombol'+ (i+1) +'"' +'><span class="slider round"></span></label></div></td></tr>';
+      tabel += '<td><div class="text-right"><label class="switch"><input type="checkbox" onclick="checkkk();"'+ 'id= "tombol'+ (i+1) +'"' +'><span class="slider round"></span></label></div></td></tr>';
     }
     
     var hasil = document.getElementById('output');
@@ -51,6 +51,7 @@ function  checkkk(){
   var totbiaya=0;
   var totbep=0;
   var totpembagi = 0;
+  var tots = 0;
 
   var checkbox = [];
   var inter=[];
@@ -84,13 +85,13 @@ function  checkkk(){
       totpembagi+=pembagi[k];
       total+=daya[k];
       totsfc+=sfc[k];
-      totsfc=(totsfc/totpembagi);
+      tots=(totsfc/totpembagi);
       totbiaya+=biaya[k];
 
       var output = document.getElementById('jumdaya');
       output.innerHTML = total+" kW";
       var outputsfc = document.getElementById('jumsfc');
-      outputsfc.innerHTML = totsfc.toFixed(3); +" liter/kWH";
+      outputsfc.innerHTML = tots.toFixed(3) +" liter/kWH";
       var outputbiaya = document.getElementById('jumbiaya');
       outputbiaya.innerHTML = "Rp "+ totbiaya.toLocaleString();
     }

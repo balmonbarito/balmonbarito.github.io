@@ -49,3 +49,4 @@ function pindah(){
     window.open("hasil.html", "_self");
   }, 800 );
 }
+
