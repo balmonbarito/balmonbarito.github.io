@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="modal.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+    
+    <title id="title">BALMON</title>
+  </head>
+  <body onload="tabel();">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-info" >
+      <div class="container-fluid">
+        <a class="navbar-brand text-white"  href="#">BALMON | Barito Losses Monitoring</a>
+        <div class="navbar-nav ml-auto">
+          <a class="navbar-brand text-white my-2 my-sm-0" href="#">PLTD Trisakti</a>
+          <div class="icon text-white">
+            <button class="btn btn-info my-2 my-sm-0 text-center" type="button" onclick="logout()" data-toggle="tooltip" title="Log Out?" data-placement="bottom">
+              <i class="fas fa-power-off" ></i>
+            </button>          
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="row no-gutters mt-5" style="height:auto;">
+      <div class="sidenav bg-dark mt-2 pr-3 pt-4">
+        <ul class="nav flex-column ml-3 mb-5" style="height:565px;">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="index.html"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="gangguan_main.html"><i class="fas fa-cogs mr-2"></i>Gangguan</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>Pareto Loss</a><hr class="bg-secondary">
+          </li>
+          <div class="dropdown">
+            <div class="text-white dropdown-toggle ml-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-file-pdf mr-2"></i>LHO5
+            </div>
+            <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item text-white nav-link" href="lho5app.html"><i class="fas fa-circle mr-2 ml-3" style="font-size: 7px;"></i>Persetujuan</a>
+              <a class="dropdown-item text-white nav-link" href="lho5.html"><i class="fas fa-circle mr-2 ml-3" style="font-size: 7px;"></i>Disetujui</a>
+              <a class="dropdown-item text-white nav-link" href="revisi.html"><i class="fas fa-circle mr-2 ml-3" style="font-size: 7px;"></i>Revisi</a>
+            </div>
+            <hr class="bg-secondary">
+          </div>
+        </ul>
+      </div>
+      <div class="main container p-5 pt-2 bg-wihte">
+        <h5>Laporan LH05</h5><hr>
+        
+        <div class="card chart-card shadow rounded mt-4" style="width:100%;">
+          <div class="row">
+            <div class="col">
+              <div class = "card-header">
+                <h4 class="ml-2 mt-2">Daftar LH05</h4>
+                <div class="d-flex mr-4">
+                  <div class="mr-auto p-2">
+                    <p class="card-text mb-3">PLTD Trisakti • Sudah Disetujui</p>
+                  </div>
+                  <div class="p-2">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  </div>
+                  <div class="p-2">
+                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                  </div>   
+                </div>
+              </div>
+              <div class="row mr-5">
+                <div class="card-body">
+                  <table id="tabelgangguan" class="table ml-4 table-hover">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" style="width: 10%">Mesin</th>
+                        <th scope="col" style="width: 25%">Jenis Part</th>
+                        <th scope="col" style="width: 30%">Komponen</th>
+                        <th scope="col" style="width: 20%">Waktu Gangguan</th>
+                        <th scope="col" style="width: 10%">LH05</th>
+                      </tr>
+                    </thead>
+                    <tbody id="outputtabel">
+                    </tbody>
+                  </table>
+                  <nav>
+                    <ul class="pagination pagination-sm justify-content-end">
+                      <li class="page-item"><a class="page-link" href="#1">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#2">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#3">3</a></li>
+                    </ul>
+                  </nav>
+                  <div id="demo"></div>
+                  <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content bg-wihte">
+                      <div>
+                        <button onclick="generatePDF();" type="submit" class="btn btn-info ml-3"><i class="fa fa-arrow-down mr-2" aria-hidden="true"></i>Download PDF</button><hr class="bg-light">
+                      </div>
+                      <div class="d-flex justify-content-center" id="content">
+                        <div class="mt-3 ml-3 mr-3 mb-3">
+                          <table class="table table-bordered mb-0" style="font-size:12px;">
+                            <tbody>
+                              <tr style="line-height: 0.8;">
+                                <td>
+                                  <table class="table table-borderless mb-0 mt-0">                        
+                                    <tr style="line-height: 2px;">
+                                      <td>
+                                        <p>PT. PLN (Persero)</p>
+                                        <p>CABANG / UPDK</p>
+                                        <p class="mb-0">ULPLTD</p>
+                                      </td>
+                                      <td>
+                                        <p>: UIKL KAL</p>
+                                        <p>: BANJARMASIN/BARITO</p>
+                                        <p class="mb-0">: TRISAKTI</p>
+                                      </td> 
+                                    </tr> 
+                                  </table>
+                                </td>
+                                <td class="text-center">
+                                  <table class="table table-borderless mb-0 mt-0">                        
+                                    <tr style="line-height: 2px;">
+                                      <td>
+                                        <p>LAPORAN PENDAHULUAN/LENGKAP</p>
+                                        <p>KERUSAKAN PLTD</p>
+                                        <p class="mb-0" id="nomor"></p>
+                                      </td>
+                                    </tr>   
+                                  </table>
+                                </td>
+                                <td class="text-center">
+                                  <table class="table table-borderless mb-0 mt-0">                        
+                                    <tr style="line-height: 2px;">
+                                      <td>
+                                        <p>FORM-VIII</p>
+                                        <p>KODE</p>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr style="line-height: 0px;">
+                                <td colspan="3">
+                                  <div class="d-flex justify-content-center">
+                                    <table class="table table-borderless mb-0 mt-0" style="width:60%;">                        
+                                      <tr class="mb-0" style="line-height: 1px;">
+                                        <td>
+                                          <p>PLTD NOMOR UNIT</p>
+                                          <p>MERK/TYPE</p>
+                                          <p>NOMOR SERIE</p>
+                                          <p>DAYA TERPASANG</p>
+                                          <p>JAM SEJAK BEROPRASI (JSB)</p>
+                                          <p class="mb-0">JAM SEJAK MAYOR OVERHOUL (JSMO)</p>
+                                        </td>
+                                        <td>
+                                          <p>:</p>
+                                          <p>:</p>
+                                          <p>:</p>
+                                          <p>:</p>
+                                          <p>:</p>
+                                          <p class="mb-0">:</p>
+                                        </td>
+                                        <td>
+                                          <p id="no"></p>
+                                          <p id="tipe"></p>
+                                          <p id="seri"></p>
+                                          <p id="dmn"></p>
+                                          <p id="jsb"></p>
+                                          <p class="mb-0" id="jsmo"></p>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                </td>
+                              </tr>
+                              <td colspan="3">
+                                <table class="table table-borderless mb-0 mt-0">                        
+                                  <tr style="line-height: 2px;">
+                                    <td style="width: 3%">1.</td>
+                                    <td style="width: 40%">Tanggal dan Jam Kejadian</td>
+                                    <td>:</td>
+                                    <td id="waktu" style="width: 57%"></td>
+                                  </tr>
+                                  <tr style="line-height: 2px;">
+                                    <td>2.</td>
+                                    <td>Kelompok SPD Yang Rusak</td>
+                                    <td>:</td>
+                                    <td id="spd"></td>
+                                  </tr>
+                                  <tr style="line-height: 2px;">
+                                    <td>3.</td>
+                                    <td>Kelompok Yang Rusak</td>
+                                    <td>:</td>
+                                    <td id="part"></td>
+                                  </tr>
+                                  <tr style="line-height: auto;">
+                                    <td>4.</td>
+                                    <td>Gejala Yang Timbul</td>
+                                    <td>:</td>
+                                    <td id="gejala"></td>
+                                  </tr>
+                                  <tr style="line-height: auto;">
+                                    <td>5</td>
+                                    <td>Urutan Kejadian / Kronologis Kejadian</td>
+                                    <td>:</td>
+                                    <td id="urutan"></td>
+                                  </tr>
+                                  <tr style="line-height: 2px;">
+                                    <td>6.</td>
+                                    <td>Pemeriksaan Gangguan</td>
+                                    <td>:</td>
+                                    <td id="pemeriksaan"></td>
+                                  </tr>
+                                  <tr style="line-height: auto;">
+                                    <td>7.</td>
+                                    <td>Analisa Gangguan</td>
+                                    <td>:</td>
+                                    <td id="analisa"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td>8.</td>
+                                    <td>Akibat Terhadap Sistem Pembangkit</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Daya Terpasang</p></td>
+                                    <td>:</td>
+                                    <td>6.400</td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Daya Mampu</p></td>
+                                    <td>:</td>
+                                    <td id="mampu"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Beban Puncak</p></td>
+                                    <td>:</td>
+                                    <td id="puncak"></td>
+                                  </tr>
+                                  <tr style="line-height: 2px;">
+                                    <td>9.</td>
+                                    <td>Tindakan Penanggulangan</td>
+                                    <td>:</td>
+                                    <td id="tindakan"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td>10.</td>
+                                    <td>Rencana Perbaikan</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Pelaksanaan</p></td>
+                                    <td>:</td>
+                                    <td id="pelaksanaan"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;"><td></td>
+                                    <td><p class="ml-3 mb-0">- Jenis Pekerjaan</p></td>
+                                    <td>:</td>
+                                    <td id="pekerjaan"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Jadwal</p></td>
+                                    <td>:</td>
+                                    <td id="jadwal"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Lama Pekerjaan</p></td>
+                                    <td>:</td>
+                                    <td id="lama"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Material</p></td>
+                                    <td>:</td>
+                                    <td id="material"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Perkiraan Biaya</p></td>
+                                    <td>:</td>
+                                    <td id="biaya"></td>
+                                  </tr>
+                                  <tr style="line-height: 2px;">
+                                    <td>11.</td>
+                                    <td>Penjelasan Lain-lain</td>
+                                    <td>:</td>
+                                    <td id="lainlain"></td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="3">
+                                <table class="table table-borderless mb-0 mt-0">
+                                  <tr style="text-align: center; line-height: 1px;">
+                                    <td style="width: 50%;">
+                                      <p>Mengetahui</p>
+                                      <p id="manager"></p>
+                                      <p>PLTD/G Trisakti</p>
+                                    </td>
+                                    <td>
+                                      <p id='tgl'></p>
+                                      <p id="spv"></p>
+                                      <p>ULPLTD/G Trisakti</p>
+                                    </td>
+                                  </tr>
+                                  <tr style="line-height: 1px;">
+                                    <td><div class="d-flex justify-content-center"><div id="qrcode2"></div></div></td>
+                                    <td><div class="d-flex justify-content-center"><div id="qrcode1"></div></div></td>
+                                  </tr>
+                                  <tr style="text-align: center;">
+                                    <td><b id="namaman"></b></td>
+                                    <td><b id="namaspv"></b></td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
+    <script type="text/javascript" src="tabel.js"></script>
+    <script type="text/javascript" src="qrcode.js"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+    <script type="text/javascript">
+      function generatePDF() {
+        var element = document.getElementById("content");
+        html2canvas(element, {
+          scale: 6,
+          letterRendering: true,
+        }).then(function(canvas) {
+          var imgData = canvas.toDataURL('image/jpeg');
+          console.log('Report Image URL: '+imgData);
+          var doc = new jsPDF('p', 'mm', 'a4'); //210mm wide and 297mm high
+                
+          doc.addImage(imgData, 'jpeg', 5, 5, 195, 280);
+          var docname = "_Mesin.pdf";
+          doc.save(docname);
+          
+          });
+      }
+    </script>
+    </script>
+  </body>
+</html>

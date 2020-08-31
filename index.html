@@ -25,38 +25,37 @@
         </div-->
       </div>
     </nav>
-    <div class="row mt-5 "></div>
-    <div class="row mt-5 ">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <div class="shadow">
-          <div class="card border-light bg-white">
-            <div class="mt-4 text-center">
-              <h3><i class="fas fa-power-off mr-3"></i>BALMON</h3>
-            </div>
-            <div class="card-body ml-4 mr-4 mb-5">
-              <form id="myInput">
-                <div class="form-group">
-                  <label for="username">Username</label>
-                  <input type="text" class="form-control" id="username" placeholder="Username">
+    <div class="row mt-5">
+      <div class="col">
+        <div class="d-flex justify-content-center">
+          <div class="row mt-5">
+            <div class="d-flex align-items-center">
+              <div class="card shadow border-light bg-white" style="width: 350px;">
+                <div class="mt-4 text-center">
+                  <h3><i class="fas fa-power-off mr-3"></i>BALMON</h3>
                 </div>
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" id="password" placeholder="Password">
-                  <small id="salah" class="form-text text-muted"></small>
+                <div class="card-body ml-4 mr-4 mb-5">
+                  <form id="myInput">
+                    <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="text" class="form-control" id="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control" id="password" placeholder="Password">
+                      <small id="salah" class="form-text text-muted"></small>
+                    </div>
+                    <div class="text-center mt-5">
+                      <button id="myBtn" type="button" class="btn btn-info" style="width: 50%;" onclick="login();">Login</button>
+                    </div>
+                  </form>
                 </div>
-                <div class="text-center mt-5">
-                  <button id="myBtn" type="button" class="btn btn-info" style="width: 50%;" onclick="login();">Login</button>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4"></div>
-      
     </div>
-    <div class="row mt-5 "></div>
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -85,17 +84,14 @@
         cp= new Date().getTime();
         localStorage.setItem("logins", JSON.stringify(loginstore));
         localStorage.setItem("cp", JSON.stringify(cp));
-        if(loginstore[0]=="pltd" && loginstore[1]=="pltd"){
-          window.location.href="/Unit/dashboard.html";
+        if(loginstore[0]=="trisakti" && loginstore[1]=="trisakti"){
+          window.location.href="/trisakti/input/index.html";
         }
-        if(loginstore[0]=="updk" && loginstore[1]=="updk"){
-          window.location.href="/updk/dashboard.html";
+        if(loginstore[0]=="multrisakti" && loginstore[1]=="multrisakti"){
+          window.location.href="/trisakti/manul/index.html";
         }
-        if(loginstore[0]=="simrel" && loginstore[1]=="simrel"){
-          window.location.href="/simrel/dashboard.html";
-        }
-        else{
-          document.getElementById("salah").innerHTML= "Username atau Password salah";
+        if(loginstore[0]=="spvtrisakti" && loginstore[1]=="spvtrisakti"){
+          window.location.href="/trisakti/spv/index.html";
         }
       }
       

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+    
+    <title id="title">BALMON</title>
+  </head>
+  <body onload="notif(); session();">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-info" >
+      <div class="container-fluid">
+        <a class="navbar-brand text-white"  href="#">BALMON | Barito Losses Monitoring</a>
+        <div class="navbar-nav ml-auto">
+          <a class="navbar-brand text-white my-2 my-sm-0" href="#">Spv. OPHAR 1 ULPLTD/G Trisakti</a>
+          <div class="icon text-white">
+            <button class="btn btn-info my-2 my-sm-0 text-center" type="button" onclick="logout()" data-toggle="tooltip" title="Log Out?" data-placement="bottom">
+              <i class="fas fa-power-off" ></i>
+            </button>          
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="row no-gutters mt-5" style="height:auto;">
+      <div class="sidenav bg-dark mt-2 pr-3 pt-4">
+        <ul class="nav flex-column ml-3 mb-5" style="height:565px;">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="index.html"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>Pareto Loss</a><hr class="bg-secondary">
+          </li>
+          <div class="dropdown">
+            <div class="text-white dropdown-toggle ml-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-file-pdf mr-2"></i>LHO5<span class="badge" id="notf1"></span>
+            </div>
+            <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item text-white nav-link" href="lho5app.html"><i class="fas fa-circle mr-2 ml-3" style="font-size: 7px;"></i>Persetujuan</a>
+              <span class="badge2" id="notf2"></span>
+              <a class="dropdown-item text-white nav-link" href="lho5.html"><i class="fas fa-circle mr-2 ml-3" style="font-size: 7px;"></i>Disetujui</a>
+            </div>
+            <hr class="bg-secondary">
+          </div>
+        </ul>
+      </div>
+      <div class="main container p-5 pt-2 bg-wihte">
+        <h5><i class="fas fa-chart-bar mr-2"></i>Pareto Loss</h5><hr>
+          <!-- Card -->
+        <div class="row d-flex justify-content-start">
+          <div class="col-md-8 card border-light shadow bg-white rounded mt-3 ml-3">
+            <div class="card-body">
+              <h4>Jumlah Jam Gangguan</h4>
+              <p class="card-text mb-4">Total  •  Jumlah Jam Gangguan</p>
+              <div style="width: 8%">
+                <table class="table table-borderless" style="line-height: 0px;">
+                  <tr>
+                    <td><p id="output" style="font-size: 30px;"></p></td>
+                    <td><p style="font-size: 30px;"> Jam</p></td>
+                  </tr>
+                </table>  
+              </div>
+              <canvas id="myChart" width="600" height="300"></canvas>
+            </div>
+          </div>
+          <div class="col-md-3 bg-info mt-3 ml-3">
+            <div class="text-white mt-3 mb-4">
+              <p class="ml-3" style="font-size: 25px;">Pareto Mesin</p>
+            </div>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <button class="btn btn-info" type="button" onclick="chart2()">Sulzer #2</button>
+              <button class="btn btn-info" type="button" onclick="chart3()">Pielstick #3</button>
+            </div>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <button class="btn btn-info" type="button" onclick="chart5()">SWD 16 TM #5</button>
+              <button class="btn btn-info" type="button" onclick="chart6()">SWD 16 TM #6</button>
+            </div>
+            <div class="btn-group mb-3 ml-3" role="group" aria-label="Basic example">
+              <button class="btn btn-info" type="button" onclick="chart9()">SWD 9 TM #9</button>
+              <button class="btn btn-info" type="button" onclick="chart10()">SWD 9 TM #10</button>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+        
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
+    <script type="text/javascript">
+    </script>
+    <script>
+      var bar2 =[];
+      var label3 =[];
+      var time = [];
+      var inter =[];
+      var total = 0;
+      $.getJSON("https://spreadsheets.google.com/feeds/cells/1mPy5mL6vN86HA7yMthPo4PR1CXdFDd8bFTjvv6P0suA/4/public/basic?alt=json" ,function (data){
+        var gan = data.feed.entry;
+        for (var i = 6; i<gan.length; i++) {
+              bar2.push(gan[i].content.$t); 
+        }
+        inter = bar2.map(Number);
+        for (var k = 0; k<inter.length; k++){
+          total += inter[k];
+        }
+        total=total.toFixed(2);
+        var hasil = document.getElementById("output");
+        hasil.innerHTML = total;
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Mesin 2', 'Mesin 3', 'Mesin 5', 'Mesin 6', 'Mesin 9', 'Mesin 10'],
+                datasets: [{
+                    label: '',
+                    data: [inter[0], inter[1], inter[2], inter[3], inter[4], inter[5]],
+                    backgroundColor: [
+                        'rgba(255, 99, 132)',
+                        'rgba(54, 162, 235)',
+                        'rgba(255, 206, 86)',
+                        'rgba(75, 192, 192)',
+                        'rgba(153, 102, 255)',
+                        'rgba(255, 159, 64)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: {
+                  display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+      })
+    </script>
+    <script type="text/javascript">
+      function chart2(){
+        localStorage.setItem("trisakti", "mesin2");
+        window.open("chart.html", "_self");
+
+      }
+      function chart3(){
+        localStorage.setItem("trisakti", "mesin3");
+        window.open("chart.html", "_self");
+
+      }
+      function chart5(){
+        localStorage.setItem("trisakti", "mesin5");
+        window.open("chart.html", "_self");
+
+      }
+      function chart6(){
+        localStorage.setItem("trisakti", "mesin6");
+        window.open("chart.html", "_self");
+
+      }
+      function chart9(){
+        localStorage.setItem("trisakti", "mesin9");
+        window.open("chart.html", "_self");
+
+      }
+      function chart10(){
+        localStorage.setItem("trisakti", "mesin10");
+        window.open("chart.html", "_self");
+
+      }
+    </script>
+  </body>
+</html>

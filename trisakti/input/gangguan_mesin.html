@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="modal.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+    <title id="title">BALMON</title>
+  </head>
+  <body onload="inputgangguan(); notif(); session();">
+
+<!--top navbar--> 
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-info" >
+      <div class="container-fluid">
+        <a class="navbar-brand text-white"  href="#">BALMON | Barito Losses Monitoring</a>
+        <div class="navbar-nav ml-auto">
+          <a class="navbar-brand text-white my-2 my-sm-0" href="#">PLTD Trisakti</a>
+          <div class="icon text-white">
+            <button class="btn btn-info my-2 my-sm-0 text-center" type="button" onclick="logout()" data-toggle="tooltip" title="Log Out?" data-placement="bottom">
+              <i class="fas fa-power-off" ></i>
+            </button>          
+          </div>
+        </div>
+      </div>
+    </nav>
+
+<!--sidebar--> 
+    <div class="row no-gutters mt-5" style="height:auto;">
+      <div class="sidenav bg-dark mt-2 pr-3 pt-4">
+        <ul class="nav flex-column ml-3 mb-5" style="height:565px;">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="index.html"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="gangguan_main.html"><i class="fas fa-cogs mr-2"></i>Gangguan</a><hr class="bg-secondary">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="chart_main.html"><i class="fas fa-chart-bar mr-2"></i>Pareto Loss</a><hr class="bg-secondary">
+          </li>
+          <div class="dropdown">
+            <div class="text-white dropdown-toggle ml-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-file-pdf mr-2"></i>LHO5<span class="badge" id="notf1"></span>
+            </div>
+            <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item text-white nav-link" href="lho5app.html"><i class="fas fa-circle mr-2 ml-3" style="font-size: 7px;"></i>Persetujuan</a>
+              <a class="dropdown-item text-white nav-link" href="lho5.html"><i class="fas fa-circle mr-2 ml-3" style="font-size: 7px;"></i>Disetujui</a>
+              <a class="dropdown-item text-white nav-link" href="revisi.html"><i class="fas fa-circle mr-2 ml-3" style="font-size: 7px;"></i>Revisi</a>
+              <span class="badge2" id="notf2"></span>
+            </div>
+            <hr class="bg-secondary">
+          </div>
+        </ul>
+      </div>
+
+<!--main side-->   
+      <div class="main container p-5 pt-2 bg-wihte">
+        <h5>Input Gangguan</h5><hr>
+
+        <div class="card chart-card shadow rounded mt-4" style="width:100%;">
+          <div class = "card-header">
+            <p class="card-text mb-2">Form • Input Gangguan</p>
+            <p style="font-size: 24px;" id="judul"></p>
+          </div>
+          <div class="col mt-3 mb-4">
+    <!--Form Gangguan-->    
+            <form id="gangguan" class="ml-3 mt-4">
+      <!--SPD form--> 
+              <textarea type="text" class="form-control" id="24" name="mesin" placeholder="mesin" rows="1" style="display:none;"></textarea>
+              <textarea type="text" class="form-control" id="25" name="status" placeholder="mesin" rows="1" style="display:none;"></textarea>
+              <textarea type="text" class="form-control" id="26" name="catatan" placeholder="mesin" rows="1" style="display:none;"></textarea>
+              <div class="form-group row">
+                <label for="part" class="col-sm-5 col-form-label"><i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Kelompok SPD yang rusak</label>
+                <div class="col-sm-7">
+                  <select class="form-control" id="0" name="spd">
+                    <option disabled selected>SPD yang rusak</option>
+                    <optgroup label="Diesel Engine">
+                      <option>Camshaft Set</option>
+                      <option>Casings</option>
+                      <option>Connecting Rod Assembly</option>
+                      <option>Connecting Rod Bearing</option>
+                      <option>Crankcase</option>
+                      <option>Crankshaft</option>
+                      <option>Crankshaft Bearing</option>
+                      <option>Crankshaft Thrust Bearing</option>
+                      <option>Cylinder Head</option>
+                      <option>Cylinder Liner</option>
+                      <option>End Cover</option>
+                      <option>Engine Frame</option>
+                      <option>Exhaust Valve</option>
+                      <option>Inlet Valve</option>
+                      <option>Main Bearing</option>
+                      <option>Piston Assembly</option>
+                      <option>Rocker Arm</option>
+                      <option>Turbocharger</option>
+                      <option>Turning Gear Set</option>
+                      <option>Valve Drive Set</option>
+                      <option>Vibration Damper</option>
+                    </optgroup>
+                    <optgroup label="Air Intake System">
+                      <option>Air Intake System</option>
+                    </optgroup>
+                    <optgroup label="Air Intercooler System">
+                      <option>Air Intercooler System</option>
+                    </optgroup>
+                    <optgroup label="Control and Protection">
+                      <option>Control and Protection</option>
+                    </optgroup>
+                    <optgroup label="Exciter Set">
+                      <option>Exciter Set</option>
+                    </optgroup>
+                    <optgroup label="Exhaust Gas System">
+                      <option>Exhaust Gas System</option>
+                    </optgroup>
+                    <optgroup label="Fuel System">
+                      <option>Fuel System</option>
+                    </optgroup>
+                    <optgroup label="Generator Set">
+                      <option>Generator Set</option>
+                    </optgroup>
+                    <optgroup label="Liquid Cooling System">
+                      <option>Liquid Cooling System</option>
+                    </optgroup>
+                    <optgroup label="Lubricant Supply System">
+                      <option>Lubricant Supply System</option>
+                    </optgroup>
+                    <optgroup label="Start Up System">
+                      <option>Start Up System</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+
+      <!--Komponen form--> 
+              <div class="form-group row">
+                <label for="part" class="col-sm-5 col-form-label"><i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Komponen yang rusak</label>
+                <div class="col-sm-7">
+                  <textarea type="text" class="form-control" id="1" name="part" placeholder="Komponen" rows="1"></textarea>
+                </div>
+              </div>
+
+      <!--form Jam Gangguan--> 
+              <div class="form-group">
+                <label><i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Waktu Gangguan</label>
+                <div class="row float-md-right">
+                  <label>Tanggal</label>
+                  <div class="col">
+                    <input type="date" class="form-control" id="2" name="waktuGangguan" placeholder="waktu gangguan">
+                  </div>
+                  <label>Jam</label>
+                  <div class="col">
+                    <input type="time" class="form-control" id="3"name="jam1" placeholder="jam">
+                  </div>
+                </div>
+              </div>
+
+      <!--form Masuk Sistem--> 
+              <div class="form-group">
+                <label><i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Waktu Selesai Har</label>
+                <div class="row float-md-right">
+                  <label>Tanggal</label>
+                  <div class="col">
+                    <input type="date" class="form-control" id="4"name="waktuHar" placeholder="waktu selesai har">
+                  </div>
+                  <label>Jam</label>
+                  <div class="col">
+                    <input type="time" class="form-control" id="5" name="jam2" placeholder="jam">
+                  </div>
+                </div>
+              </div>
+
+      <!--form Gejala--> 
+              <div class="form-group row">
+                <label class="col-sm-5 col-form-label">
+                  <i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Gejala Yang Timbul
+                </label>
+                <div class="col-sm-7">
+                  <textarea type="text" class="form-control" id="6" name="gejala" placeholder="Gejala" rows="3"></textarea>
+                </div>
+              </div>
+
+      <!--form Kronologi--> 
+              <div class="form-group row">
+                <label class="col-sm-5 col-form-label">
+                  <i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Urutan Kejadian
+                </label>
+                <div class="col-sm-7">
+                  <textarea type="text" class="form-control" id="7" name="kronologi" placeholder="Kronologi" rows="3"></textarea>
+                </div>
+              </div>
+
+      <!--form Analisa Gangguan--> 
+              <div class="form-group row mb-4">
+                <label class="col-sm-5 col-form-label">
+                  <i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Analisa Gangguan
+                </label>
+                <div class="col-sm-7">
+                  <textarea type="text" class="form-control" id="8" name="analisa" placeholder="Analisa" rows="1"></textarea>
+                </div>
+              </div>
+
+      <!--form Jam Kerja Mesin--> 
+              <div class="form-group">
+                <label><i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Jam Kerja Mesin</label>
+                <div class="row float-md-right">
+                  <div class="col">
+                    <input type="text" class="form-control" id="9" name="jsb" placeholder="JSB">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" id="10" name="jsmo" placeholder="JSMO">
+                  </div>
+                </div>
+              </div>
+
+      <!--form Pemeriksaan Gangguan--> 
+              <div class="form-group row">
+                <label class="col-sm-5 col-form-label">
+                  <i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Pemeriksaan Gangguan
+                </label>
+                <div class="col-sm-7">
+                  <textarea type="text" class="form-control" id="11" placeholder="Pemeriksaan" name="pemeriksaan" rows="1"></textarea>
+                </div>
+              </div>
+
+      <!--form efek Gangguan--> 
+              <label><i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Akibat Terhadap Pembangkit</label>
+              <div>
+                <div class="form-group row">
+                  <label class="col-sm-5 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 8px;"></i>Daya Mampu</label>
+                  <div class="col-sm-7">
+                    <textarea type="text" class="form-control" id="12" placeholder="Daya Mampu" name="dayamampu" rows="1"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label class="col-sm-5 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 8px;"></i>Beban Puncak</label>
+                  <div class="col-sm-7">
+                    <textarea type="text" class="form-control" id="13" placeholder="Beban Puncak" name="bebanpuncak" rows="1"></textarea>
+                  </div>
+                </div>
+              </div>
+
+      <!--form Tindakan--> 
+              <div class="form-group row mb-4">
+                <label class="col-sm-5 col-form-label">
+                  <i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Tindakan Penanggulangan
+                </label>
+                <div class="col-sm-7">
+                  <textarea type="text" class="form-control" id="14" placeholder="Tindakan" name="tindakan" rows="1"></textarea>
+                </div>
+              </div>
+
+      <!--form Rencana Perbaikan--> 
+              <label><i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Rencana Perbaikan</label>
+              <div>
+                <div class="form-group row">
+                  <label class="col-sm-5 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 8px;"></i>Pelaksanaan</label>
+                  <div class="col-sm-7">
+                    <textarea type="text" class="form-control" id="15" placeholder="Pelaksanaan" name="pelaksanaan" rows="1"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-5 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 8px;"></i>Jenis Pekerjaan</label>
+                  <div class="col-sm-7">
+                    <textarea type="text" class="form-control" id="16" placeholder="Jenis Pekerjaan" name="pekerjaan" rows="1"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-5 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 8px;"></i>Material</label>
+                  <div class="col-sm-7">
+                    <textarea type="text" class="form-control" id="17" placeholder="Material" name="material" rows="1"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label class="col-sm-5 col-form-label"><i class="fas fa-circle mr-2 ml-5" style="font-size: 8px;"></i>Perkiraan Biaya</label>
+                  <div class="col-sm-7">
+                    <textarea type="text" class="form-control" id="18" placeholder="Perkiraan Biaya" name="biaya" rows="1"></textarea>
+                  </div>
+                </div>
+              </div>
+
+      <!--form Penj. Lainnya--> 
+              <div  class="form-group row">
+                <label class="col-sm-5 col-form-label"><i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Penjelasan Lain-lain</label>
+                <div class="col-sm-7">
+                  <textarea type="text" class="form-control" id="19" placeholder="lain-lain" name="lainlain" rows="1"></textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="part" class="col-sm-5 col-form-label"><i class="fas fa-circle mr-2" style="font-size: 9px;"></i>Yang Bertandatangan</label>
+                <div class="col-sm-7">
+                  <select class="form-control mb-3" id="20" name="manager">
+                    <option value="Manager Unit Layanan">Manager Unit Layanan</option>
+                    <option value="PH Manager Unit Layanan">PH Manager Unit Layanan</option>
+                  </select>
+                  <div id="ipm">
+                    <textarea type="text" class="form-control mb-3" id="22" placeholder="Nama Manager/PH" name="namaman" rows="1"></textarea>
+                  </div>
+                  <select class="form-control mb-3" id="21" name="spv">
+                    <option value="Supervisor Operasi dan Pemeliharaan 1">Supervisor Operasi dan Pemeliharaan 1</option>
+                    <option value="PH Supervisor Operasi dan Pemeliharaan 1">PH Supervisor Operasi dan Pemeliharaan 1</option>
+                  </select>
+                  <div id="ips">
+                    <textarea type="text" class="form-control mb-3" id="23" placeholder="Nama SPV/PH" name="namaspv" rows="1"></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="d-flex justify-content-end">
+              <button onclick="simpan(); outputdata();" type="submit" class="btn btn-primary mt-3"><i class="fa fa-paper-plane mr-2" aria-hidden="true"></i>Submit</button>
+            </div>
+            <div>
+              <div>
+                <div>
+                  <div id="demo"></div>
+                  <div id="modalsuc" class="modal">
+                    <div class="modal-content bg-wihte">
+                      <div class="d-flex justify-content-center">
+                        <p style="font-size: 30px">Laporan LHO5 Telah Disimpan !</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content bg-wihte" >
+                      <div class="d-flex justify-content-start">
+                        <button onclick="submit();" type="submit" class="btn btn-info ml-3"><i class="fa fa-paper-plane mr-2" aria-hidden="true"></i>Submit LH05</button>
+                        <button onclick="edit();" type="submit" class="btn btn-danger ml-3"><i class="fa fa-tag mr-2" aria-hidden="true"></i>Edit</button>
+                      </div>
+                      <div class="d-flex justify-content-center" id="content">
+                        <div class="mt-3 ml-3 mr-3 mb-3">
+                          <table class="table table-bordered mb-0" style="font-size:12px;">
+                            <tbody>
+                              <tr style="line-height: 0.8;">
+                                <td>
+                                  <table class="table table-borderless mb-0 mt-0">                        
+                                    <tr style="line-height: 2px;">
+                                      <td>
+                                        <p>PT. PLN (Persero)</p>
+                                        <p>CABANG / UPDK</p>
+                                        <p class="mb-0">ULPLTD</p>
+                                      </td>
+                                      <td>
+                                        <p>: UIKL KAL</p>
+                                        <p>: BANJARMASIN/BARITO</p>
+                                        <p class="mb-0">: TRISAKTI</p>
+                                      </td> 
+                                    </tr> 
+                                  </table>
+                                </td>
+                                <td class="text-center">
+                                  <table class="table table-borderless mb-0 mt-0">                        
+                                    <tr style="line-height: 2px;">
+                                      <td>
+                                        <p>LAPORAN PENDAHULUAN/LENGKAP</p>
+                                        <p>KERUSAKAN PLTD</p>
+                                        <p class="mb-0">NOMER :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/LH05/ULPLTD.TRS/VIII/2020</p>
+                                      </td>
+                                    </tr>   
+                                  </table>
+                                </td>
+                                <td class="text-center">
+                                  <table class="table table-borderless mb-0 mt-0">                        
+                                    <tr style="line-height: 2px;">
+                                      <td>
+                                        <p>FORM-VIII</p>
+                                        <p>KODE</p>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr style="line-height: 0px;">
+                                <td colspan="3">
+                                  <div class="d-flex justify-content-center">
+                                    <table class="table table-borderless mb-0 mt-0" style="width:60%;">                        
+                                      <tr class="mb-0" style="line-height: 1px;">
+                                        <td>
+                                          <p>PLTD NOMOR UNIT</p>
+                                          <p>MERK/TYPE</p>
+                                          <p>NOMOR SERIE</p>
+                                          <p>DAYA TERPASANG</p>
+                                          <p>JAM SEJAK BEROPRASI (JSB)</p>
+                                          <p class="mb-0">JAM SEJAK MAYOR OVERHOUL (JSMO)</p>
+                                        </td>
+                                        <td>
+                                          <p>:</p>
+                                          <p>:</p>
+                                          <p>:</p>
+                                          <p>:</p>
+                                          <p>:</p>
+                                          <p class="mb-0">:</p>
+                                        </td>
+                                        <td>
+                                          <p id="no"></p>
+                                          <p id="tipe"></p>
+                                          <p id="seri"></p>
+                                          <p id="dmn"></p>
+                                          <p id="jsb"></p>
+                                          <p class="mb-0" id="jsmo"></p>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                </td>
+                              </tr>
+                              <td colspan="3">
+                                <table class="table table-borderless mb-0 mt-0">                        
+                                  <tr style="line-height: 2px;">
+                                    <td style="width: 3%">1.</td>
+                                    <td style="width: 40%">Tanggal dan Jam Kejadian</td>
+                                    <td>:</td>
+                                    <td id="waktu" style="width: 57%"></td>
+                                  </tr>
+                                  <tr style="line-height: 2px;">
+                                    <td>2.</td>
+                                    <td>Kelompok SPD Yang Rusak</td>
+                                    <td>:</td>
+                                    <td id="spd"></td>
+                                  </tr>
+                                  <tr style="line-height: 2px;">
+                                    <td>3.</td>
+                                    <td>Kelompok Yang Rusak</td>
+                                    <td>:</td>
+                                    <td id="part"></td>
+                                  </tr>
+                                  <tr style="line-height: auto;">
+                                    <td>4.</td>
+                                    <td>Gejala Yang Timbul</td>
+                                    <td>:</td>
+                                    <td id="gejala"></td>
+                                  </tr>
+                                  <tr style="line-height: auto;">
+                                    <td>5</td>
+                                    <td>Urutan Kejadian / Kronologis Kejadian</td>
+                                    <td>:</td>
+                                    <td id="urutan"></td>
+                                  </tr>
+                                  <tr style="line-height: 2px;">
+                                    <td>6.</td>
+                                    <td>Pemeriksaan Gangguan</td>
+                                    <td>:</td>
+                                    <td id="pemeriksaan"></td>
+                                  </tr>
+                                  <tr style="line-height: auto;">
+                                    <td>7.</td>
+                                    <td>Analisa Gangguan</td>
+                                    <td>:</td>
+                                    <td id="analisa"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td>8.</td>
+                                    <td>Akibat Terhadap Sistem Pembangkit</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Daya Terpasang</p></td>
+                                    <td>:</td>
+                                    <td>6.400</td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Daya Mampu</p></td>
+                                    <td>:</td>
+                                    <td id="mampu"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Beban Puncak</p></td>
+                                    <td>:</td>
+                                    <td id="puncak"></td>
+                                  </tr>
+                                  <tr style="line-height: 2px;">
+                                    <td>9.</td>
+                                    <td>Tindakan Penanggulangan</td>
+                                    <td>:</td>
+                                    <td id="tindakan"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td>10.</td>
+                                    <td>Rencana Perbaikan</td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Pelaksanaan</p></td>
+                                    <td>:</td>
+                                    <td id="pelaksanaan"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;"><td></td>
+                                    <td><p class="ml-3 mb-0">- Jenis Pekerjaan</p></td>
+                                    <td>:</td>
+                                    <td id="pekerjaan"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Jadwal</p></td>
+                                    <td>:</td>
+                                    <td id="jadwal"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Lama Pekerjaan</p></td>
+                                    <td>:</td>
+                                    <td id="lama"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Material</p></td>
+                                    <td>:</td>
+                                    <td id="material"></td>
+                                  </tr>
+                                  <tr style="line-height: 0px;">
+                                    <td></td>
+                                    <td><p class="ml-3 mb-0">- Perkiraan Biaya</p></td>
+                                    <td>:</td>
+                                    <td id="biaya"></td>
+                                  </tr>
+                                  <tr style="line-height: 2px;">
+                                    <td>11.</td>
+                                    <td>Penjelasan Lain-lain</td>
+                                    <td>:</td>
+                                    <td id="lainlain"></td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="3">
+                                <table class="table table-borderless mb-0 mt-0">
+                                  <tr style="text-align: center; line-height: 1px;">
+                                    <td style="width: 50%;">
+                                      <p>Mengetahui</p>
+                                      <p id="manager"></p>
+                                      <p>PLTD/G Trisakti</p>
+                                    </td>
+                                    <td>
+                                      <p id='tgl'></p>
+                                      <p id="spv"></p>
+                                      <p>ULPLTD/G Trisakti</p>
+                                    </td>
+                                  </tr>
+                                  <tr style="line-height: 1px;">
+                                    <td><div class="d-flex justify-content-center"><div id="qrcode2"></div></div></td>
+                                    <td><div class="d-flex justify-content-center"><div id="qrcode1"></div></div></td>
+                                  </tr>
+                                  <tr style="text-align: center;">
+                                    <td><b id="namaman"></b></td>
+                                    <td><b id="namaspv"></b></td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="admin.js"></script>
+    <script type="text/javascript" src="gangguan.js"></script>
+    <script type="text/javascript">
+      var modal = document.getElementById("myModal");
+      function edit(){
+        modal.style.display = "none";
+      }
+      function submit(){
+        modal.style.display = "none";
+        modalsuc.style.display = "block";
+        buttonsub();
+        setTimeout(function(){
+          window.open("gangguan_main.html", "_self");
+        }, 1000 );
+      }
+    </script>
+  </body>
+</html>
