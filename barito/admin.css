@@ -1,0 +1,74 @@
+.nav-link:hover{
+	background-color: purple;
+}
+
+
+.card-body-icon{
+	position: absolute;
+	z-index: 0;
+	top: 20px;
+	right:20px;
+	color:black;
+	opacity:0.2;
+	font-size:50px;
+}                
+table.table-bordered{
+    border:1px solid black;
+    margin-top:20px;
+  }
+table.table-bordered > thead > tr > th{
+    border:1px solid black;
+}
+table.table-bordered > tbody > tr > td{
+    border:1px solid black;
+}
+.sidenav {
+    height: 100%;
+    width: 180px;
+    position: fixed;
+    z-index: 1;
+    top: 48px;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.main {
+    margin-left: 180px;
+    padding: 0px 10px;
+    width: 100%;
+}
+.warna{
+    background-color: darkcyan;
+}
+.iconz{
+    font-size: 40px;
+}
+.trs{
+    line-height: 0px;
+}
+.tablefon{
+    font-size: 13px;
+}
+.kartu{
+	width: 160px;
+	height:200px;
+}
+.badge {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  padding: 5px 8px;
+  border-radius: 50%;
+  background: crimson;
+  color: white;
+}
+.badge2 {
+  position: absolute;
+  top: 18px;
+  right: 3px;
+  padding: 3px 8px;
+  border-radius: 50%;
+  background: crimson;
+  color: white;
+  font-size: 10px;
+}
