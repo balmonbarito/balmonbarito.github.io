@@ -352,6 +352,7 @@
     <script type="text/javascript">
       function generatePDF() {
         var element = document.getElementById("content");
+        window.scrollTo(0, 0);
         html2canvas(element, {
           scale: 6,
           letterRendering: true,
