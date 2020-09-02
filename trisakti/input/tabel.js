@@ -22,7 +22,7 @@ function tabel(){
     
     for(var i = 0; i <(label.length/kolom); i++){
       var lop = i*kolom;
-      tabel += '<tr><th scope="row">'+ (i+1) +'</th>';
+      tabel += '<tr><th scope="row" id="baris '+ (i+1) +'">'+ (i+1) +'</th>';
       for (var j=lop; j<(lop+4); j++){
         tabel += '<td>'+ label[j] + '</td>';
 
@@ -34,6 +34,27 @@ function tabel(){
     hasil.innerHTML = tabel;
 
   });
+}
+function searching() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("cari");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("outputtabel");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
 }
 function tabelapp(){
   // Try edit message
@@ -75,7 +96,27 @@ function tabelapp(){
   });
 }
 
+function searchingapp() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("cari");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("outputtabelapp");
+  tr = table.getElementsByTagName("tr");
 
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
 
 
 // Get the modal
