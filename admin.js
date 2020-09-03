@@ -24,13 +24,14 @@ function redir(){
   var label =[];
   var kolom = 11;
   //get data from google sheets
-  $.getJSON("https://spreadsheets.google.com/feeds/cells/1mPy5mL6vN86HA7yMthPo4PR1CXdFDd8bFTjvv6P0suA/7/public/basic?alt=json" ,function (data){
+  $.getJSON("https://spreadsheets.google.com/feeds/cells/1nMIMRl9LBfzuP444hGaN6Xs-0VpzJQBkOk4Xhs7HUWQ/1/public/basic?alt=json" ,function (data){
     var gan = data.feed.entry;
-    for (var i = 0; i<gan.length; i++) {
+    for (var i = 5; i<gan.length; i++) {
       yoman.push(gan[i].content.$t); 
     } 
-    window.location.replace(yoman[11]);
+    window.location.replace(yoman[3]);
   })
+    
 }
 
 
