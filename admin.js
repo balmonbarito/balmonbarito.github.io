@@ -3,6 +3,7 @@ $(function () {
 })
 
 function logins(){
+  mode();
   cp= new Date().getTime();
   localStorage.setItem("cp", JSON.stringify(cp));
   var $form = $('#myInput'),
