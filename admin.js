@@ -28,8 +28,15 @@ function redir(){
     var gan = data.feed.entry;
     for (var i = 5; i<gan.length; i++) {
       yoman.push(gan[i].content.$t); 
+    }
+    var salah = document.getElementById("salah");
+    if(yoman[3]=="#N/A"){
+      modal.style.display = "none";
+      salah.style.display = "block";
+    }
+    else{
+      window.location.replace(yoman[3]);
     } 
-    window.location.replace(yoman[3]);
   })
     
 }

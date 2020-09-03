@@ -1,7 +1,7 @@
 //login function
 function session(){
   var logindata = JSON.parse(localStorage.getItem("cp"));
-  var hours = 0.05*60*60*1000;
+  var hours = 0.5*60*60*1000;
   var cpnow = new Date().getTime();
   var delta = cpnow-logindata;
   if(logindata == null){
