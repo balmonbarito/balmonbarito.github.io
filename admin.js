@@ -7,7 +7,7 @@ function logins(){
   cp= new Date().getTime();
   localStorage.setItem("cp", JSON.stringify(cp));
   var $form = $('#myInput'),
-  url = 'https://script.google.com/macros/s/AKfycbwbbwHFbT3lo2fQYmKSOuOIG6_Z6FBa4LEP9WZvtUbtpSG-yA/exec'
+  url = 'https://script.google.com/macros/s/AKfycbxNi1_qHIJp4Q7-h3qt711LizJYFUfA3pAINA7gpk3zcJxN9gg/exec'
   $.ajax({
     url: url,
     method: "GET",
