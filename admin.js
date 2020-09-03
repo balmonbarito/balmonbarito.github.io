@@ -15,7 +15,7 @@ function logins(){
   })
   setTimeout(function(){
     redir();
-  }, 1000 );
+  }, 1100 );
   
 }
 function redir(){
